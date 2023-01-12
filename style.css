@@ -1,0 +1,11 @@
+/* GLOBAL */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    background-color: black;
+}
