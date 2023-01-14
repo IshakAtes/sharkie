@@ -1,7 +1,7 @@
 class World {
     character = new Character();
     enemies = [
-        new Enemy(),
+        new PufferFish(),
         new JellyFish(),
         new BigBoss(),
     ];
