@@ -5,12 +5,15 @@ class World {
         new JellyFish(),
         new BigBoss(),
     ];
+    lights = [
+        new Light(),
+    ];
     canvas;
     ctx;
 
     constructor(canvas){
         this.ctx = canvas.getContext('2d');
-        this.canvas = canvas
+        this.canvas = canvas;
         this.draw();
     }
 
@@ -23,9 +26,14 @@ class World {
             this.ctx.drawImage(enemyFish.img, enemyFish.x, enemyFish.y, enemyFish.width, enemyFish.height);
         });
 
-            let self = this;
-            requestAnimationFrame(function(){
-                self.draw();
-            });
+        this.lights.forEach(waterLight => {
+            this.ctx.drawImage(waterLight.img, waterLight.x, waterLight.y, waterLight.width, waterLight.height);
+        });
+
+
+        let self = this;
+        requestAnimationFrame(function(){
+            self.draw();
+        });
     }
 }
