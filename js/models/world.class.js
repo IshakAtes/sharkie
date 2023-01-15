@@ -17,6 +17,10 @@ class World {
     water = [
         new Water()
     ];
+    fondo = [
+        new Fondo2('./img/3. Background/Legacy/Layers/4.Fondo 2/L1.png'),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/3.Fondo 1/L1.png'),
+    ];
     canvas;
     ctx;
 
@@ -33,6 +37,11 @@ class World {
 
         this.water.forEach(waterStripes => {
             this.ctx.drawImage(waterStripes.img, waterStripes.x, waterStripes.y, waterStripes.width, waterStripes.height);
+        });
+
+
+        this.fondo.forEach(background => {
+            this.ctx.drawImage(background.img, background.x, background.y, background.width, background.height);
         });
 
 
