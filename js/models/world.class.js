@@ -1,25 +1,13 @@
 class World {
     character = new Character();
-    enemies = [
-        new PufferFish(),
-        new JellyFish(),
-        new BigBoss(),
-    ];
-    lights = [
-        new Light(),
-    ];
-    barriers = [
-        new BarrierBlock(),
-    ];
-    ground = [
-        new Floor(),
-    ];
-    water = [
-        new Water()
-    ];
-    fondo = [
-        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L1.png', 0, 100),
-        new BackgroundObject('./img/3. Background/Legacy/Layers/3.Fondo 1/L1.png', 0, 150),
+    enemies = [new PufferFish(), new JellyFish(), new BigBoss(),];
+    lights = [new Light(),];
+    barriers = [new BarrierBlock(),];
+    ground = [new Floor(),];
+    water = [new Water()];
+    bgShadow = [
+        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L1.png', 0, 140),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/3.Fondo 1/L1.png', 0, 180),
     ];
     canvas;
     ctx;
@@ -33,9 +21,8 @@ class World {
 
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
         this.addObjectsToMap(this.water);
-        this.addObjectsToMap(this.fondo);
+        this.addObjectsToMap(this.bgShadow);
         this.addObjectsToMap(this.barriers);
         this.addObjectsToMap(this.ground);
         this.addObjectsToMap(this.enemies);
