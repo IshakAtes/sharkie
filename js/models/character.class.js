@@ -1,4 +1,5 @@
 class Character extends MovableObject {
+    x = 150;
     speed = 8;
     Images_Idle = [
         './img/1.Sharkie/1.IDLE/1.png',
@@ -68,6 +69,7 @@ class Character extends MovableObject {
             if (this.world.keyboard.down) {
                 this.y += this.speed;
             }
+            this.world.camera_x = -this.x;
         }, 1000 / 60);
 
         setInterval(() => {

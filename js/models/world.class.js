@@ -12,6 +12,7 @@ class World {
     canvas;
     ctx;
     keyboard;
+    camera_x = 0;
 
 
     constructor(canvas, keyboard){
@@ -29,6 +30,8 @@ class World {
 
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.water);
         this.addObjectsToMap(this.bgShadow);
         this.addObjectsToMap(this.barriers);
@@ -37,7 +40,9 @@ class World {
         this.addObjectsToMap(this.lights);
         this.addObjectsToMap(this.enemies);
         this.addToMap(this.character);
+        this.ctx.translate(-this.camera_x, 0);
 
+        // Draw() wird immer wieder aufgerufen
         let self = this;
         requestAnimationFrame(function(){
             self.draw();
@@ -53,16 +58,16 @@ class World {
     };
 
 
-    addToMap(mo) {
-        if(mo.otherDirection) {
+    addToMap(char) {
+        if(char.otherDirection) {
             this.ctx.save();
-            this.ctx.translate(mo.width, 0);
+            this.ctx.translate(char.width, 0);
             this.ctx.scale(-1, 1);
-            mo.x = mo.x * -1;
+            char.x = char.x * -1;
         }
-        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
-        if(mo.otherDirection) {
-            mo.x = mo.x * -1;
+        this.ctx.drawImage(char.img, char.x, char.y, char.width, char.height);
+        if(char.otherDirection) {
+            char.x = char.x * -1;
             this.ctx.restore();
         }
 
