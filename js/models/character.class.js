@@ -1,5 +1,5 @@
 class Character extends MovableObject {
-    speed = 9;
+    speed = 8;
     Images_Idle = [
         './img/1.Sharkie/1.IDLE/1.png',
         './img/1.Sharkie/1.IDLE/2.png',
@@ -41,44 +41,38 @@ class Character extends MovableObject {
     animate() {
 
         setInterval(() => {
-            if (this.world.keyboard.right) {
+            if (this.world.keyboard.right || this.world.keyboard.left || this.world.keyboard.up || this.world.keyboard.down) {
                 let i = this.currentImage % this.Images_SWIM.length;
                 let path = this.Images_SWIM[i];
                 this.img = this.imageCache[path];
                 this.currentImage++;
+            }
+        }, 160);
+
+
+        setInterval(() => {
+            if (this.world.keyboard.right) {
                 this.x += this.speed;
             }
-        }, 50);
+        }, 1000 / 30);
 
         setInterval(() => {
             if (this.world.keyboard.left) {
                 this.x -= this.speed;
-                let i = this.currentImage % this.Images_SWIM.length;
-                let path = this.Images_SWIM[i];
-                this.img = this.imageCache[path];
-                this.currentImage++;
             }
-        }, 50);
+        }, 1000 / 30);
 
         setInterval(() => {
             if (this.world.keyboard.up) {
-                let i = this.currentImage % this.Images_SWIM.length;
-                let path = this.Images_SWIM[i];
-                this.img = this.imageCache[path];
-                this.currentImage++;
                 this.y -= this.speed;
             }
-        }, 50);
+        }, 120);
 
         setInterval(() => {
             if (this.world.keyboard.down) {
-                let i = this.currentImage % this.Images_SWIM.length;
-                let path = this.Images_SWIM[i];
-                this.img = this.imageCache[path];
-                this.currentImage++;
                 this.y += this.speed;
             }
-        }, 50);
+        }, 120);
 
 
 
