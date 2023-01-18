@@ -1,4 +1,5 @@
 class Character extends MovableObject {
+    speed = 9;
     Images_Idle = [
         './img/1.Sharkie/1.IDLE/1.png',
         './img/1.Sharkie/1.IDLE/2.png',
@@ -19,24 +20,85 @@ class Character extends MovableObject {
         './img/1.Sharkie/1.IDLE/17.png',
         './img/1.Sharkie/1.IDLE/18.png',
     ];
+    Images_SWIM = [
+        './img/1.Sharkie/3.Swim/1.png',
+        './img/1.Sharkie/3.Swim/2.png',
+        './img/1.Sharkie/3.Swim/3.png',
+        './img/1.Sharkie/3.Swim/4.png',
+        './img/1.Sharkie/3.Swim/5.png',
+        './img/1.Sharkie/3.Swim/6.png',
+    ];
+    world;
 
     constructor(){
         super().loadImage('./img/1.Sharkie/1.IDLE/1.png');
         this.loadImages(this.Images_Idle);
+        this.loadImages(this.Images_SWIM);
 
         this.animate();
     }
 
     animate() {
+
+        setInterval(() => {
+            if (this.world.keyboard.right) {
+                let i = this.currentImage % this.Images_SWIM.length;
+                let path = this.Images_SWIM[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+                this.x += this.speed;
+            }
+        }, 50);
+
+        setInterval(() => {
+            if (this.world.keyboard.left) {
+                this.x -= this.speed;
+                let i = this.currentImage % this.Images_SWIM.length;
+                let path = this.Images_SWIM[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+            }
+        }, 50);
+
+        setInterval(() => {
+            if (this.world.keyboard.up) {
+                let i = this.currentImage % this.Images_SWIM.length;
+                let path = this.Images_SWIM[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+                this.y -= this.speed;
+            }
+        }, 50);
+
+        setInterval(() => {
+            if (this.world.keyboard.down) {
+                let i = this.currentImage % this.Images_SWIM.length;
+                let path = this.Images_SWIM[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+                this.y += this.speed;
+            }
+        }, 50);
+
+
+
         setInterval(() => {
             let i = this.currentImage % this.Images_Idle.length;
             let path = this.Images_Idle[i];
             this.img = this.imageCache[path];
             this.currentImage++;
-        }, 99);
+        }, 155);
     }
 
     // attack(){
     // }
 
 }
+
+
+// if (this.world.keyboard.right) {
+//     let i = this.currentImage % this.Images_SWIM.length;
+//     let path = this.Images_SWIM[i];
+//     this.img = this.imageCache[path];
+//     this.currentImage++;
+// }
