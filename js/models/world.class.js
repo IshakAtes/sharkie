@@ -3,11 +3,27 @@ class World {
     enemies = [new PufferFish(), new JellyFish(), new BigBoss(),];
     lights = [new Light(),];
     barriers = [new BarrierBlock(),];
-    ground = [new Floor(),];
-    water = [new Water()];
+    ground = [
+        new Floor('./img/3. Background/Layers/2. Floor/L2.png', -1100, 180),
+        new Floor('./img/3. Background/Layers/2. Floor/L1.png', 0, 180),
+        new Floor('./img/3. Background/Layers/2. Floor/L2.png', 1100, 180),
+        new Floor('./img/3. Background/Layers/2. Floor/L1.png', 2200, 180),
+    ];
+    water = [
+        new Water('./img/3. Background/Layers/5. Water/L2.png', -1100),
+        new Water('./img/3. Background/Layers/5. Water/L1.png', 0),
+        new Water('./img/3. Background/Layers/5. Water/L2.png', 1100),
+        new Water('./img/3. Background/Layers/5. Water/L1.png', 2200),
+    ];
     bgShadow = [
-        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L1.png', 0, 140),
-        new BackgroundObject('./img/3. Background/Legacy/Layers/3.Fondo 1/L1.png', 0, 180),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L1.png', -1100),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/3.Fondo 1/L1.png', -1100),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L1.png', 0),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/3.Fondo 1/L1.png', 0),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L2.png', 1100),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/3.Fondo 1/L2.png', 1100),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L1.png', 2200),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/3.Fondo 1/L2.png', 2200),
     ];
     canvas;
     ctx;
