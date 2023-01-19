@@ -16,8 +16,8 @@ class World {
         new Water('./img/3. Background/Layers/5. Water/L1.png', 2200),
     ];
     bgShadow = [
-        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L1.png', -1100),
-        new BackgroundObject('./img/3. Background/Legacy/Layers/3.Fondo 1/L1.png', -1100),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L2.png', -1100),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/3.Fondo 1/L2.png', -1100),
         new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L1.png', 0),
         new BackgroundObject('./img/3. Background/Legacy/Layers/3.Fondo 1/L1.png', 0),
         new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L2.png', 1100),
