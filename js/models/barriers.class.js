@@ -1,6 +1,6 @@
 class BarrierBlock extends MovableObject {
     y = 10;
-    x = -100;
+    x = -990;
     // width = 30;
     height = 1000;
 

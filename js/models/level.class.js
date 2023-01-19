@@ -3,6 +3,7 @@ class Level {
     ground;
     water;
     bgShadow;
+    level_end_x = 2475;
 
     constructor(enemies, ground, water, bgShadow){
         this.enemies = enemies;

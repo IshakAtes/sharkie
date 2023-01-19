@@ -1,11 +1,8 @@
 class World {
     character = new Character();
-    enemies = level1.enemies;
+    level = level1;
     lights = [new Light(),];
     barriers = [new BarrierBlock(),];
-    ground = level1.ground;
-    water = level1.water
-    bgShadow = level1.bgShadow;
     canvas;
     ctx;
     keyboard;
@@ -29,14 +26,14 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.ctx.translate(this.camera_x, 0);
-        this.addObjectsToMap(this.water);
-        this.addObjectsToMap(this.bgShadow);
+        this.addObjectsToMap(this.level.water);
+        this.addObjectsToMap(this.level.bgShadow);
         this.addObjectsToMap(this.barriers);
-        this.addObjectsToMap(this.ground);
-        this.addObjectsToMap(this.enemies);
-        this.addObjectsToMap(this.lights);
-        this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.level.ground);
+        this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
+        this.addObjectsToMap(this.lights);
+
         this.ctx.translate(-this.camera_x, 0);
 
         // Draw() wird immer wieder aufgerufen
