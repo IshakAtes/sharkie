@@ -78,10 +78,7 @@ class Character extends MovableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            let i = this.currentImage % this.images_IDLE.length;
-            let path = this.images_IDLE[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.images_IDLE);
         }, 155);
     }
 
