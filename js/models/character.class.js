@@ -1,7 +1,7 @@
 class Character extends MovableObject {
     x = 150;
     speed = 8;
-    Images_Idle = [
+    images_IDLE = [
         './img/1.Sharkie/1.IDLE/1.png',
         './img/1.Sharkie/1.IDLE/2.png',
         './img/1.Sharkie/1.IDLE/3.png',
@@ -21,7 +21,7 @@ class Character extends MovableObject {
         './img/1.Sharkie/1.IDLE/17.png',
         './img/1.Sharkie/1.IDLE/18.png',
     ];
-    Images_SWIM = [
+    images_SWIM = [
         './img/1.Sharkie/3.Swim/1.png',
         './img/1.Sharkie/3.Swim/2.png',
         './img/1.Sharkie/3.Swim/3.png',
@@ -30,11 +30,12 @@ class Character extends MovableObject {
         './img/1.Sharkie/3.Swim/6.png',
     ];
     world;
+    swimming_Sound = new Audio('sounds/swimmingFish.mp3')
 
     constructor(){
         super().loadImage('./img/1.Sharkie/1.IDLE/1.png');
-        this.loadImages(this.Images_Idle);
-        this.loadImages(this.Images_SWIM);
+        this.loadImages(this.images_IDLE);
+        this.loadImages(this.images_SWIM);
 
         this.animate();
     }
@@ -42,9 +43,10 @@ class Character extends MovableObject {
     animate() {
 
         setInterval(() => {
-            if (this.world.keyboard.right || this.world.keyboard.left || this.world.keyboard.up || this.world.keyboard.down) {
-                let i = this.currentImage % this.Images_SWIM.length;
-                let path = this.Images_SWIM[i];
+            this.swimming_Sound.pause();
+            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
+                let i = this.currentImage % this.images_SWIM.length;
+                let path = this.images_SWIM[i];
                 this.img = this.imageCache[path];
                 this.currentImage++;
             }
@@ -52,12 +54,13 @@ class Character extends MovableObject {
 
 
         setInterval(() => {
-            if (this.world.keyboard.right && this.x < this.world.level.level_end_x) {
+            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.x += this.speed;
                 this.otherDirection = false;
+                this.swimming_Sound.play();
             }
 
-            if (this.world.keyboard.left && this.x > -890) {
+            if (this.world.keyboard.LEFT && this.x > -890) {
                 this.x -= this.speed;
                 this.otherDirection = true; 
             }
@@ -65,18 +68,18 @@ class Character extends MovableObject {
             this.world.camera_x = -this.x + 200;
 
 
-            if (this.world.keyboard.up) {
+            if (this.world.keyboard.UP) {
                 this.y -= this.speed;
             }
 
-            if (this.world.keyboard.down) {
+            if (this.world.keyboard.DOWN) {
                 this.y += this.speed;
             }
         }, 1000 / 60);
 
         setInterval(() => {
-            let i = this.currentImage % this.Images_Idle.length;
-            let path = this.Images_Idle[i];
+            let i = this.currentImage % this.images_IDLE.length;
+            let path = this.images_IDLE[i];
             this.img = this.imageCache[path];
             this.currentImage++;
         }, 155);
@@ -86,11 +89,3 @@ class Character extends MovableObject {
     // }
 
 }
-
-
-// if (this.world.keyboard.right) {
-//     let i = this.currentImage % this.Images_SWIM.length;
-//     let path = this.Images_SWIM[i];
-//     this.img = this.imageCache[path];
-//     this.currentImage++;
-// }
