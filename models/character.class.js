@@ -48,16 +48,16 @@ class Character extends MovableObject {
                 let i = this.currentImage % this.images_SWIM.length;
                 let path = this.images_SWIM[i];
                 this.img = this.imageCache[path];
+                this.swimming_Sound.play();
                 this.currentImage++;
             }
-        }, 160);
+        }, 299);
 
 
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.x += this.speed;
                 this.otherDirection = false;
-                this.swimming_Sound.play();
             }
 
             if (this.world.keyboard.LEFT && this.x > -890) {
@@ -75,11 +75,11 @@ class Character extends MovableObject {
             if (this.world.keyboard.DOWN) {
                 this.y += this.speed;
             }
-        }, 1000 / 60);
+        }, 30);
 
         setInterval(() => {
             this.playAnimation(this.images_IDLE);
-        }, 155);
+        }, 140);
     }
 
     // attack(){
