@@ -51,7 +51,7 @@ class Character extends MovableObject {
                 this.swimming_Sound.play();
                 this.currentImage++;
             }
-        }, 299);
+        }, 100);
 
 
         setInterval(() => {

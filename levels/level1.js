@@ -5,10 +5,10 @@ const level1 = new Level(
         new BigBoss(),
     ],
     [
-        new Floor('./img/3. Background/Layers/2. Floor/L2.png', -1024, 269),
-        new Floor('./img/3. Background/Layers/2. Floor/L1.png', 0, 269),
-        new Floor('./img/3. Background/Layers/2. Floor/L2.png', 1024, 269),
-        new Floor('./img/3. Background/Layers/2. Floor/L1.png', 2048, 269),
+        new Floor('./img/3. Background/Layers/2. Floor/L2.png', -1024),
+        new Floor('./img/3. Background/Layers/2. Floor/L1.png', 0),
+        new Floor('./img/3. Background/Layers/2. Floor/L2.png', 1024),
+        new Floor('./img/3. Background/Layers/2. Floor/L1.png', 2048),
     ],
     [
         new Water('./img/3. Background/Layers/5. Water/L2.png', -1024),
