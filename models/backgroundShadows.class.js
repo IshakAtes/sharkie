@@ -1,5 +1,5 @@
 class BackgroundObject extends MovableObject {
-    width = 1100;
+    width = 1024;
     height = 600;
 
     constructor(imagePath, x){

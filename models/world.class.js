@@ -33,16 +33,15 @@ class World {
         this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
         this.addObjectsToMap(this.lights);
-
         this.ctx.translate(-this.camera_x, 0);
 
-        // Draw() wird immer wieder aufgerufen
+        // Draw() wird immer wieder aufgerufen. "this" funktioniert in einer normalen Funktion nicht mehr, deshalb übergeben wir "this" an eine Variable "let self" um sie dann in der Funktion anwenden zukönnen.
         let self = this;
         requestAnimationFrame(function(){
             self.draw();
         });
-        
     };
+
 
 
     addObjectsToMap(objects){
