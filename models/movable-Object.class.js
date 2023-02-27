@@ -4,20 +4,20 @@ class MovableObject {
     img;
     height = 150;
     width = 150;
-    imageCache = [];
+    imageCache = {};
     currentImage = 0;
     speed = 0.15;
     otherDirection = false;
 
 
     loadImage(path){
-        this.img = new Image();
+        this.img = new Image(); // new Image() ist keine Klasse. Es ist das gleiche wie ein img tag in Javascript <img src="#" alt="">
         this.img.src = path;
     }
 
     loadImages(arr){
         arr.forEach((path) => {
-            let img = new Image();
+            let img = new Image(); // new Image() ist keine Klasse. Es ist das gleiche wie ein img tag in Javascript <img src="#" alt="">
             img.src = path;
             this.imageCache[path] = img;
         });
@@ -31,6 +31,9 @@ class MovableObject {
     }
 
     moveRight(){
+        setInterval( () => {
+            this.x += this.speed
+        }, 1000 / 60)
     }
 
 
@@ -49,6 +52,8 @@ class MovableObject {
 
 
     moveDown(){
-        
+        setInterval( () => {
+            this.y += this.speed
+        }, 1000 / 60)
     }
 }

@@ -16,7 +16,7 @@ class PufferFish extends MovableObject {
         
         this.loadImages(this.images_IDLE);
         this.animate();
-        this.speed = 0.33 + Math.random() * 0.25;
+        this.speed = 0.15 + Math.random() * 0.55;
         this.moveLeft();
     }
 
@@ -27,6 +27,13 @@ class PufferFish extends MovableObject {
             let path = this.images_IDLE[i];
             this.img = this.imageCache[path];
             this.currentImage++;
+        }, 99);
+
+        setInterval(() => {
+            if (this.x <= 50) {
+                this.moveRight();
+                this.otherDirection = true;
+            }
         }, 99);
     }
 
@@ -60,5 +67,19 @@ class JellyFish extends MovableObject {
             this.img = this.imageCache[path];
             this.currentImage++;
         }, 200);
+
+        setInterval(() => {
+            if (this.y <= 10) {
+                this.moveDown();
+                this.otherDirection = true;
+            }
+
+            if (this.y >= 450) {
+                this.moveUp();
+                this.otherDirection = true;
+            }
+        }, 99);
+
     }
+    
 }

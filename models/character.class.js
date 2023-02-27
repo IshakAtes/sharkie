@@ -43,6 +43,7 @@ class Character extends MovableObject {
     animate() {
 
         setInterval(() => {
+            // Swimm Animation
             this.swimming_Sound.pause();
             if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
                 let i = this.currentImage % this.images_SWIM.length;
