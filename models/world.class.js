@@ -63,6 +63,6 @@ class World {
             char.x = char.x * -1;
             this.ctx.restore();
         }
-
     };
+    
 }

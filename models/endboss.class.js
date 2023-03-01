@@ -20,7 +20,7 @@ class BigBoss extends MovableObject {
     constructor(){
         super().loadImage('./img/2.Enemy/3 Final Enemy/1.Introduce/10.png');
         this.loadImages(this.images_IDLE);
-        this.x = 700;
+        this.x = 1000;
         this.animate();
         // this.loadImage(this.images_IDLE);
         // this.x = 900 + Math.random() * 500;

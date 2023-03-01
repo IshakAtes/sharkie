@@ -46,11 +46,8 @@ class Character extends MovableObject {
             // Swimm Animation
             this.swimming_Sound.pause();
             if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
-                let i = this.currentImage % this.images_SWIM.length;
-                let path = this.images_SWIM[i];
-                this.img = this.imageCache[path];
+                this.playAnimation(this.images_SWIM);
                 this.swimming_Sound.play();
-                this.currentImage++;
             }
         }, 100);
 

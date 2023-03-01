@@ -78,7 +78,7 @@ class JellyFish extends MovableObject {
                 this.moveUp();
                 this.otherDirection = true;
             }
-        }, 99);
+        }, 1000);
 
     }
     
