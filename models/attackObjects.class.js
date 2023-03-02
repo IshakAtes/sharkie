@@ -33,8 +33,8 @@ class AttackObject extends MovableObject {
     }
 
     bubble() {
-        this.x = 130;
-        this.y = 340;
+        this.x = 132; // mit this.x greif ich auf die variable x in Moveable-Object zu, was ja die vorlage für alle UnterOrdner ist. Danach ändere ich diese, NUR FÜR dieses Object hier.
+        this.y = 372;
         // this.speedY = 30;
         // this.applyGravity();
         // setInterval( ()=> {
