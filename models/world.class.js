@@ -7,7 +7,7 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-    attacks = [new AttackObject(),];
+    attackingObjects = [new AttackObject(),];
 
 
     constructor(canvas, keyboard){
@@ -33,7 +33,7 @@ class World {
         this.addObjectsToMap(this.level.ground);
         this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
-        this.addObjectsToMap(this.attacks);
+        this.addObjectsToMap(this.attackingObjects);
         this.addObjectsToMap(this.lights);
         this.ctx.translate(-this.camera_x, 0);
 

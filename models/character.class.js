@@ -1,5 +1,5 @@
 class Character extends MovableObject {
-    x = 150;
+    // x = 150;
     speed = 8; //make it 8 if game finish
     images_IDLE = [
         './img/1.Sharkie/1.IDLE/1.png',
