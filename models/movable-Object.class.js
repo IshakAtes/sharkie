@@ -13,13 +13,13 @@ class MovableObject {
     applyGravity() {
         setInterval(() => {
             if (this.y > 0) {
-                // this.x += 2;
+                this.x += 2;
                 this.y -= 0.2;
                 setTimeout(() => {
                     this.y -= 5.0;
-                }, 2400);
+                }, 2500);
             }
-        }, 1000 / 60);
+        }, 1000 / 100);
     }
 
 
