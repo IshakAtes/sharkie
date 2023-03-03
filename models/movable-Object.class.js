@@ -8,18 +8,18 @@ class MovableObject {
     currentImage = 0;
     speed = 0.15;
     otherDirection = false;
-    speedX = 0;
-    acceleration = 0.2;
 
 
     applyGravity() {
         setInterval(() => {
-            if (this.speedY > 0) {
-                this.x += this.speedY;
-                this.speedX += this.acceleration;
-                this.y -= 2;
+            if (this.y > 0) {
+                // this.x += 2;
+                this.y -= 0.2;
+                setTimeout(() => {
+                    this.y -= 5.0;
+                }, 2400);
             }
-        }, 1000 / 25);
+        }, 1000 / 60);
     }
 
 

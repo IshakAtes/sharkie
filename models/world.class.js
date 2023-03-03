@@ -7,7 +7,7 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-    attackingObjects = [new AttackObject(),];
+    attackingObjects = [];
 
 
     constructor(canvas, keyboard){
@@ -16,14 +16,29 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
+        this.run();
     }
 
-    setWorld(){
+    setWorld() {
         this.character.world = this;
     }
 
 
-    draw(){
+    run() {
+        setInterval(() => {
+            this.checkAttackingObjects();
+        }, 200);
+    }
+
+    checkAttackingObjects() {
+        if(this.keyboard.V) {
+            let bubble = new AttackObject(this.character.x, this.character.y);
+            this.attackingObjects.push(bubble);
+        }
+    }
+
+
+    draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.ctx.translate(this.camera_x, 0);

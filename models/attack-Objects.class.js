@@ -25,21 +25,21 @@
 
 class AttackObject extends MovableObject {
 
-    constructor(){
+    constructor(x, y){
         super().loadImage('./img/1.Sharkie/4.Attack/Bubble trap/Bubble.png')
         this.height = 40;
         this.width = 40;
-        this.bubbleAttack();
+        this.x = x;
+        this.y = y;
     }
 
     bubbleAttack() {
-        this.x = 132; // mit this.x greif ich auf die variable x in Moveable-Object zu, was ja die vorlage für alle UnterOrdner ist. Danach ändere ich diese, NUR FÜR dieses Object hier.
-        this.y = 372;
+        // this.x = 132; // mit this.x greif ich auf die variable x in Moveable-Object zu, was ja die vorlage für alle UnterOrdner ist. Danach ändere ich diese, NUR FÜR dieses Object hier.
+        // this.y = 372;
         this.speedY = 30;
-        
-        setInterval( ()=> {
-            this.applyGravity();
-        }, 1000)
+        this.applyGravity();
+        setInterval(() => {
+            this.x += 2;
+        })
     }
-
 }
