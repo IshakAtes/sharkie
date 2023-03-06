@@ -23,5 +23,5 @@ class AttackObject extends MovableObject {
         }, 1000 / 100);
     }
 
-    
+
 }

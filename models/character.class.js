@@ -60,32 +60,32 @@ class Character extends MovableObject {
                 this.swimming_Sound.play();
             }
 
+            // Bubble Attack
             if (this.world.keyboard.V) {
-                this.playAnimation(this.images_BUBBLE);
+                this.bubbleAttack();
             }
         }, 100);
 
 
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                this.x += this.speed;
+                this.moveRight();
                 this.otherDirection = false;
             }
 
             if (this.world.keyboard.LEFT && this.x > -814) {
-                this.x -= this.speed;
+                this.moveLeft();
                 this.otherDirection = true; 
             }
 
             this.world.camera_x = -this.x + 200;
 
-
             if (this.world.keyboard.UP) {
-                this.y -= this.speed;
+                this.moveUp();
             }
 
             if (this.world.keyboard.DOWN) {
-                this.y += this.speed;
+                this.moveDown();
             }
         }, 30);
 
@@ -98,22 +98,3 @@ class Character extends MovableObject {
     // }
 
 }
-
-
-
-
-// setInterval(() => {
-//     if (this.world.bubbleAttackIMG) {
-//         this.playAnimation(this.images_BUBBLE);
-//         // setTimeout(() => {
-//         //     this.world.bubbleAttackIMG = false;
-//         // }, 200);
-//     } else {
-//         // Swimm Animation
-//         this.swimming_Sound.pause();
-//         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
-//             this.playAnimation(this.images_SWIM);
-//             this.swimming_Sound.play();
-//         }
-//     }
-// }, 100);

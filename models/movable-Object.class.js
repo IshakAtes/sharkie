@@ -18,12 +18,12 @@ class MovableObject {
         }, 1000 / 100);
     }
 
-    loadImage(path){
+    loadImage(path) {
         this.img = new Image(); // new Image() ist keine Klasse. Es ist das gleiche wie ein img tag in Javascript <img src="#" alt="">
         this.img.src = path;
     }
 
-    loadImages(arr){
+    loadImages(arr) {
         arr.forEach((path) => {
             let img = new Image(); // new Image() ist keine Klasse. Es ist das gleiche wie ein img tag in Javascript <img src="#" alt="">
             img.src = path;
@@ -38,31 +38,27 @@ class MovableObject {
         this.currentImage++;
     }
 
-    moveRight(){
-        setInterval( () => {
-            this.x += this.speed
-        }, 1000 / 60)
+    moveRight() {
+        this.x += this.speed;
     }
 
 
-    moveLeft(){
-        setInterval( () => {
-            this.x -= this.speed
-        }, 1000 / 60)
+    moveLeft() {
+        this.x -= this.speed;
     }
 
 
-    moveUp(){
-        setInterval(() => {
-            this.y -= this.speed
-        }, 1000 / 60);
+    moveUp() {
+        this.y -= this.speed;
     }
 
 
-    moveDown(){
-        setInterval( () => {
-            this.y += this.speed
-        }, 1000 / 60)
+    moveDown() {
+        this.y += this.speed;
+    }
+
+    bubbleAttack() {
+        this.playAnimation(this.images_BUBBLE); // Bubble Animation
     }
 
 }

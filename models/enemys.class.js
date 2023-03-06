@@ -17,9 +17,7 @@ class PufferFish extends MovableObject {
         this.loadImages(this.images_IDLE);
         this.animate();
         this.speed = 0.15 + Math.random() * 0.55;
-        this.moveLeft();
     }
-
 
     animate() {
         setInterval(() => {
@@ -30,14 +28,27 @@ class PufferFish extends MovableObject {
         }, 99);
 
         setInterval(() => {
-            if (this.x <= 50) {
-                this.moveRight();
-                this.otherDirection = true;
+            if (this.x > 50 && !this.otherDirection) {
+                this.moveLeft();
+                if (this.x <= 50) {
+                    this.otherDirection = true;
+                }
             }
-        }, 99);
-    }
+        }, 1000 / 60);
 
+        setInterval(() => {
+            if (this.x <= 1500 && this.otherDirection) {
+                this.moveRight();
+                if (this.x >= 1500) {
+                    this.otherDirection = false;
+                }
+            }
+        }, 1000 / 60);
+    }
+    
 }
+
+
 
 
 class JellyFish extends MovableObject {
@@ -56,8 +67,6 @@ class JellyFish extends MovableObject {
         this.loadImages(this.images_IDLE);
         this.animate();
         this.speed = 0.15 + Math.random() * 0.25;
-        this.moveUp();
-        
     }
 
     animate() {
@@ -69,17 +78,22 @@ class JellyFish extends MovableObject {
         }, 200);
 
         setInterval(() => {
-            if (this.y <= 10) {
-                this.moveDown();
-                this.otherDirection = true;
-            }
-
-            if (this.y >= 450) {
+            if (this.y > 10 && !this.otherDirection) {
                 this.moveUp();
-                this.otherDirection = true;
+                if (this.y <= 10) {
+                    this.otherDirection = true;
+                }
             }
-        }, 1000);
+        }, 1000 / 60);
 
+        setInterval(() => {
+            if (this.y <= 450 && this.otherDirection) {
+                this.moveDown();
+                if (this.y >= 450) {
+                    this.otherDirection = false;
+                }
+            }
+        }, 1000 / 60);
     }
     
 }
