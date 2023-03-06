@@ -29,6 +29,16 @@ class Character extends MovableObject {
         './img/1.Sharkie/3.Swim/5.png',
         './img/1.Sharkie/3.Swim/6.png',
     ];
+    images_BUBBLE = [
+        './img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png',
+        './img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/2.png',
+        './img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/3.png',
+        './img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/4.png',
+        './img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/5.png',
+        './img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png',
+        './img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png',
+        './img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png',
+    ];
     world;
     swimming_Sound = new Audio('sounds/swimmingFish.mp3')
 
@@ -36,18 +46,22 @@ class Character extends MovableObject {
         super().loadImage('./img/1.Sharkie/1.IDLE/1.png');
         this.loadImages(this.images_IDLE);
         this.loadImages(this.images_SWIM);
-
+        this.loadImages(this.images_BUBBLE);
         this.animate();
     }
 
-    animate() {
 
+    animate() {
         setInterval(() => {
             // Swimm Animation
             this.swimming_Sound.pause();
             if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
                 this.playAnimation(this.images_SWIM);
                 this.swimming_Sound.play();
+            }
+
+            if (this.world.keyboard.V) {
+                this.playAnimation(this.images_BUBBLE);
             }
         }, 100);
 
@@ -84,3 +98,22 @@ class Character extends MovableObject {
     // }
 
 }
+
+
+
+
+// setInterval(() => {
+//     if (this.world.bubbleAttackIMG) {
+//         this.playAnimation(this.images_BUBBLE);
+//         // setTimeout(() => {
+//         //     this.world.bubbleAttackIMG = false;
+//         // }, 200);
+//     } else {
+//         // Swimm Animation
+//         this.swimming_Sound.pause();
+//         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
+//             this.playAnimation(this.images_SWIM);
+//             this.swimming_Sound.play();
+//         }
+//     }
+// }, 100);

@@ -13,16 +13,10 @@ class MovableObject {
     applyGravity() {
         setInterval(() => {
             if (this.y > 0) {
-                this.x += 2;
                 this.y -= 0.2;
-                setTimeout(() => {
-                    this.y -= 5.0;
-                }, 2500);
             }
         }, 1000 / 100);
     }
-
-
 
     loadImage(path){
         this.img = new Image(); // new Image() ist keine Klasse. Es ist das gleiche wie ein img tag in Javascript <img src="#" alt="">
@@ -70,4 +64,5 @@ class MovableObject {
             this.y += this.speed
         }, 1000 / 60)
     }
+
 }

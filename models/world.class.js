@@ -27,12 +27,12 @@ class World {
     run() {
         setInterval(() => {
             this.checkAttackingObjects();
-        }, 200);
+        }, 100);
     }
 
     checkAttackingObjects() {
         if(this.keyboard.V) {
-            let bubble = new AttackObject(this.character.x + 112, this.character.y + 72);
+            let bubble = new AttackObject(this.character.x + 122, this.character.y + 60); //112, 72
             this.attackingObjects.push(bubble);
         };
     }
