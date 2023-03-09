@@ -70,21 +70,27 @@ class World {
 
     addToMap(char) {
         if(char.otherDirection) {
-            this.ctx.save();
-            this.ctx.translate(char.width, 0);
-            this.ctx.scale(-1, 1);
-            char.x = char.x * -1;
+            this.flipImage(char);
         }
-        this.ctx.drawImage(char.img, char.x, char.y, char.width, char.height);
-        this.ctx.beginPath();
-        this.ctx.lineWidth = '5';
-        this.ctx.strokeStyle = 'red';
-        this.ctx.rect(char.x, char.y, char.x + char.width, char.y + char.height);
-        this.ctx.stroke();
+        
+        char.draw(this.ctx);
+        char.drawCollisionFrame(this.ctx);
+
         if(char.otherDirection) {
-            char.x = char.x * -1;
-            this.ctx.restore();
+            this.flipImageBack(char);
         }
     };
+
+    flipImage(char) {
+        this.ctx.save();
+        this.ctx.translate(char.width, 0);
+        this.ctx.scale(-1, 1);
+        char.x = char.x * -1;
+    }
+
+    flipImageBack(char) {
+        char.x = char.x * -1;
+        this.ctx.restore();
+    }
     
 }

@@ -6,6 +6,5 @@ class Water extends MovableObject {
     constructor(imagePath, x){
         super().loadImage(imagePath);
         this.x = x;
-        
     }
 }
