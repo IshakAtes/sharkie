@@ -76,6 +76,11 @@ class World {
             char.x = char.x * -1;
         }
         this.ctx.drawImage(char.img, char.x, char.y, char.width, char.height);
+        this.ctx.beginPath();
+        this.ctx.lineWidth = '5';
+        this.ctx.strokeStyle = 'red';
+        this.ctx.rect(char.x, char.y, char.x + char.width, char.y + char.height);
+        this.ctx.stroke();
         if(char.otherDirection) {
             char.x = char.x * -1;
             this.ctx.restore();
