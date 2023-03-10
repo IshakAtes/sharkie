@@ -23,18 +23,27 @@ class MovableObject {
         this.img.src = path;
     }
 
-    draw(ctx){
+    draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
     drawCollisionFrame(ctx) {
         if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss){
             ctx.beginPath();
-            ctx.lineWidth = '5';
+            ctx.lineWidth = '3';
             ctx.strokeStyle = 'red';
             ctx.rect(this.x, this.y, this.width, this.height);
             ctx.stroke();
         }
+    }
+
+
+    // isColliding(pufferFish)
+    isColliding(char) {
+        return this.x + this.width > char.x &&
+        this.y + this.height > char.y &&
+        this.x < char.x &&
+        this.y < char.y + char.height;
     }
 
     loadImages(arr) {
