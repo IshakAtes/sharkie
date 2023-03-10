@@ -28,11 +28,13 @@ class MovableObject {
     }
 
     drawCollisionFrame(ctx) {
-        ctx.beginPath();
-        ctx.lineWidth = '5';
-        ctx.strokeStyle = 'red';
-        ctx.rect(this.x, this.y, this.width, this.height);
-        ctx.stroke();
+        if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss){
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
     }
 
     loadImages(arr) {

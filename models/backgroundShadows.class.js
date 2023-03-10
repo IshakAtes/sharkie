@@ -5,8 +5,7 @@ class BackgroundObject extends MovableObject {
     constructor(imagePath, x){
         super().loadImage(imagePath);
         this.x = x;
-        this.y = 768 - this.height; // y koordinate berechnen indem die height von der vergebenen canvas höhe abgezogen wird
-        
+        this.y = 768 - this.height; // y koordinate berechnen indem die height von der vergebenen canvas höhe abgezogen wird.
     }
     
 }
