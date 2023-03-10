@@ -1,15 +1,8 @@
-class MovableObject {
-    x = 20;
-    y = 300;
-    img;
-    height = 150;
-    width = 150;
-    imageCache = {};
-    currentImage = 0;
+class MovableObject extends DrawableObject {
     speed = 0.15;
     otherDirection = false;
     energy = 100;
-
+    lastHit = 0;
 
     applyGravity() {
         setInterval(() => {
@@ -19,14 +12,9 @@ class MovableObject {
         }, 1000 / 100);
     }
 
-    loadImage(path) {
-        this.img = new Image(); // new Image() ist keine Klasse. Es ist das gleiche wie ein img tag in Javascript <img src="#" alt="">
-        this.img.src = path;
-    }
 
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
+
+
 
     drawCollisionFrame(ctx) {
         if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss){
@@ -47,24 +35,28 @@ class MovableObject {
         this.y < char.y + char.height;
     }
 
+    
     hit() {
         this.energy -= 5;
         if(this.energy < 0) {
             this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
         }
     }
+
+
+    isHurt(){
+        let timepassed = new Date().getTime() - this.lastHit; // Difference in ms
+        timepassed = timepassed / 1000;
+        return timepassed < 1;
+    }
+
 
     isDead() {
         return this.energy == 0;
     }
 
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image(); // new Image() ist keine Klasse. Es ist das gleiche wie ein img tag in Javascript <img src="#" alt="">
-            img.src = path;
-            this.imageCache[path] = img;
-        });
-    }
 
     playAnimation(images) {
         let i = this.currentImage % images.length;
@@ -72,6 +64,7 @@ class MovableObject {
         this.img = this.imageCache[path];
         this.currentImage++;
     }
+
 
     moveRight() {
         this.x += this.speed;

@@ -35,6 +35,13 @@ class Character extends MovableObject {
         './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00010.png',
         './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00011.png',
     ];
+    images_HURT = [
+        './img/1.Sharkie/5.Hurt/1.Poisoned/1.png',
+        './img/1.Sharkie/5.Hurt/1.Poisoned/2.png',
+        './img/1.Sharkie/5.Hurt/1.Poisoned/3.png',
+        './img/1.Sharkie/5.Hurt/1.Poisoned/4.png',
+        './img/1.Sharkie/5.Hurt/1.Poisoned/5.png',
+    ];
     images_SWIM = [
         './img/1.Sharkie/3.Swim/1.png',
         './img/1.Sharkie/3.Swim/2.png',
@@ -62,6 +69,7 @@ class Character extends MovableObject {
         this.loadImages(this.images_DEAD);
         this.loadImages(this.images_SWIM);
         this.loadImages(this.images_BUBBLE);
+        this.loadImages(this.images_HURT);
         this.animate();
     }
 
@@ -72,6 +80,8 @@ class Character extends MovableObject {
             
             if (this.isDead()) {
                 this.playAnimation(this.images_DEAD);
+            } else if(this.isHurt()) {
+                this.playAnimation(this.images_HURT);
             } else if (this.world.keyboard.V) {
                 // Bubble Attack
                 this.bubbleAttack();
