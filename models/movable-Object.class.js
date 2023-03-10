@@ -8,6 +8,7 @@ class MovableObject {
     currentImage = 0;
     speed = 0.15;
     otherDirection = false;
+    energy = 100;
 
 
     applyGravity() {
@@ -44,6 +45,17 @@ class MovableObject {
         this.y + this.height > char.y &&
         this.x < char.x &&
         this.y < char.y + char.height;
+    }
+
+    hit() {
+        this.energy -= 5;
+        if(this.energy < 0) {
+            this.energy = 0;
+        }
+    }
+
+    isDead() {
+        return this.energy == 0;
     }
 
     loadImages(arr) {

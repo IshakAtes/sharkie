@@ -8,6 +8,7 @@ class World {
     keyboard;
     camera_x = 0;
     attackingObjects = [];
+    dead;
 
 
     constructor(canvas, keyboard){
@@ -32,9 +33,17 @@ class World {
             this.level.enemies.forEach( (enemy) => {
                 if(this.character.isColliding(enemy) ) {
                     console.log('Collision with Character ', enemy);
+                    this.character.hit();
+                    console.log('Character Energy', this.character.energy);
+                    // if (this.character.energy <= 0) {
+                    //     this.dead = true;
+                    //     this.character.playAnimation(this.character.images_DEAD);
+                    // } else {
+                    //     this.dead = false;
+                    // }
                 }
             })
-        }, 1000)
+        }, 200)
     }
 
     checkAttackingObjects() {

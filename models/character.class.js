@@ -21,6 +21,20 @@ class Character extends MovableObject {
         './img/1.Sharkie/1.IDLE/17.png',
         './img/1.Sharkie/1.IDLE/18.png',
     ];
+    images_DEAD = [
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00000.png',
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00001.png',
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00002.png',
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00003.png',
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00004.png',
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00005.png',
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00006.png',
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00007.png',
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00008.png',
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00009.png',
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00010.png',
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00011.png',
+    ];
     images_SWIM = [
         './img/1.Sharkie/3.Swim/1.png',
         './img/1.Sharkie/3.Swim/2.png',
@@ -45,6 +59,7 @@ class Character extends MovableObject {
     constructor(){
         super().loadImage('./img/1.Sharkie/1.IDLE/1.png');
         this.loadImages(this.images_IDLE);
+        this.loadImages(this.images_DEAD);
         this.loadImages(this.images_SWIM);
         this.loadImages(this.images_BUBBLE);
         this.animate();
@@ -53,17 +68,19 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            // Swimm Animation
             this.swimming_Sound.pause();
-            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
+            
+            if (this.isDead()) {
+                this.playAnimation(this.images_DEAD);
+            } else if (this.world.keyboard.V) {
+                // Bubble Attack
+                this.bubbleAttack();
+            } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
+                // Swimm Animation
                 this.playAnimation(this.images_SWIM);
                 this.swimming_Sound.play();
             }
-
-            // Bubble Attack
-            if (this.world.keyboard.V) {
-                this.bubbleAttack();
-            }
+            
         }, 100);
 
 
