@@ -15,7 +15,6 @@ class MovableObject extends DrawableObject {
 
 
 
-
     drawCollisionFrame(ctx) {
         if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss){
             ctx.beginPath();
