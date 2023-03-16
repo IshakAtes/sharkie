@@ -1,4 +1,4 @@
-class DrawableObject {
+class DrawableObjects {
     img;
     imageCache = {};
     currentImage = 0;
@@ -17,6 +17,17 @@ class DrawableObject {
 
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
+
+    drawCollisionFrame(ctx) {
+        if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss){
+            ctx.beginPath();
+            ctx.lineWidth = '3';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
     }
 
 

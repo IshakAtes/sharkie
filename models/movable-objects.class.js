@@ -1,4 +1,4 @@
-class MovableObject extends DrawableObject {
+class MovableObject extends DrawableObjects {
     speed = 0.15;
     otherDirection = false;
     energy = 100;
@@ -12,18 +12,6 @@ class MovableObject extends DrawableObject {
         }, 1000 / 100);
     }
 
-
-
-
-    drawCollisionFrame(ctx) {
-        if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss){
-            ctx.beginPath();
-            ctx.lineWidth = '3';
-            ctx.strokeStyle = 'red';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    }
 
 
     // isColliding(pufferFish)

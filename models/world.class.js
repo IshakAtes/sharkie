@@ -9,6 +9,7 @@ class World {
     camera_x = 0;
     attackingObjects = [];
     dead;
+    statusBar = new FixedObjects();
 
 
     constructor(canvas, keyboard){
@@ -64,6 +65,7 @@ class World {
         this.addObjectsToMap(this.level.ground);
         this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
+        this.addToMap(this.statusBar);
         this.addObjectsToMap(this.attackingObjects);
         this.addObjectsToMap(this.lights);
         this.ctx.translate(-this.camera_x, 0);
