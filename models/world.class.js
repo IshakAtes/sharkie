@@ -64,8 +64,8 @@ class World {
         this.addObjectsToMap(this.barriers);
         this.addObjectsToMap(this.level.ground);
         this.addObjectsToMap(this.level.enemies);
-        this.addToMap(this.character);
         this.addToMap(this.statusBar);
+        this.addToMap(this.character);
         this.addObjectsToMap(this.attackingObjects);
         this.addObjectsToMap(this.lights);
         this.ctx.translate(-this.camera_x, 0);
@@ -98,6 +98,7 @@ class World {
             this.flipImageBack(char);
         }
     };
+    
 
     flipImage(char) {
         this.ctx.save();
