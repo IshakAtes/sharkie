@@ -18,10 +18,10 @@ class FixedObjects extends DrawableObjects {
     constructor() {
         super();
         this.loadImages(this.IMAGES_HEALTH);
-        this.x = 20;
-        this.y = 20;
+        this.x = 40;
+        this.y = 10;
         this.width = 200;
-        this.height = 80;
+        this.height = 60;
         this.setPercentage(100);
     }
 
