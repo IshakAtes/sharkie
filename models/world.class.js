@@ -49,7 +49,7 @@ class World {
     }
 
     checkAttackingObjects() {
-        if(this.keyboard.V) {
+        if(this.keyboard.B) {
             let bubble = new AttackObject(this.character.x + 122, this.character.y + 60); //112, 72
             this.attackingObjects.push(bubble);
         };

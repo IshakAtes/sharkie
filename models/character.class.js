@@ -82,7 +82,7 @@ class Character extends MovableObject {
                 this.playAnimation(this.images_DEAD);
             } else if(this.isHurt()) {
                 this.playAnimation(this.images_HURT);
-            } else if (this.world.keyboard.V) {
+            } else if (this.world.keyboard.B) {
                 // Bubble Attack
                 this.bubbleAttack();
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {

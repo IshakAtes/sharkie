@@ -31,6 +31,10 @@ window.addEventListener('keydown', (event) => {
         keyboard.V = true;
     }
 
+    if (event.keyCode == 66) {
+        keyboard.B = true;
+    }
+
     if (event.keyCode == 32) {
         keyboard.SPACE = true;
     }
@@ -53,6 +57,9 @@ window.addEventListener('keyup', (event) => {
     // Attack Methods
     if (event.keyCode == 86) {
         keyboard.V = false;
+    }
+    if (event.keyCode == 66) {
+        keyboard.B = false;
     }
     if (event.keyCode == 32) {
         keyboard.SPACE = false;
