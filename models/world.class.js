@@ -18,7 +18,7 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.runGame();
+        this.checkGame();
     }
 
     setWorld() {
@@ -26,7 +26,7 @@ class World {
     }
 
 
-    runGame() {
+    checkGame() {
         setInterval(() => {
             this.checkAttackingObjects();
         }, 100);
@@ -36,6 +36,7 @@ class World {
                     console.log('Collision with Character ', enemy);
                     this.character.hit();
                     console.log('Character Energy', this.character.energy);
+                    this.statusBar.setPercentage(this.character.energy);
                     // if (this.character.energy <= 0) {
                     //     this.dead = true;
                     //     this.character.playAnimation(this.character.images_DEAD);

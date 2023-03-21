@@ -2,13 +2,9 @@ class FixedObjects extends DrawableObjects {
 
     IMAGES_HEALTH = [
         './img/4. Marcadores/orange/0_  copia.png',
-        './img/4. Marcadores/orange/10_  copia.png',
-        './img/4. Marcadores/orange/20_  copia.png',
-        './img/4. Marcadores/orange/30_  copia.png',
+        './img/4. Marcadores/orange/20_ copia 2.png',
         './img/4. Marcadores/orange/40_  copia.png',
-        './img/4. Marcadores/orange/50_  copia.png',
         './img/4. Marcadores/orange/60_  copia.png',
-        './img/4. Marcadores/orange/70_  copia.png',
         './img/4. Marcadores/orange/80_  copia.png',
         './img/4. Marcadores/orange/100_  copia.png',
     ];
@@ -33,22 +29,14 @@ class FixedObjects extends DrawableObjects {
 
     resolveImageIndex() {
         if (this.percentage == 100) {
-            return 9;
-        } else if (this.percentage > 80) {
-            return 8;
-        } else if (this.percentage > 70) {
-            return 7;
-        } else if (this.percentage > 60) {
-            return 6;
-        } else if (this.percentage > 50) {
             return 5;
-        } else if (this.percentage > 40) {
+        } else if (this.percentage > 80) {
             return 4;
-        } else if (this.percentage > 30) {
+        } else if (this.percentage > 60) {
             return 3;
-        } else if (this.percentage > 20) {
+        } else if (this.percentage > 40) {
             return 2;
-        } else if (this.percentage > 10) {
+        } else if (this.percentage > 20) {
             return 1;
         } else {
             return 0;
