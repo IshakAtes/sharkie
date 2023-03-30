@@ -9,7 +9,8 @@ class World {
     camera_x = 0;
     attackingObjects = [];
     dead;
-    statusBar = new FixedObjects();
+    statusBar = new StatusBar();
+    poisenBar = new PoisenBar();
 
 
     constructor(canvas, keyboard){
@@ -68,6 +69,7 @@ class World {
 
         this.ctx.translate(-this.camera_x, 0); //back
         this.addToMap(this.statusBar);
+        this.addToMap(this.poisenBar);
         this.ctx.translate(this.camera_x, 0); // forwards
 
         this.addToMap(this.character);
