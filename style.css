@@ -4,9 +4,24 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(27, 27, 49);
+    margin: 0px;
+}
+
+body h1 {
+    color: #fa7d08;
+    text-shadow: 0px 0px 15px #d64e2c;
+    font-size: 3em;
+    margin: 14px;
 }
 
 canvas {
     background-color: black;
+}
+
+#backgroundIMG {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
 }
