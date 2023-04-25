@@ -25,3 +25,11 @@ canvas {
     height: 100vh;
     z-index: -2;
 }
+
+.startscreenContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 83px;
+}
