@@ -33,3 +33,11 @@ canvas {
     position: absolute;
     top: 83px;
 }
+
+.startBtnStyle {
+    width: 300px;
+    position: absolute;
+    bottom: 100px;
+    right: 200px;
+    cursor: pointer;
+}
