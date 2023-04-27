@@ -11,3 +11,18 @@
          url('./webFonts/luckiest-guy-v18-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
          url('./webFonts/luckiest-guy-v18-latin-regular.svg#LuckiestGuy') format('svg'); /* Legacy iOS */
 }
+
+
+/* permanent-marker-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Permanent Marker';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./webFonts/permanent-marker-v16-latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('./webFonts/permanent-marker-v16-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./webFonts/permanent-marker-v16-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./webFonts/permanent-marker-v16-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('./webFonts/permanent-marker-v16-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./webFonts/permanent-marker-v16-latin-regular.svg#PermanentMarker') format('svg'); /* Legacy iOS */
+}
