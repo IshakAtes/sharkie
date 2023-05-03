@@ -11,6 +11,7 @@ class World {
     dead;
     statusBar = new StatusBar();
     poisenBar = new PoisenBar();
+    coinBar = new CoinBar();
 
 
     constructor(canvas, keyboard){
@@ -70,6 +71,7 @@ class World {
         this.ctx.translate(-this.camera_x, 0); //back
         this.addToMap(this.statusBar);
         this.addToMap(this.poisenBar);
+        this.addToMap(this.coinBar);
         this.ctx.translate(this.camera_x, 0); // forwards
 
         this.addToMap(this.character);
