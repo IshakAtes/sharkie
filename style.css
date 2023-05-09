@@ -55,9 +55,18 @@ canvas {
     background-color: rgba(174, 0, 255, 0.253);
     position: absolute;
     top: 87px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .iconContainer {
     display: flex;
-    justify-content: end;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.iconContainer img {
+    cursor: pointer;
+    width: 40px;
 }

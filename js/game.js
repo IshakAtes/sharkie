@@ -2,16 +2,24 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let background_sound = new Audio('./sounds/underwater.mp3');
+let audioOn = true;
 
 
 
 function init(){
     canvas = document.getElementById('canvasId');
     world = new World(canvas, keyboard);
-    background_sound.play();
-    background_sound.loop = true;
-
+    backgroundAudio();
     console.log('My Character is', world);
+}
+
+
+
+function backgroundAudio() {
+    if (audioOn) {
+        background_sound.play();
+        background_sound.loop = true;
+    }
 }
 
 
