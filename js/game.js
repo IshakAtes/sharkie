@@ -9,6 +9,7 @@ function init(){
     canvas = document.getElementById('canvasId');
     world = new World(canvas, keyboard);
     background_sound.play();
+    background_sound.loop = true;
 
     console.log('My Character is', world);
 }
