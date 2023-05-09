@@ -27,6 +27,9 @@ canvas {
     z-index: -2;
 }
 
+
+
+/* Startscreen */
 .startscreenContainer {
     display: flex;
     flex-direction: column;
@@ -41,4 +44,20 @@ canvas {
     bottom: 100px;
     right: 200px;
     cursor: pointer;
+}
+
+
+
+/* Controlls */
+.controllsMain {
+    width: 1024px;
+    height: 60px;
+    background-color: rgba(174, 0, 255, 0.253);
+    position: absolute;
+    top: 87px;
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: end;
 }
