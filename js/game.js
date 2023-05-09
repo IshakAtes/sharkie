@@ -1,12 +1,14 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let background_sound = new Audio('./sounds/underwater.mp3');
 
 
 
 function init(){
     canvas = document.getElementById('canvasId');
     world = new World(canvas, keyboard);
+    background_sound.play();
 
     console.log('My Character is', world);
 }
