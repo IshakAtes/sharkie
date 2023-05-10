@@ -69,4 +69,5 @@ canvas {
 .iconContainer img {
     cursor: pointer;
     width: 40px;
+    margin-left: 14px;
 }
