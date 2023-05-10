@@ -1,4 +1,6 @@
 let gameStatement = false;
+
+
 function startGame() {
     let startScreen = document.getElementById('startCtnId');
     startScreen.style.display = 'none';
@@ -21,4 +23,10 @@ function toggleSound() {
         audioOn = true;
         speakerPath.src = "./img/7.Controlls/mittleres-volumen.png";
     }
+}
+
+
+function toggleFullscreen() {
+    let canvas = document.getElementById('canvasId');
+    canvas.requestFullscreen();
 }
