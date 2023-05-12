@@ -3,6 +3,7 @@ class World {
     level = level1;
     lights = [new Light(),];
     barriers = [new BarrierBlock(),];
+    coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),];
     canvas;
     ctx;
     keyboard;
@@ -70,6 +71,7 @@ class World {
         this.addObjectsToMap(this.barriers);
         this.addObjectsToMap(this.level.ground);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.coins);
 
         this.ctx.translate(-this.camera_x, 0); //back
         this.addToMap(this.statusBar);
