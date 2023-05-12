@@ -99,29 +99,31 @@ class Character extends MovableObject {
                 this.moveRight();
                 this.otherDirection = false;
             }
-
             if (this.world.keyboard.LEFT && this.x > -814) {
                 this.moveLeft();
                 this.otherDirection = true; 
             }
-
             this.world.camera_x = -this.x + 200;
-
             if (this.world.keyboard.UP) {
                 this.moveUp();
             }
-
             if (this.world.keyboard.DOWN) {
                 this.moveDown();
             }
         }, 30);
 
+
         setInterval(() => {
             this.playAnimation(this.images_IDLE);
         }, 140);
+
     }
 
+
     // attack(){
+        sdfg
     // }
+
+
 
 }
