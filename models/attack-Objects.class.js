@@ -14,13 +14,12 @@ class AttackObject extends MovableObject {
             this.applyGravity();
         }, 200);
         setInterval(() => {
-            if (this.y > 0 && !direction) {
-                this.x += 2;
-                setTimeout(() => {
-                    this.y -= 5.0;
-                }, 2500);
-            } else {
-                this.x -= 2;
+            if (this.y > 0) {
+                if (!direction) {
+                    this.x += 2;
+                } else {
+                    this.x -= 2;
+                }
                 setTimeout(() => {
                     this.y -= 5.0;
                 }, 2500);
