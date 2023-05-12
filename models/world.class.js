@@ -4,6 +4,7 @@ class World {
     lights = [new Light(),];
     barriers = [new BarrierBlock(),];
     coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),];
+    poisens = [new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(),];
     canvas;
     ctx;
     keyboard;
@@ -72,6 +73,7 @@ class World {
         this.addObjectsToMap(this.level.ground);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.coins);
+        this.addObjectsToMap(this.poisens);
 
         this.ctx.translate(-this.camera_x, 0); //back
         this.addToMap(this.statusBar);
