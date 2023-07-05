@@ -36,10 +36,10 @@ class World {
         }, 100);
         setInterval(() =>{
             this.level.enemies.forEach( (enemy) => {
-                if(this.character.isColliding(enemy) ) {
-                    console.log('Collision with Character ', enemy);
+                if(this.character.isColliding(enemy)) {
+                    // console.log('Collision with Character ', enemy);
                     this.character.hit();
-                    console.log('Character Energy', this.character.energy);
+                    // console.log('Character Energy', this.character.energy);
                     this.statusBar.setPercentage(this.character.energy);
                     // if (this.character.energy <= 0) {
                     //     this.dead = true;
@@ -49,6 +49,24 @@ class World {
                     // }
                 }
             })
+
+
+            this.poisens.forEach( (obt) => {
+                if (this.character.isColliding(obt)) {
+                    console.log('Collect', obt);
+                    this.character.isCollect(obt) = 30;
+                }
+            })
+
+
+            this.coins.forEach( (obt) => {
+                if (this.character.isColliding(obt)) {
+                    console.log(obt);
+                    this.character.isCollect(obt);
+                    //hier weiter arbeiten.. obt münzen sammenln und den wert mycoins aufstocken d
+                }
+            })
+
         }, 200)
     }
 

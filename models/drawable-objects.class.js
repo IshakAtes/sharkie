@@ -38,4 +38,9 @@ class DrawableObjects {
             this.imageCache[path] = img;
         });
     }
+
+
+    bubbleAttack() {
+        this.playAnimation(this.images_BUBBLE); // Bubble Animation
+    }
 }

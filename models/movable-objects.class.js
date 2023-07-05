@@ -2,6 +2,8 @@ class MovableObject extends DrawableObjects {
     speed = 0.15;
     // otherDirection = false;
     energy = 100;
+    myCoin = 0;
+    myPoisen = 0;
     lastHit = 0;
 
     applyGravity() {
@@ -20,6 +22,12 @@ class MovableObject extends DrawableObjects {
         this.y + this.height > char.y &&
         this.x < char.x &&
         this.y < char.y + char.height;
+    }
+
+
+    isCollect(obt) {
+        console.log(`my${obt}`);
+        // this.myPoisens += 30;
     }
 
     
@@ -72,8 +80,6 @@ class MovableObject extends DrawableObjects {
         this.y += this.speed;
     }
 
-    bubbleAttack() {
-        this.playAnimation(this.images_BUBBLE); // Bubble Animation
-    }
+    
 
 }
