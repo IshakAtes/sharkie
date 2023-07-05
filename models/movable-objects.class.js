@@ -2,8 +2,8 @@ class MovableObject extends DrawableObjects {
     speed = 0.15;
     // otherDirection = false;
     energy = 100;
-    myCoin = 0;
-    myPoisen = 0;
+    myCoins = 0;
+    myPoisens = 0;
     lastHit = 0;
 
     applyGravity() {
@@ -25,9 +25,15 @@ class MovableObject extends DrawableObjects {
     }
 
 
-    isCollect(obt) {
-        console.log(`my${obt}`);
-        // this.myPoisens += 30;
+    isCollectPoisen() {
+        this.myPoisens += 20;
+        console.log(this.myPoisens);
+    }
+
+
+    isCollectCoin() {
+        this.myCoins += 20;
+        console.log(this.myCoins);
     }
 
     

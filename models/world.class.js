@@ -53,17 +53,18 @@ class World {
 
             this.poisens.forEach( (obt) => {
                 if (this.character.isColliding(obt)) {
-                    console.log('Collect', obt);
-                    this.character.isCollect(obt) = 30;
+                    // console.log('Collect', obt);
+                    this.character.isCollectPoisen();
+                    this.poisenBar.setPercentage(this.character.myPoisens);
                 }
             })
 
 
             this.coins.forEach( (obt) => {
                 if (this.character.isColliding(obt)) {
-                    console.log(obt);
-                    this.character.isCollect(obt);
-                    //hier weiter arbeiten.. obt münzen sammenln und den wert mycoins aufstocken d
+                    this.character.isCollectCoin();
+                    // console.log(obt);
+                    this.coinBar.setPercentage(this.character.myCoins);
                 }
             })
 

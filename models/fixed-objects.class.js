@@ -76,7 +76,7 @@ class PoisenBar extends DrawableObjects {
     }
 
     resolveImageIndex() {
-        if (this.percentagePoisen == 100) {
+        if (this.percentagePoisen >= 100) {
             return 5;
         } else if (this.percentagePoisen > 80) {
             return 4;
@@ -101,7 +101,7 @@ class CoinBar extends DrawableObjects {
         './img/4. Marcadores/orange/40_  copia 2.png',
         './img/4. Marcadores/orange/60_  copia 2.png',
         './img/4. Marcadores/orange/80_  copia 2.png',
-        './img/4. Marcadores/orange/100_  copia.png',
+        './img/4. Marcadores/orange/100_ copia 2.png',
     ];
 
     percentageCoins = 0;
@@ -123,15 +123,15 @@ class CoinBar extends DrawableObjects {
     }
 
     resolveImageIndex() {
-        if (this.percentage == 100) {
+        if (this.percentageCoins >= 100) {
             return 5;
-        } else if (this.percentage > 80) {
+        } else if (this.percentageCoins > 80) {
             return 4;
-        } else if (this.percentage > 60) {
+        } else if (this.percentageCoins > 60) {
             return 3;
-        } else if (this.percentage > 40) {
+        } else if (this.percentageCoins > 40) {
             return 2;
-        } else if (this.percentage > 20) {
+        } else if (this.percentageCoins > 20) {
             return 1;
         } else {
             return 0;
