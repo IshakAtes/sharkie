@@ -62,15 +62,20 @@ class World {
 
             this.coins.forEach( (obt) => {
                 if (this.character.isColliding(obt)) {
-                    this.character.isCollectCoin();
-                    // this.character.filterArray(obt);
                     console.log(this.coins);
-                    console.log(obt.x);
+                    this.character.isCollectCoin();
                     this.coinBar.setPercentage(this.character.myCoins);
+                    this.filterArray(obt);
+                    console.log(this.coins);
                 }
             })
 
         }, 200)
+    }
+
+    filterArray(obt) {
+        let coinIndex = this.coins.indexOf(obt);
+        this.coins.splice(coinIndex);
     }
 
     checkAttackingObjects() {
