@@ -53,7 +53,7 @@ class World {
 
             this.poisens.forEach( (obt) => {
                 if (this.character.isColliding(obt)) {
-                    // console.log('Collect', obt);
+                    console.log('Collect', obt);
                     this.character.isCollectPoisen();
                     this.poisenBar.setPercentage(this.character.myPoisens);
                 }
@@ -63,7 +63,9 @@ class World {
             this.coins.forEach( (obt) => {
                 if (this.character.isColliding(obt)) {
                     this.character.isCollectCoin();
-                    // console.log(obt);
+                    // this.character.filterArray(obt);
+                    console.log(this.coins);
+                    console.log(obt.x);
                     this.coinBar.setPercentage(this.character.myCoins);
                 }
             })
