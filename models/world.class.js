@@ -33,6 +33,7 @@ class World {
     checkGame() {
         setInterval(() => {
             this.checkAttackingObjects();
+            this.checkPoisenAttack();
         }, 100);
         setInterval(() =>{
             this.level.enemies.forEach( (enemy) => {
@@ -50,7 +51,6 @@ class World {
                 }
             })
 
-
             this.poisens.forEach( (obt) => {
                 if (this.character.isColliding(obt)) {
                     this.character.isCollectPoisen();
@@ -58,7 +58,6 @@ class World {
                     this.filterPoisenArray(obt);
                 }
             })
-
 
             this.coins.forEach( (obt) => {
                 if (this.character.isColliding(obt)) {
@@ -88,6 +87,16 @@ class World {
         } else if(this.keyboard.B && this.character.otherDirection) {
             let bubble = new AttackObject(this.character.x + 0, this.character.y + 60, this.character.otherDirection); //70, 72
             this.attackingObjects.push(bubble);
+        }
+    }
+
+    checkPoisenAttack() {
+        if(this.keyboard.V && !this.character.otherDirection) {
+            let infectedBubble = new PoisenAttack(this.character.x + 122, this.character.y + 60); //112, 72
+            this.attackingObjects.push(infectedBubble);
+        } else if(this.keyboard.V && this.character.otherDirection) {
+            let infectedBubble = new PoisenAttack(this.character.x + 0, this.character.y + 60, this.character.otherDirection); //70, 72
+            this.attackingObjects.push(infectedBubble);
         }
     }
 
