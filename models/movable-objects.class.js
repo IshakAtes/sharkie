@@ -27,16 +27,12 @@ class MovableObject extends DrawableObjects {
 
     isCollectPoisen() {
         this.myPoisens += 10;
+        console.log(this.myPoisens);
     }
 
 
     isCollectCoin() {
         this.myCoins += 10;
-    }
-
-
-    filterArray(obt) {
-        console.log('filter', coins + obt.x);
     }
 
     
