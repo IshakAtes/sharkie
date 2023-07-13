@@ -96,9 +96,11 @@ class World {
             this.attackingObjects.push(infectedBubble);
             this.character.myPoisens -= 10;
             console.log(this.character.myPoisens);
-        } else if(this.keyboard.V && this.character.otherDirection) {
+        } else if(this.keyboard.V && this.character.otherDirection && this.character.myPoisens >= 10) {
             let infectedBubble = new PoisenAttack(this.character.x + 0, this.character.y + 60, this.character.otherDirection); //70, 72
             this.attackingObjects.push(infectedBubble);
+            this.character.myPoisens -= 10;
+            console.log(this.character.myPoisens);
         }
     }
 
