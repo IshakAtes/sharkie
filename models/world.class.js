@@ -53,32 +53,32 @@ class World {
 
             this.poisens.forEach( (obt) => {
                 if (this.character.isColliding(obt)) {
-                    console.log('Collect', obt);
                     this.character.isCollectPoisen();
                     this.poisenBar.setPercentage(this.character.myPoisens);
+                    this.filterPoisenArray(obt);
                 }
             })
 
 
             this.coins.forEach( (obt) => {
                 if (this.character.isColliding(obt)) {
-                    console.log(obt);
-                    console.log(this.coins);
                     this.character.isCollectCoin();
                     this.coinBar.setPercentage(this.character.myCoins);
-                    this.filterArray(obt);
-                    // console.log(obt);
+                    this.filterCoinsArray(obt);
                 }
             })
-
         }, 200)
     }
 
-    filterArray(obt) {
-        let coinIndex = this.coins.indexOf(obt);
-        console.log(coinIndex)
-        this.coins.splice(coinIndex, 1);
-        // this.coins.splice(coinIndex);
+
+    filterPoisenArray(obt) {
+        let objektIndex = this.coins.indexOf(obt);
+        this.poisens.splice(objektIndex, 1);
+    }
+
+    filterCoinsArray(obt) {
+        let objektIndex = this.coins.indexOf(obt);
+        this.coins.splice(objektIndex, 1);
     }
 
     checkAttackingObjects() {
