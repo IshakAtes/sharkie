@@ -3,8 +3,8 @@ class World {
     level = level1;
     lights = [new Light(),];
     barriers = [new BarrierBlock(),];
-    coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),];
-    poisens = [new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(),];
+    coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),];
+    poisens = [new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(),];
     canvas;
     ctx;
     keyboard;
@@ -72,13 +72,13 @@ class World {
 
 
     filterPoisenArray(obt) {
-        let objektIndex = this.coins.indexOf(obt);
-        this.poisens.splice(objektIndex, 1);
+        let poisenIndex = this.poisens.indexOf(obt);
+        this.poisens.splice(poisenIndex, 1);
     }
 
     filterCoinsArray(obt) {
-        let objektIndex = this.coins.indexOf(obt);
-        this.coins.splice(objektIndex, 1);
+        let coinIndex = this.coins.indexOf(obt);
+        this.coins.splice(coinIndex, 1);
     }
 
     checkAttackingObjects() {
