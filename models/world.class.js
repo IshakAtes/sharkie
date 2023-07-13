@@ -62,11 +62,12 @@ class World {
 
             this.coins.forEach( (obt) => {
                 if (this.character.isColliding(obt)) {
+                    console.log(obt);
                     console.log(this.coins);
                     this.character.isCollectCoin();
                     this.coinBar.setPercentage(this.character.myCoins);
                     this.filterArray(obt);
-                    console.log(this.coins);
+                    // console.log(obt);
                 }
             })
 
@@ -75,7 +76,9 @@ class World {
 
     filterArray(obt) {
         let coinIndex = this.coins.indexOf(obt);
-        this.coins.splice(coinIndex);
+        console.log(coinIndex)
+        this.coins.splice(coinIndex, 1);
+        // this.coins.splice(coinIndex);
     }
 
     checkAttackingObjects() {
