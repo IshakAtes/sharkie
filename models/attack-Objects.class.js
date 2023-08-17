@@ -1,5 +1,6 @@
 class AttackObject extends MovableObject {
 
+    world;
     constructor(x, y, direction){
         super().loadImage('./img/1.Sharkie/4.Attack/Bubble trap/Bubble.png')
         this.x = x;
@@ -10,6 +11,7 @@ class AttackObject extends MovableObject {
     }
 
     bubbleAttack(direction) {
+        console.log(world.attackingObjects)
         setTimeout(() => {
             this.applyGravity();
         }, 200);
@@ -25,6 +27,13 @@ class AttackObject extends MovableObject {
                 }, 2500);
             }
         }, 1000 / 100);
+        setInterval(() => {
+            const indexToRemove = world.attackingObjects.findIndex(obj => obj.y < -1000);
+            if (indexToRemove !== -1) {
+                world.attackingObjects.splice(indexToRemove, 1);
+                console.log(world.attackingObjects)
+            }
+        }, 1000)
     }
 
 }

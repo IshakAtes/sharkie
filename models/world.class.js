@@ -66,6 +66,7 @@ class World {
                     this.filterCoinsArray(obt);
                 }
             })
+
         }, 200)
     }
 
