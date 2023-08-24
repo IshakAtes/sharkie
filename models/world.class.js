@@ -51,6 +51,7 @@ class World {
                 }
                 this.attackingObjects.forEach( (bubble) => {
                     if (enemy.isColliding(bubble)) {
+                        enemy.energy = 0;
                         console.log('bubble colliding with', enemy);
                     }
                 })
