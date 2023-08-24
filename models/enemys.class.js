@@ -59,19 +59,33 @@ class JellyFish extends MovableObject {
         './img/2.Enemy/2 Jelly fish/Regular damage/Lila 3.png',
         './img/2.Enemy/2 Jelly fish/Regular damage/Lila 4.png',
     ];
+    images_DEAD = [
+        './img/2.Enemy/2 Jelly fish/Dead/Lila/L1.png',
+        './img/2.Enemy/2 Jelly fish/Dead/Lila/L2.png',
+        './img/2.Enemy/2 Jelly fish/Dead/Lila/L3.png',
+        './img/2.Enemy/2 Jelly fish/Dead/Lila/L4.png',
+    ];
     constructor(){
         super().loadImage('./img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png');
         this.loadImages(this.images_IDLE);
+        this.loadImages(this.images_DEAD);
         this.animate();
         this.speed = 0.15 + Math.random() * 0.25;
     }
 
     animate() {
+        // setInterval(() => {
+        //     let i = this.currentImage % this.images_IDLE.length;
+        //     let path = this.images_IDLE[i];
+        //     this.img = this.imageCache[path];
+        //     this.currentImage++;
+        // }, 200);
         setInterval(() => {
-            let i = this.currentImage % this.images_IDLE.length;
-            let path = this.images_IDLE[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            if (this.isDead()) {
+                this.playAnimation(this.images_DEAD);
+            } else {
+                this.playAnimation(this.images_IDLE);
+            }
         }, 200);
 
         setInterval(() => {
