@@ -1,6 +1,7 @@
 class BigBoss extends MovableObject {
     width = 400;
     height = 300;
+    energy = 10000;
     images_IDLE = [
         './img/2.Enemy/3 Final Enemy/2.floating/1.png',
         './img/2.Enemy/3 Final Enemy/2.floating/2.png',

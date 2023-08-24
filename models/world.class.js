@@ -36,7 +36,7 @@ class World {
             this.checkPoisenAttack();
         }, 100);
         setInterval(() =>{
-            this.level.enemies.forEach( (enemy) => {
+            this.level.enemies.forEach( (enemy, index) => {
                 if(this.character.isColliding(enemy)) {
                     // console.log('Collision with Character ', enemy);
                     this.character.hit();
@@ -51,10 +51,15 @@ class World {
                 }
                 this.attackingObjects.forEach( (bubble) => {
                     if (enemy.isColliding(bubble)) {
-                        enemy.energy = 0;
+                        enemy.energy -= 100;
                         console.log('bubble colliding with', enemy);
                     }
                 })
+
+                if (enemy.energy <= 0) {
+                    // Remove the enemy from the array
+                    this.level.enemies.splice(index, 1);
+                }
             })
 
             this.poisens.forEach( (obt) => {
