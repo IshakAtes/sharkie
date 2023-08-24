@@ -49,6 +49,11 @@ class World {
                     //     this.dead = false;
                     // }
                 }
+                this.attackingObjects.forEach( (bubble) => {
+                    if (enemy.isColliding(bubble)) {
+                        console.log('bubble colliding with', enemy);
+                    }
+                })
             })
 
             this.poisens.forEach( (obt) => {
