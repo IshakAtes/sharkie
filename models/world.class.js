@@ -49,17 +49,16 @@ class World {
                     //     this.dead = false;
                     // }
                 }
-                this.attackingObjects.forEach( (bubble) => {
+                this.attackingObjects.forEach( (bubble, i) => {
                     if (enemy.isColliding(bubble)) {
-                        console.log(enemy);
+                        this.attackingObjects.splice(i, 1);
+                        console.log(bubble);
                         if (enemy instanceof JellyFish) {
                             enemy.energy -= 101;
-                            console.log('bubble colliding with', enemy);
                         }
                     }
                 })
-                if (enemy.y <= -1000) {
-                    console.log('enemy is dead and reached top of water');
+                if (enemy.y <= -500) {
                     // Remove the enemy from the array
                     this.level.enemies.splice(index, 1);
                     console.log(this.level.enemies)
