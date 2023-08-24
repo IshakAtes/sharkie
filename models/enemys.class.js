@@ -83,28 +83,38 @@ class JellyFish extends MovableObject {
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.images_DEAD);
+                this.otherDirection = false;
+                this.moveUp();
             } else {
                 this.playAnimation(this.images_IDLE);
             }
         }, 200);
 
         setInterval(() => {
-            if (this.y > 10 && !this.otherDirection) {
+            if (this.isDead()) {
+                this.otherDirection = false;
+                this.moveUp();
+            } else if (this.y > 10 && !this.otherDirection) {
                 this.moveUp();
                 if (this.y <= 10) {
                     this.otherDirection = true;
                 }
-            }
-        }, 1000 / 60);
-
-        setInterval(() => {
-            if (this.y <= 450 && this.otherDirection) {
+            } else if (this.y <= 450 && this.otherDirection && !this.isDead()) {
                 this.moveDown();
                 if (this.y >= 450) {
                     this.otherDirection = false;
                 }
             }
         }, 1000 / 60);
+
+        // setInterval(() => {
+        //     if (this.y <= 450 && this.otherDirection && !this.isDead()) {
+        //         this.moveDown();
+        //         if (this.y >= 450) {
+        //             this.otherDirection = false;
+        //         }
+        //     }
+        // }, 1000 / 60);
     }
     
 }
