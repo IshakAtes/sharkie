@@ -5,6 +5,7 @@ class MovableObject extends DrawableObjects {
     myCoins = 0;
     myPoisens = 0;
     lastHit = 0;
+    immortal = false;
 
     applyGravity() {
         setInterval(() => {
@@ -35,10 +36,15 @@ class MovableObject extends DrawableObjects {
         this.myCoins += 10;
     }
 
+
+    slap() {
+        console.log('hallo')
+    }
+
     
     hit() {
         this.energy -= 5;
-        if(this.energy < 0) {
+        if(this.energy <= 0) {
             this.energy = 0;
         } else {
             this.lastHit = new Date().getTime();

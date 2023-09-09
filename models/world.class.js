@@ -96,24 +96,24 @@ class World {
     }
 
     checkAttackingObjects() {
-        if(this.keyboard.B && !this.character.otherDirection) {
+        if(this.keyboard.SPACE && !this.character.otherDirection) {
             let bubble = new AttackObject(this.character.x + 122, this.character.y + 60); //112, 72
             this.attackingObjects.push(bubble);
-        } else if(this.keyboard.B && this.character.otherDirection) {
+        } else if(this.keyboard.SPACE && this.character.otherDirection) {
             let bubble = new AttackObject(this.character.x + 0, this.character.y + 60, this.character.otherDirection); //70, 72
             this.attackingObjects.push(bubble);
         }
     }
 
     checkPoisenAttack() {
-        if(this.keyboard.V && !this.character.otherDirection && this.character.myPoisens >= 10) {
+        if(this.keyboard.B && !this.character.otherDirection && this.character.myPoisens >= 10) {
             let infectedBubble = new PoisenAttack(this.character.x + 122, this.character.y + 60); //112, 72
             this.attackingObjects.push(infectedBubble);
             this.character.myPoisens -= 10;
             this.poisenBar.setPercentage(this.character.myPoisens);
             // this.poisenBar.setPercentage(this.character.myPoisens);
             console.log(this.character.myPoisens);
-        } else if(this.keyboard.V && this.character.otherDirection && this.character.myPoisens >= 10) {
+        } else if(this.keyboard.B && this.character.otherDirection && this.character.myPoisens >= 10) {
             let infectedBubble = new PoisenAttack(this.character.x + 0, this.character.y + 60, this.character.otherDirection); //70, 72
             this.attackingObjects.push(infectedBubble);
             this.character.myPoisens -= 10;

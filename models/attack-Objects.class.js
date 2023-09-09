@@ -31,7 +31,6 @@ class AttackObject extends MovableObject {
             const indexToRemove = world.attackingObjects.findIndex(obj => obj.y < -1000);
             if (indexToRemove !== -1) {
                 world.attackingObjects.splice(indexToRemove, 1);
-                console.log(world.attackingObjects)
             }
         }, 1000)
     }
