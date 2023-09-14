@@ -97,6 +97,7 @@ class Character extends MovableObject {
 
 
     animate() {
+        let i = 0;
         setInterval(() => {
             this.swimming_Sound.pause();
             
@@ -112,12 +113,13 @@ class Character extends MovableObject {
                 this.bubbleAttack();
             } else if (this.world.keyboard.V) {
                 //FinSlap
-                this.playAnimation(this.images_FINSLAP);
-                this.slap();
+                    this.playAnimation(this.images_FINSLAP);
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
                 // Swimm Animation
                 this.playAnimation(this.images_SWIM);
                 this.swimming_Sound.play();
+            } else {
+                this.playAnimation(this.images_IDLE);
             }
             
         }, 100);
@@ -140,11 +142,6 @@ class Character extends MovableObject {
                 this.moveDown();
             }
         }, 30);
-
-
-        setInterval(() => {
-            this.playAnimation(this.images_IDLE);
-        }, 140);
 
     }
 

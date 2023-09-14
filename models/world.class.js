@@ -14,6 +14,7 @@ class World {
     statusBar = new StatusBar();
     poisenBar = new PoisenBar();
     coinBar = new CoinBar();
+    immortal = false;
 
 
     constructor(canvas, keyboard){
@@ -34,10 +35,16 @@ class World {
         setInterval(() => {
             this.checkAttackingObjects();
             this.checkPoisenAttack();
+            this.finSlap();
         }, 100);
         setInterval(() =>{
             this.level.enemies.forEach( (enemy, index) => {
-                if(this.character.isColliding(enemy)) {
+                if (this.immortal && this.character.isColliding(enemy)) {
+                    console.log('ScheissImmortal');
+                    setTimeout(() => {
+                        this.immortal = false;
+                    }, 2000);
+                } else if(this.character.isColliding(enemy) && !this.immortal) {
                     // console.log('Collision with Character ', enemy);
                     this.character.hit();
                     // console.log('Character Energy', this.character.energy);
@@ -94,6 +101,15 @@ class World {
         let coinIndex = this.coins.indexOf(obt);
         this.coins.splice(coinIndex, 1);
     }
+
+
+    finSlap() {
+        if(this.keyboard.V) {
+            this.immortal = true;
+        }
+    }
+
+
 
     checkAttackingObjects() {
         if(this.keyboard.SPACE && !this.character.otherDirection) {
