@@ -40,10 +40,7 @@ class World {
         setInterval(() =>{
             this.level.enemies.forEach( (enemy, index) => {
                 if (this.immortal && this.character.isColliding(enemy)) {
-                    console.log('ScheissImmortal');
-                    setTimeout(() => {
-                        this.immortal = false;
-                    }, 2000);
+                    console.log('Kill the Enemy');
                 } else if(this.character.isColliding(enemy) && !this.immortal) {
                     // console.log('Collision with Character ', enemy);
                     this.character.hit();
@@ -104,8 +101,12 @@ class World {
 
 
     finSlap() {
-        if(this.keyboard.V) {
+        if (this.keyboard.V) {
+            clearTimeout(this.immortalTimeout); // Timer zurücksetzen, falls er bereits läuft
             this.immortal = true;
+            this.immortalTimeout = setTimeout(() => {
+                this.immortal = false; // Immunität nach 2 Sekunden deaktivieren
+            }, 2000);
         }
     }
 
