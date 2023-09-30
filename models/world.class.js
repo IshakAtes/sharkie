@@ -33,7 +33,6 @@ class World {
 
     checkGame() {
         setInterval(() => {
-            this.checkAttackingObjects();
             this.checkPoisenAttack();
             this.finSlap();
         }, 100);
@@ -56,7 +55,6 @@ class World {
                 this.attackingObjects.forEach( (bubble, i) => {
                     if (enemy.isColliding(bubble)) {
                         this.attackingObjects.splice(i, 1);
-                        console.log(bubble);
                         if (enemy instanceof JellyFish) {
                             enemy.energy -= 101;
                         }
@@ -84,7 +82,6 @@ class World {
                     this.filterCoinsArray(obt);
                 }
             })
-
         }, 200)
     }
 
@@ -112,15 +109,7 @@ class World {
 
 
 
-    checkAttackingObjects() {
-        if(this.keyboard.SPACE && !this.character.otherDirection) {
-            let bubble = new AttackObject(this.character.x + 122, this.character.y + 60); //112, 72
-            this.attackingObjects.push(bubble);
-        } else if(this.keyboard.SPACE && this.character.otherDirection) {
-            let bubble = new AttackObject(this.character.x + 0, this.character.y + 60, this.character.otherDirection); //70, 72
-            this.attackingObjects.push(bubble);
-        }
-    }
+    
 
     checkPoisenAttack() {
         if(this.keyboard.B && !this.character.otherDirection && this.character.myPoisens >= 10) {

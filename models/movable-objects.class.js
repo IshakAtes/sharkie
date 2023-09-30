@@ -6,6 +6,8 @@ class MovableObject extends DrawableObjects {
     myPoisens = 0;
     lastHit = 0;
 
+
+
     applyGravity() {
         setInterval(() => {
             if (this.y > 0) {
@@ -13,7 +15,6 @@ class MovableObject extends DrawableObjects {
             }
         }, 1000 / 100);
     }
-
 
 
     // isColliding(pufferFish)
@@ -87,4 +88,7 @@ class MovableObject extends DrawableObjects {
     }
 
 
+    attackWithBubble() {
+        this.bubbleAttackActive = true;
+    }
 }

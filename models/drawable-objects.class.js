@@ -1,4 +1,5 @@
 class DrawableObjects {
+    bubbleAttackActive = false;
     img;
     imageCache = {};
     currentImage = 0;
@@ -45,8 +46,14 @@ class DrawableObjects {
     }
 
 
-    bubbleAttack() {
-        this.playAnimation(this.images_BUBBLE); // Bubble Animation
+    drawBubble() {
+        if(!this.world.character.otherDirection) {
+            let bubble = new AttackObject(this.world.character.x + 122, this.world.character.y + 60); //112, 72
+            this.world.attackingObjects.push(bubble);
+        } else if(this.world.character.otherDirection) {
+            let bubble = new AttackObject(this.world.character.x + 0, this.world.character.y + 60, this.world.character.otherDirection); //70, 72
+            this.world.attackingObjects.push(bubble);
+        }
     }
 
 

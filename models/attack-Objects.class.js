@@ -11,7 +11,6 @@ class AttackObject extends MovableObject {
     }
 
     bubbleAttack(direction) {
-        console.log(world.attackingObjects)
         setTimeout(() => {
             this.applyGravity();
         }, 200);
