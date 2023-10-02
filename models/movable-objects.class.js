@@ -68,6 +68,7 @@ class MovableObject extends DrawableObjects {
     }
 
 
+
     moveRight() {
         this.x += this.speed;
     }
@@ -94,5 +95,9 @@ class MovableObject extends DrawableObjects {
 
     attackWithPoisenBubble() {
         this.poisenBubbleAttackActive = true;
+    }
+
+    attackWithFinslap() {
+        this.finslap = true;
     }
 }

@@ -32,9 +32,6 @@ class World {
 
 
     checkGame() {
-        setInterval(() => {
-            this.finSlap();
-        }, 100);
         setInterval(() =>{
             this.level.enemies.forEach( (enemy, index) => {
                 if (this.immortal && this.character.isColliding(enemy)) {
@@ -96,15 +93,15 @@ class World {
     }
 
 
-    finSlap() {
-        if (this.keyboard.V) {
-            clearTimeout(this.immortalTimeout); // Timer zurücksetzen, falls er bereits läuft
-            this.immortal = true;
-            this.immortalTimeout = setTimeout(() => {
-                this.immortal = false; // Immunität nach 2 Sekunden deaktivieren
-            }, 2000);
-        }
-    }
+    // finSlap() {
+    //     if (this.keyboard.V) {
+    //         clearTimeout(this.immortalTimeout); // Timer zurücksetzen, falls er bereits läuft
+    //         this.immortal = true;
+    //         this.immortalTimeout = setTimeout(() => {
+    //             this.immortal = false; // Immunität nach 2 Sekunden deaktivieren
+    //         }, 2000);
+    //     }
+    // }
 
 
 

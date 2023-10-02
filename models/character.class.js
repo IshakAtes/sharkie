@@ -130,9 +130,12 @@ class Character extends MovableObject {
                         this.bubbleAttackActive = false;
                     }, this.images_BUBBLE.length * 95); // Hier wird die Dauer der Bubble-Animation verwendet
                 }
-            } else if (this.world.keyboard.V) {
+            } else if (this.finslap) {
                 //FinSlap
-                    this.playAnimation(this.images_FINSLAP);
+                this.playAnimation(this.images_FINSLAP);
+                setTimeout(() => {
+                    this.finslap = false;
+                }, this.images_FINSLAP.length * 100);
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
                 // Swimm Animation
                 this.playAnimation(this.images_SWIM);
@@ -164,6 +167,9 @@ class Character extends MovableObject {
             }
             if (this.world.keyboard.B) {
                 this.attackWithPoisenBubble();
+            }
+            if (this.world.keyboard.V) {
+                this.attackWithFinslap();
             }
         }, 30);
 

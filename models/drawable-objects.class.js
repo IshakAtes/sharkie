@@ -2,6 +2,7 @@ class DrawableObjects {
     world;
     poisenBubbleAttackActive = false;
     bubbleAttackActive = false;
+    finslap = false;
     img;
     imageCache = {};
     currentImage = 0;
