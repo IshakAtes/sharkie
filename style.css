@@ -17,6 +17,7 @@ body h1 {
 
 canvas {
     background-color: black;
+    box-shadow: 0 0 10px 10px;
 }
 
 #backgroundIMG {
