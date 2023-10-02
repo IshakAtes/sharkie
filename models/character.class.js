@@ -106,9 +106,19 @@ class Character extends MovableObject {
                 this.playAnimation(this.images_DEAD);
             } else if(this.isHurt()) {
                 this.playAnimation(this.images_HURT);
-            } else if (this.world.keyboard.B) {
+            } else if (this.poisenBubbleAttackActive) {
                 // Poisen Attack
-                this.poisenAttack();
+                this.playAnimation(this.images_POISENBUBBLE);
+                // this.poisenAttack();
+                if (!this.bubbleAnimationInProgress) {
+                    this.bubbleAnimationInProgress = true;
+                    setTimeout(() => {
+                        this.drawPoisenBubble();
+                        this.bubbleAnimationInProgress = false; // Markiere die Bubble-Animation als abgeschlossen
+                        this.poisenBubbleAttackActive = false;
+                    }, this.images_POISENBUBBLE.length * 100); // Hier wird die Dauer der Bubble-Animation verwendet
+                }
+
             } else if (this.bubbleAttackActive) {
                 // Bubble Attack
                 this.playAnimation(this.images_BUBBLE);
@@ -151,6 +161,9 @@ class Character extends MovableObject {
             }
             if (this.world.keyboard.SPACE) {
                 this.attackWithBubble();
+            }
+            if (this.world.keyboard.B) {
+                this.attackWithPoisenBubble();
             }
         }, 30);
 

@@ -91,4 +91,8 @@ class MovableObject extends DrawableObjects {
     attackWithBubble() {
         this.bubbleAttackActive = true;
     }
+
+    attackWithPoisenBubble() {
+        this.poisenBubbleAttackActive = true;
+    }
 }

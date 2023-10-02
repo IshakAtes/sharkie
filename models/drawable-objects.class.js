@@ -1,4 +1,6 @@
 class DrawableObjects {
+    world;
+    poisenBubbleAttackActive = false;
     bubbleAttackActive = false;
     img;
     imageCache = {};
@@ -57,7 +59,19 @@ class DrawableObjects {
     }
 
 
-    poisenAttack() {
-        this.playAnimation(this.images_POISENBUBBLE); // PoisenBubble Animation
+    drawPoisenBubble() {
+        if(!this.world.character.otherDirection && this.world.character.myPoisens >= 10) {
+            let infectedBubble = new PoisenAttack(this.world.character.x + 122, this.world.character.y + 60); //112, 72
+            this.world.attackingObjects.push(infectedBubble);
+            this.world.character.myPoisens -= 10;
+            this.world.poisenBar.setPercentage(this.world.character.myPoisens);
+            console.log(this.world.character.myPoisens);
+        } else if(this.world.character.otherDirection && this.world.character.myPoisens >= 10) {
+            let infectedBubble = new PoisenAttack(this.world.character.x + 0, this.world.character.y + 60, this.world.character.otherDirection); //70, 72
+            this.world.attackingObjects.push(infectedBubble);
+            this.world.character.myPoisens -= 10;
+            this.world.poisenBar.setPercentage(this.world.character.myPoisens);
+            console.log(this.world.character.myPoisens);
+        }
     }
 }
