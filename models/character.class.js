@@ -132,6 +132,7 @@ class Character extends MovableObject {
             } else if (this.finslap) {
                 //FinSlap
                 this.playAnimation(this.images_FINSLAP);
+                this.world.finSlap();
                 setTimeout(() => {
                     this.finslap = false;
                 }, this.images_FINSLAP.length * 100);

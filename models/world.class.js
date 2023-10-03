@@ -15,6 +15,7 @@ class World {
     poisenBar = new PoisenBar();
     coinBar = new CoinBar();
     coinCollected_Sound = new Audio('sounds/coin.mp3');
+    bottleCollected_Sound = new Audio('sounds/bottle.mp3');
     immortal = false;
 
 
@@ -68,6 +69,7 @@ class World {
                 if (this.character.isColliding(obt)) {
                     this.character.isCollectPoisen();
                     this.poisenBar.setPercentage(this.character.myPoisens);
+                    this.bottleCollected_Sound.play();
                     this.filterPoisenArray(obt);
                 }
             })
@@ -95,15 +97,13 @@ class World {
     }
 
 
-    // finSlap() {
-    //     if (this.keyboard.V) {
-    //         clearTimeout(this.immortalTimeout); // Timer zurücksetzen, falls er bereits läuft
-    //         this.immortal = true;
-    //         this.immortalTimeout = setTimeout(() => {
-    //             this.immortal = false; // Immunität nach 2 Sekunden deaktivieren
-    //         }, 2000);
-    //     }
-    // }
+    finSlap() {
+        clearTimeout(this.immortalTimeout); // Timer zurücksetzen, falls er bereits läuft
+        this.immortal = true;
+        this.immortalTimeout = setTimeout(() => {
+            this.immortal = false; // Immunität nach 2 Sekunden deaktivieren
+        }, 1400);
+    }
 
 
 
