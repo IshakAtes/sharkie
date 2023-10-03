@@ -81,7 +81,7 @@ class Character extends MovableObject {
         './img/1.Sharkie/4.Attack/Fin slap/8.png',
     ];
     world;
-    swimming_Sound = new Audio('sounds/swimmingFish.mp3')
+    swimming_Sound = new Audio('sounds/swimmingFish.mp3');
 
     constructor(){
         super().loadImage('./img/1.Sharkie/1.IDLE/1.png');
@@ -118,7 +118,6 @@ class Character extends MovableObject {
                         this.poisenBubbleAttackActive = false;
                     }, this.images_POISENBUBBLE.length * 100); // Hier wird die Dauer der Bubble-Animation verwendet
                 }
-
             } else if (this.bubbleAttackActive) {
                 // Bubble Attack
                 this.playAnimation(this.images_BUBBLE);

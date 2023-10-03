@@ -14,6 +14,7 @@ class World {
     statusBar = new StatusBar();
     poisenBar = new PoisenBar();
     coinBar = new CoinBar();
+    coinCollected_Sound = new Audio('sounds/coin.mp3');
     immortal = false;
 
 
@@ -67,6 +68,7 @@ class World {
                 if (this.character.isColliding(obt)) {
                     this.character.isCollectPoisen();
                     this.poisenBar.setPercentage(this.character.myPoisens);
+                    this.coinCollectedSound.play();
                     this.filterPoisenArray(obt);
                 }
             })
@@ -75,6 +77,7 @@ class World {
                 if (this.character.isColliding(obt)) {
                     this.character.isCollectCoin();
                     this.coinBar.setPercentage(this.character.myCoins);
+                    this.coinCollected_Sound.play();
                     this.filterCoinsArray(obt);
                 }
             })
