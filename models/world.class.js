@@ -36,12 +36,11 @@ class World {
     checkGame() {
         setInterval(() =>{
             this.level.enemies.forEach( (enemy, index) => {
-                if (this.immortal && this.character.isColliding(enemy)) {
+                if (this.immortal && this.character.isColliding(enemy) && !(enemy instanceof JellyFish)) {
                     this.character.slapAttack(enemy);
-                } else if(this.character.isColliding(enemy) && !this.immortal && enemy.energy >= 1) {
+                } else if(this.character.isColliding(enemy) && enemy.energy >= 1) {
                     // console.log('Collision with Character ', enemy);
                     this.character.hit();
-                    console.log(enemy.energy);
                     // console.log('Character Energy', this.character.energy);
                     this.statusBar.setPercentage(this.character.energy);
                     // if (this.character.energy <= 0) {

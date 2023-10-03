@@ -30,7 +30,6 @@ class MovableObject extends DrawableObjects {
 
     isCollectPoisen() {
         this.myPoisens += 10;
-        console.log(this.myPoisens);
     }
 
 
@@ -40,8 +39,10 @@ class MovableObject extends DrawableObjects {
 
 
     slapAttack(enemy) {
-        enemy.energy -= 100;
-        this.slap_sound.play();
+        if (enemy instanceof PufferFish || enemy instanceof BigBoss) {
+            enemy.energy -= 100;
+            this.slap_sound.play();
+        }
     }
     
     hit() {

@@ -2,7 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let background_sound = new Audio('./sounds/underwater.mp3');
-let audioOn = true;
+let audioOn = false;
 // wenn das Projekt fertig ist AudioOn = true setzen. Ansonsten Wenn man das spiel
 // startet, ist das spiel lautlos aber es ist das Lautsprecher offen icon zusehen.
 
