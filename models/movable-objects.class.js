@@ -6,6 +6,7 @@ class MovableObject extends DrawableObjects {
     myPoisens = 0;
     lastHit = 0;
     hit_sound = new Audio('sounds/uhh.mp3');
+    slap_sound = new Audio('sounds/slap.mp3');
 
 
 
@@ -38,6 +39,10 @@ class MovableObject extends DrawableObjects {
     }
 
 
+    slapAttack(enemy) {
+        enemy.energy -= 100;
+        this.slap_sound.play();
+    }
     
     hit() {
         this.hit_sound.play();

@@ -10,22 +10,59 @@ class PufferFish extends MovableObject {
         './img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim4.png',
         './img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim5.png',
     ];
+    images_INCOMA = [
+        './img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 3 (can animate by going down to the floor after the Fin Slap attack).png',
+    ];
+    images_BLOW = [
+        './img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 2 (can animate by going down to the floor after the Fin Slap attack).png',
+        './img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 1 (can animate by going up).png',
+    ];
+
+    images_BLOWTED = [
+        './img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 1 (can animate by going up).png',
+    ];
 
     constructor(){
         super().loadImage('./img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png');
         
         this.loadImages(this.images_IDLE);
+        this.loadImages(this.images_INCOMA);
+        this.loadImages(this.images_BLOW);
+        this.loadImages(this.images_BLOWTED);
         this.animate();
         this.speed = 0.15 + Math.random() * 0.55;
     }
 
     animate() {
+        let isDeadMovementExecuted = false;
+        let blowUp = false;
+        let bloated = false;
         setInterval(() => {
-            this.playAnimation(this.images_IDLE);
+            if (bloated) {
+                this.playAnimation(this.images_BLOWTED);
+            } else if (blowUp) {
+                this.playAnimation(this.images_BLOW);
+                setTimeout(() => {
+                    bloated = true;
+                }, 400);
+            } else if (this.isDead()) {
+                this.playAnimation(this.images_INCOMA);
+            } else {
+                this.playAnimation(this.images_IDLE);
+            }
         }, 99);
 
+        
         setInterval(() => {
-            if (this.x > 50 && !this.otherDirection) {
+            if (this.isDead() && !isDeadMovementExecuted && this.otherDirection) {
+                this.x = this.x -= 15;
+                setTimeout(() => {
+                    isDeadMovementExecuted = true;
+                    blowUp = true;
+                }, 400);
+            } else if (this.isDead() && isDeadMovementExecuted) {
+                this.moveUp();
+            } else if (this.x > 50 && !this.otherDirection && !this.isDead()) {
                 this.moveLeft();
                 if (this.x <= 50) {
                     this.otherDirection = true;
@@ -34,7 +71,15 @@ class PufferFish extends MovableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.x <= 1500 && this.otherDirection) {
+            if (this.isDead() && !isDeadMovementExecuted && !this.otherDirection) {
+                this.x = this.x += 15;
+                setTimeout(() => {
+                    isDeadMovementExecuted = true;
+                    blowUp = true;
+                }, 400);
+            } else if (this.isDead() && isDeadMovementExecuted) {
+                this.moveUp();
+            } else if (this.x <= 1500 && this.otherDirection && !this.isDead()) {
                 this.moveRight();
                 if (this.x >= 1500) {
                     this.otherDirection = false;

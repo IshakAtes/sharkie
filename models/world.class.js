@@ -37,7 +37,7 @@ class World {
         setInterval(() =>{
             this.level.enemies.forEach( (enemy, index) => {
                 if (this.immortal && this.character.isColliding(enemy)) {
-                    console.log('Kill the Enemy');
+                    this.character.slapAttack(enemy);
                 } else if(this.character.isColliding(enemy) && !this.immortal) {
                     // console.log('Collision with Character ', enemy);
                     this.character.hit();
