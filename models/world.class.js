@@ -68,7 +68,6 @@ class World {
                 if (this.character.isColliding(obt)) {
                     this.character.isCollectPoisen();
                     this.poisenBar.setPercentage(this.character.myPoisens);
-                    this.coinCollectedSound.play();
                     this.filterPoisenArray(obt);
                 }
             })

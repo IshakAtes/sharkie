@@ -5,6 +5,7 @@ class MovableObject extends DrawableObjects {
     myCoins = 0;
     myPoisens = 0;
     lastHit = 0;
+    hit_sound = new Audio('sounds/uhh.mp3');
 
 
 
@@ -39,6 +40,7 @@ class MovableObject extends DrawableObjects {
 
     
     hit() {
+        this.hit_sound.play();
         this.energy -= 5;
         if(this.energy <= 0) {
             this.energy = 0;
