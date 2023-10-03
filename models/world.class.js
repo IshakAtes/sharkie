@@ -38,9 +38,10 @@ class World {
             this.level.enemies.forEach( (enemy, index) => {
                 if (this.immortal && this.character.isColliding(enemy)) {
                     this.character.slapAttack(enemy);
-                } else if(this.character.isColliding(enemy) && !this.immortal) {
+                } else if(this.character.isColliding(enemy) && !this.immortal && enemy.energy >= 1) {
                     // console.log('Collision with Character ', enemy);
                     this.character.hit();
+                    console.log(enemy.energy);
                     // console.log('Character Energy', this.character.energy);
                     this.statusBar.setPercentage(this.character.energy);
                     // if (this.character.energy <= 0) {
@@ -101,8 +102,8 @@ class World {
         clearTimeout(this.immortalTimeout); // Timer zurücksetzen, falls er bereits läuft
         this.immortal = true;
         this.immortalTimeout = setTimeout(() => {
-            this.immortal = false; // Immunität nach 2 Sekunden deaktivieren
-        }, 1400);
+            this.immortal = false; // Immunität nach 0,6 Sekunde deaktivieren
+        }, 600);
     }
 
 
