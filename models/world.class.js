@@ -40,7 +40,7 @@ class World {
                     this.character.slapAttack(enemy);
                 } else if(this.character.isColliding(enemy) && enemy.energy >= 1) {
                     // console.log('Collision with Character ', enemy);
-                    this.character.hit();
+                    this.character.hit(enemy);
                     // console.log('Character Energy', this.character.energy);
                     this.statusBar.setPercentage(this.character.energy);
                     // if (this.character.energy <= 0) {

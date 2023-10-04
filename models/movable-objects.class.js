@@ -6,6 +6,7 @@ class MovableObject extends DrawableObjects {
     myPoisens = 0;
     lastHit = 0;
     hit_sound = new Audio('sounds/uhh.mp3');
+    shock_sound = new Audio('sounds/shock.mp3');
     slap_sound = new Audio('sounds/slap.mp3');
 
 
@@ -45,8 +46,8 @@ class MovableObject extends DrawableObjects {
         }
     }
     
-    hit() {
-        this.hit_sound.play();
+    hit(enemy) {
+        this.playhittingSound(enemy);
         this.energy -= 5;
         if(this.energy <= 0) {
             this.energy = 0;
@@ -73,6 +74,14 @@ class MovableObject extends DrawableObjects {
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+    }
+
+    playhittingSound(enemy) {
+        if (enemy instanceof JellyFish) {
+            this.shock_sound.play();
+        } else {
+            this.hit_sound.play();
+        }
     }
 
 
