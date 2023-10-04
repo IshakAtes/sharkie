@@ -30,6 +30,7 @@ class World {
 
     setWorld() {
         this.character.world = this;
+        this.level.enemies[12].world = this;
     }
 
 
@@ -39,16 +40,9 @@ class World {
                 if (this.immortal && this.character.isColliding(enemy) && !(enemy instanceof JellyFish)) {
                     this.character.slapAttack(enemy);
                 } else if(this.character.isColliding(enemy) && enemy.energy >= 1) {
-                    // console.log('Collision with Character ', enemy);
                     this.character.hit(enemy);
                     // console.log('Character Energy', this.character.energy);
                     this.statusBar.setPercentage(this.character.energy);
-                    // if (this.character.energy <= 0) {
-                    //     this.dead = true;
-                    //     this.character.playAnimation(this.character.images_DEAD);
-                    // } else {
-                    //     this.dead = false;
-                    // }
                 }
                 this.attackingObjects.forEach( (bubble, i) => {
                     if (enemy.isColliding(bubble)) {

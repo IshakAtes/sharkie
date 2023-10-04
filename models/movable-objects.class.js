@@ -8,6 +8,7 @@ class MovableObject extends DrawableObjects {
     hit_sound = new Audio('sounds/uhh.mp3');
     shock_sound = new Audio('sounds/shock.mp3');
     slap_sound = new Audio('sounds/slap.mp3');
+    world;
 
 
 

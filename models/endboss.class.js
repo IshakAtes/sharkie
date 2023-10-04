@@ -2,6 +2,19 @@ class BigBoss extends MovableObject {
     width = 400;
     height = 300;
     energy = 10000;
+    firstContact = false;
+    images_SPAWNING = [
+        './img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
+        './img/2.Enemy/3 Final Enemy/1.Introduce/2.png',
+        './img/2.Enemy/3 Final Enemy/1.Introduce/3.png',
+        './img/2.Enemy/3 Final Enemy/1.Introduce/4.png',
+        './img/2.Enemy/3 Final Enemy/1.Introduce/5.png',
+        './img/2.Enemy/3 Final Enemy/1.Introduce/6.png',
+        './img/2.Enemy/3 Final Enemy/1.Introduce/7.png',
+        './img/2.Enemy/3 Final Enemy/1.Introduce/8.png',
+        './img/2.Enemy/3 Final Enemy/1.Introduce/9.png',
+        './img/2.Enemy/3 Final Enemy/1.Introduce/10.png',
+    ];
     images_IDLE = [
         './img/2.Enemy/3 Final Enemy/2.floating/1.png',
         './img/2.Enemy/3 Final Enemy/2.floating/2.png',
@@ -17,20 +30,32 @@ class BigBoss extends MovableObject {
         './img/2.Enemy/3 Final Enemy/2.floating/12.png',
         './img/2.Enemy/3 Final Enemy/2.floating/13.png',
     ];
+    world;
+
 
     constructor(){
-        super().loadImage('./img/2.Enemy/3 Final Enemy/1.Introduce/10.png');
+        super().loadImage('./img/2.Enemy/3 Final Enemy/2.floating/1.png');
+        this.loadImages(this.images_SPAWNING);
         this.loadImages(this.images_IDLE);
-        this.x = 1000;
+        this.x = 2000;
         this.animate();
-        // this.loadImage(this.images_IDLE);
-        // this.x = 900 + Math.random() * 500;
-        // this.y = -50;
     }
 
     animate() {
+        let i = 0;
         setInterval(() => {
-            this.playAnimation(this.images_IDLE);
+            if (i < 10) {
+                
+                this.playAnimation(this.images_SPAWNING);
+            } else {
+                this.playAnimation(this.images_IDLE);
+            }
+            i++;
+
+            if (this.world.character.x > 1400 && !this.firstContact) {
+                i = 0;
+                this.firstContact = true;
+            }
         }, 200);
     }
 
