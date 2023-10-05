@@ -37,7 +37,8 @@ class BigBoss extends MovableObject {
         super().loadImage('./img/2.Enemy/3 Final Enemy/2.floating/1.png');
         this.loadImages(this.images_SPAWNING);
         this.loadImages(this.images_IDLE);
-        this.x = 2000;
+        this.x = 4000;
+        this.y = -400;
         this.animate();
     }
 
@@ -52,9 +53,13 @@ class BigBoss extends MovableObject {
             }
             i++;
 
-            if (this.world.character.x > 1400 && !this.firstContact) {
-                i = 0;
+            if (this.world.character.x > 1300 && !this.firstContact) {
                 this.firstContact = true;
+                setTimeout(() => {
+                    this.y = -20;
+                    this.x = 2700;
+                    i = 0;
+                }, 5000)
             }
         }, 200);
     }
