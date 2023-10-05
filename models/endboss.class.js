@@ -30,6 +30,14 @@ class BigBoss extends MovableObject {
         './img/2.Enemy/3 Final Enemy/2.floating/12.png',
         './img/2.Enemy/3 Final Enemy/2.floating/13.png',
     ];
+    images_ATTACK = [
+        './img/2.Enemy/3 Final Enemy/Attack/1.png',
+        './img/2.Enemy/3 Final Enemy/Attack/2.png',
+        './img/2.Enemy/3 Final Enemy/Attack/3.png',
+        './img/2.Enemy/3 Final Enemy/Attack/4.png',
+        './img/2.Enemy/3 Final Enemy/Attack/5.png',
+        './img/2.Enemy/3 Final Enemy/Attack/6.png',
+    ];
     world;
 
 
@@ -37,6 +45,7 @@ class BigBoss extends MovableObject {
         super().loadImage('./img/2.Enemy/3 Final Enemy/2.floating/1.png');
         this.loadImages(this.images_SPAWNING);
         this.loadImages(this.images_IDLE);
+        this.loadImages(this.images_ATTACK);
         this.x = 4000;
         this.y = -400;
         this.animate();
@@ -59,6 +68,12 @@ class BigBoss extends MovableObject {
                     this.y = -20;
                     this.x = 2700;
                     i = 0;
+                    setTimeout(() => {
+                        setInterval(() => {
+                            this.enemyTrackingX(this.x);
+                            this.enemyTrackingY(this.y);
+                        }, 150);
+                    }, 3000)
                 }, 5000)
             }
         }, 200);

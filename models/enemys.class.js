@@ -151,15 +151,6 @@ class JellyFish extends MovableObject {
                 }
             }
         }, 1000 / 60);
-
-        // setInterval(() => {
-        //     if (this.y <= 450 && this.otherDirection && !this.isDead()) {
-        //         this.moveDown();
-        //         if (this.y >= 450) {
-        //             this.otherDirection = false;
-        //         }
-        //     }
-        // }, 1000 / 60);
     }
     
 }
