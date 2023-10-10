@@ -8,26 +8,27 @@ class MovableObject extends DrawableObjects {
     hit_sound = new Audio('sounds/uhh.mp3');
     shock_sound = new Audio('sounds/shock.mp3');
     slap_sound = new Audio('sounds/slap.mp3');
-    worldData = this.world;
 
 
 
-    enemyTrackingX(cordinat) {
-        console.log(cordinat)
-        if (cordinat < this.world.character.x) {
-            console.log('trackingXXX');
-            cordinat += 20;
-        } else if (cordinat > this.world.character.x) {
-            cordinat -= 20;
+    enemyTrackingX(X) {
+        if (X < this.world.character.x) {
+            let newCoordinateRight = this.world.level.enemies[12].x += 10;
+            this.world.level.enemies[12].x = newCoordinateRight;
+        } else if (X > this.world.character.x) {
+            let newCoordinateLeft = this.world.level.enemies[12].x -= 10;
+            this.world.level.enemies[12].x = newCoordinateLeft;
+            console.log('Left');
         }
     }
 
-    enemyTrackingY(y) {
-        if (y < this.world.character.y) {
-            console.log('trackingYYY');
-            y++;
-        } else if (y > this.world.chracter.y) {
-            y--;
+    enemyTrackingY(Y) {
+        if ((Y + 100) < this.world.character.y) {
+            let newCoordinateUp = this.world.level.enemies[12].y += 10;
+            this.world.level.enemies[12].y = newCoordinateUp;
+        } else if ((Y + 100) > this.world.character.y) {
+            let newCoordinateDown = this.world.level.enemies[12].y -= 10;
+            this.world.level.enemies[12].y = newCoordinateDown;
         }
     }
 

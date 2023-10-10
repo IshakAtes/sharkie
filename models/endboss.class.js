@@ -74,7 +74,7 @@ class BigBoss extends MovableObject {
                             this.enemyTrackingY(this.y);
                         }, 150);
                     }, 3000)
-                }, 5000)
+                }, 4000)
             }
         }, 200);
     }
