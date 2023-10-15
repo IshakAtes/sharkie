@@ -55,8 +55,10 @@ class BigBoss extends MovableObject {
         let i = 0;
         setInterval(() => {
             if (i < 10) {
-                
                 this.playAnimation(this.images_SPAWNING);
+            } else if (this.world.character.x >= this.world.level.enemies[12].x - 150) {
+                console.log('Attack_Animation');
+                this.playAnimation(this.images_ATTACK);                
             } else {
                 this.playAnimation(this.images_IDLE);
             }
