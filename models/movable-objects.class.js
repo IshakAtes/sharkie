@@ -13,12 +13,16 @@ class MovableObject extends DrawableObjects {
 
     enemyTrackingX(X) {
         if (X <= this.world.character.x) {
-            let newCoordinateRight = this.world.level.enemies[12].x += 10;
-            this.world.level.enemies[12].x = newCoordinateRight;
+            this.otherDirection = true;
+            if (!((X + 300) == this.world.character.x)) {
+                let newCoordinateRight = this.world.level.enemies[12].x += 10;
+                this.world.level.enemies[12].x = newCoordinateRight;
+            }
             console.log('RIGHT');
         } else if (X > this.world.character.x) {
             let newCoordinateLeft = this.world.level.enemies[12].x -= 10;
             this.world.level.enemies[12].x = newCoordinateLeft;
+            this.otherDirection = false; 
             console.log('Left');
         }
     }
