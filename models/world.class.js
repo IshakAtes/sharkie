@@ -16,7 +16,7 @@ class World {
     coinBar = new CoinBar();
     coinCollected_Sound = new Audio('sounds/coin.mp3');
     bottleCollected_Sound = new Audio('sounds/bottle.mp3');
-    immortal = true;
+    immortal = false;
 
 
     constructor(canvas, keyboard){
@@ -46,6 +46,7 @@ class World {
                 }
                 this.attackingObjects.forEach( (bubble, i) => {
                     if (enemy.isColliding(bubble)) {
+                        console.log(enemy, bubble);
                         this.attackingObjects.splice(i, 1);
                         if (enemy instanceof JellyFish) {
                             enemy.energy -= 101;
@@ -76,6 +77,7 @@ class World {
                     this.filterCoinsArray(obt);
                 }
             })
+
         }, 200)
     }
 

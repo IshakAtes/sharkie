@@ -18,14 +18,12 @@ class MovableObject extends DrawableObjects {
                 let newCoordinateRight = this.world.level.enemies[12].x += 10;
                 this.world.level.enemies[12].x = newCoordinateRight;
             }
-            console.log('RIGHT');
         } else if (X > this.world.character.x) {
             this.otherDirection = false;
             if (!((X - 60) == this.world.character.x)) {
                 let newCoordinateLeft = this.world.level.enemies[12].x -= 10;
                 this.world.level.enemies[12].x = newCoordinateLeft;
             }
-            console.log('Left');
         }
     }
 

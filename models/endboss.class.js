@@ -3,6 +3,8 @@ class BigBoss extends MovableObject {
     height = 300;
     energy = 10000;
     firstContact = false;
+    EnemyTrackingActive = false;
+    
     images_SPAWNING = [
         './img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
         './img/2.Enemy/3 Final Enemy/1.Introduce/2.png',
@@ -71,13 +73,16 @@ class BigBoss extends MovableObject {
                     this.x = 2700;
                     i = 0;
                     setTimeout(() => {
-                        setInterval(() => {
-                            this.enemyTrackingX(this.x);
-                            this.enemyTrackingY(this.y);
-                        }, 150);
+                        this.EnemyTrackingActive = true;
                     }, 3000)
                 }, 4000)
             }
+
+            if (this.EnemyTrackingActive) {
+                this.enemyTrackingX(this.x);
+                this.enemyTrackingY(this.y);
+            }
+
         }, 200);
     }
 
