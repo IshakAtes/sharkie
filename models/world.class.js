@@ -17,6 +17,7 @@ class World {
     coinCollected_Sound = new Audio('sounds/coin.mp3');
     bottleCollected_Sound = new Audio('sounds/bottle.mp3');
     immortal = false;
+    pushMovement = false;
 
 
     constructor(canvas, keyboard){
@@ -40,6 +41,10 @@ class World {
                 if (this.immortal && this.character.isColliding(enemy) && !(enemy instanceof JellyFish)) {
                     this.character.slapAttack(enemy);
                 } else if(this.character.isColliding(enemy) && enemy.energy >= 1) {
+                    if (enemy instanceof JellyFish) {
+                        // enemy instanceof BigBoss
+                        this.pushSharkie();
+                    }
                     this.character.hit(enemy);
                     // console.log('Character Energy', this.character.energy);
                     this.statusBar.setPercentage(this.character.energy);
@@ -79,6 +84,21 @@ class World {
             })
 
         }, 200)
+    }
+
+
+    pushSharkie(){
+        setTimeout(() => {
+            this.pushMovement = true;
+            setInterval(() => {
+                if (this.pushMovement) {
+                    this.character.x -= 5;
+                    setTimeout(() => {
+                        this.pushMovement = false;
+                    }, 500);
+                }
+            }, 100);
+        }, 1000);
     }
 
 
