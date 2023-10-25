@@ -4,6 +4,7 @@ class BigBoss extends MovableObject {
     energy = 10000;
     firstContact = false;
     EnemyTrackingActive = false;
+    deadAnimationCompelete = false;
     
     images_SPAWNING = [
         './img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
@@ -54,6 +55,9 @@ class BigBoss extends MovableObject {
         './img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png',
         './img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png',
     ];
+    images_PARADISE = [
+        './img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png',
+    ];
     world;
 
 
@@ -64,6 +68,7 @@ class BigBoss extends MovableObject {
         this.loadImages(this.images_ATTACK);
         this.loadImages(this.images_HURT);
         this.loadImages(this.images_DEAD);
+        this.loadImages(this.images_PARADISE);
         this.x = 4000;
         this.y = -400;
         this.animate();
@@ -71,18 +76,30 @@ class BigBoss extends MovableObject {
 
     animate() {
         let i = 0;
+        let deathAnimationPlayed = false; // Eine Variable, um zu verfolgen, ob die Tod-Animation bereits abgespielt wurde
+    
         setInterval(() => {
-            if (i < 10) {
+            if (i < 9) {
                 this.playAnimation(this.images_SPAWNING);
+            } else if (deathAnimationPlayed) {
+                this.playAnimation(this.images_PARADISE);
+                this.y = this.y -= 3;
             } else if (this.isDead()) {
                 this.playAnimation(this.images_DEAD);
-            } else if (this.world.character.x >= this.world.level.enemies[12].x - 150 && this.world.character.x <= this.world.level.enemies[12].x + 400) {
+                setTimeout(() => {
+                    deathAnimationPlayed = true; // Markiere, dass die Tod-Animation bereits abgespielt wurde
+                }, this.images_DEAD.length * 140);
+            } else if (!this.isDead() && this.world.character.x >= this.world.level.enemies[12].x - 150 && this.world.character.x <= this.world.level.enemies[12].x + 400) {
                 this.playAnimation(this.images_ATTACK);
-            } else {
+            } else if (!this.isDead()) {
                 this.playAnimation(this.images_IDLE);
             }
             i++;
 
+            // if (deathAnimationPlayed) {
+            //     this.moveUp();
+            // }
+    
             if (this.world.character.x > 1300 && !this.firstContact) {
                 this.firstContact = true;
                 setTimeout(() => {
@@ -91,15 +108,14 @@ class BigBoss extends MovableObject {
                     i = 0;
                     setTimeout(() => {
                         this.EnemyTrackingActive = true;
-                    }, 3000)
-                }, 4000)
+                    }, 3000);
+                }, 4000);
             }
-
-            if (this.EnemyTrackingActive) {
+    
+            if (this.EnemyTrackingActive && !deathAnimationPlayed) {
                 this.enemyTrackingX(this.x);
                 this.enemyTrackingY(this.y);
             }
-
         }, 200);
     }
 

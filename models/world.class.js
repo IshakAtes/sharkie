@@ -58,7 +58,8 @@ class World {
                             enemy.energy -= 101;
                         }
                         if (bubble instanceof PoisenAttack && enemy instanceof BigBoss) {
-                            enemy.energy -= 1500;
+                            enemy.energy -= 5000;
+                            console.log(enemy.energy);
                         }
                     }
                 })
