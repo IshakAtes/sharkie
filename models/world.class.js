@@ -41,20 +41,24 @@ class World {
                 if (this.immortal && this.character.isColliding(enemy) && !(enemy instanceof JellyFish)) {
                     this.character.slapAttack(enemy);
                 } else if(this.character.isColliding(enemy) && enemy.energy >= 1) {
-                    if (enemy instanceof JellyFish) {
-                        // enemy instanceof BigBoss
-                        this.pushSharkie();
-                    }
+                    // if (enemy instanceof BigBoss) {
+                    //     this.pushSharkie(this.character.x);
+                    // }
                     this.character.hit(enemy);
                     // console.log('Character Energy', this.character.energy);
                     this.statusBar.setPercentage(this.character.energy);
                 }
                 this.attackingObjects.forEach( (bubble, i) => {
                     if (enemy.isColliding(bubble)) {
-                        console.log(enemy, bubble);
                         this.attackingObjects.splice(i, 1);
                         if (enemy instanceof JellyFish) {
                             enemy.energy -= 101;
+                        }
+                        if (enemy instanceof BigBoss) {
+                            enemy.energy -= 101;
+                        }
+                        if (bubble instanceof PoisenAttack && enemy instanceof BigBoss) {
+                            enemy.energy -= 1500;
                         }
                     }
                 })
@@ -87,19 +91,29 @@ class World {
     }
 
 
-    pushSharkie(){
-        setTimeout(() => {
-            this.pushMovement = true;
-            setInterval(() => {
-                if (this.pushMovement) {
-                    this.character.x -= 5;
-                    setTimeout(() => {
-                        this.pushMovement = false;
-                    }, 500);
-                }
-            }, 100);
-        }, 1000);
-    }
+    // pushSharkie(X) {
+    //     if (this.pushMovement) {
+    //         return; // Die Funktion wurde bereits gestartet, daher nichts tun.
+    //     }
+    //     this.pushMovement = true;
+    //     setTimeout(() => {
+    //         setInterval(() => {
+    //             if (this.pushMovement) {
+    //                 if (this.character.otherDirection) {
+    //                     X = this.character.x += 10;
+    //                     setTimeout(() => {
+    //                         this.pushMovement = false;
+    //                     }, 500);
+    //                 } else if (!this.character.otherDirection) {
+    //                     X = this.character.x -= 10;
+    //                     setTimeout(() => {
+    //                         this.pushMovement = false;
+    //                     }, 500);
+    //                 }
+    //             }
+    //         }, 100);
+    //     }, 1000);
+    // }
 
 
     filterPoisenArray(obt) {
