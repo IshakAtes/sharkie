@@ -12,29 +12,38 @@ class MovableObject extends DrawableObjects {
 
 
     enemyTrackingX(X) {
-        if (X <= this.world.character.x) {
-            this.otherDirection = true;
-            if (!((X + 300) == this.world.character.x)) {
-                let newCoordinateRight = this.world.level.enemies[12].x += 10;
-                this.world.level.enemies[12].x = newCoordinateRight;
+        this.world.level.enemies.forEach(boss => {
+            if (boss instanceof BigBoss) {
+                console.log(boss instanceof BigBoss);
+                if (X <= this.world.character.x) {
+                    this.otherDirection = true;
+                    if (!((X + 300) == this.world.character.x)) {
+                        let newCoordinateRight = boss.x += 10;
+                        boss.x = newCoordinateRight;
+                    }
+                } else if (X > this.world.character.x) {
+                    this.otherDirection = false;
+                    if (!((X - 60) == this.world.character.x)) {
+                        let newCoordinateLeft = boss.x -= 10;
+                        boss.x = newCoordinateLeft;
+                    }
+                }
             }
-        } else if (X > this.world.character.x) {
-            this.otherDirection = false;
-            if (!((X - 60) == this.world.character.x)) {
-                let newCoordinateLeft = this.world.level.enemies[12].x -= 10;
-                this.world.level.enemies[12].x = newCoordinateLeft;
-            }
-        }
+        });
     }
 
     enemyTrackingY(Y) {
-        if ((Y + 100) < this.world.character.y) {
-            let newCoordinateUp = this.world.level.enemies[12].y += 10;
-            this.world.level.enemies[12].y = newCoordinateUp;
-        } else if ((Y + 100) > this.world.character.y) {
-            let newCoordinateDown = this.world.level.enemies[12].y -= 10;
-            this.world.level.enemies[12].y = newCoordinateDown;
-        }
+        this.world.level.enemies.forEach(boss => {
+            if (boss instanceof BigBoss) {
+                if ((Y + 100) < this.world.character.y) {
+                    let newCoordinateUp = boss.y += 10;
+                    boss.y = newCoordinateUp;
+                } else if ((Y + 100) > this.world.character.y) {
+                    let newCoordinateDown = boss.y -= 10;
+                    boss.y = newCoordinateDown;
+                }
+            }
+        });
     }
 
 

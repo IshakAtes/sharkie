@@ -80,45 +80,49 @@ class BigBoss extends MovableObject {
         let deathAnimationPlayed = false; // Eine Variable, um zu verfolgen, ob die Tod-Animation bereits abgespielt wurde
     
         setInterval(() => {
-            if (i < 9) {
-                this.playAnimation(this.images_SPAWNING);
-            } else if (deathAnimationPlayed) {
-                this.playAnimation(this.images_PARADISE);
-                this.y = this.y -= 3;
-            } else if (this.isDead()) {
-                this.playAnimation(this.images_DEAD);
-                setTimeout(() => {
-                    deathAnimationPlayed = true; // Markiere, dass die Tod-Animation bereits abgespielt wurde
-                }, this.images_DEAD.length * 140);
-            } else if (this.isHurt) {
-                this.playAnimation(this.images_HURT);
-                setTimeout(() => {
-                    this.isHurt = false;
-                }, this.images_HURT.length * 200);
-            } else if (!this.isDead() && this.world.character.x >= this.world.level.enemies[12].x - 150 && this.world.character.x <= this.world.level.enemies[12].x + 400) {
-                this.playAnimation(this.images_ATTACK);
-            } else if (!this.isDead()) {
-                this.playAnimation(this.images_IDLE);
-            }
-            i++;
-
+            this.world.level.enemies.forEach(boss => {
+                if (boss instanceof BigBoss) {
+                    if (i < 9) {
+                        this.playAnimation(this.images_SPAWNING);
+                    } else if (deathAnimationPlayed) {
+                        this.playAnimation(this.images_PARADISE);
+                        this.y = this.y -= 3;
+                    } else if (this.isDead()) {
+                        this.playAnimation(this.images_DEAD);
+                        setTimeout(() => {
+                            deathAnimationPlayed = true; // Markiere, dass die Tod-Animation bereits abgespielt wurde
+                        }, this.images_DEAD.length * 140);
+                    } else if (this.isHurt) {
+                        this.playAnimation(this.images_HURT);
+                        setTimeout(() => {
+                            this.isHurt = false;
+                        }, this.images_HURT.length * 200);
+                    } else if (!this.isDead() && this.world.character.x >= boss.x - 150 && this.world.character.x <= boss.x + 400) {
+                            this.playAnimation(this.images_ATTACK);
+                        } else if (!this.isDead()) {
+                            this.playAnimation(this.images_IDLE);
+                    }
+                    i++;
     
-            if (this.world.character.x > 1300 && !this.firstContact) {
-                this.firstContact = true;
-                setTimeout(() => {
-                    this.y = -20;
-                    this.x = 2700;
-                    i = 0;
-                    setTimeout(() => {
-                        this.EnemyTrackingActive = true;
-                    }, 3000);
-                }, 4000);
-            }
-    
-            if (this.EnemyTrackingActive && !deathAnimationPlayed) {
-                this.enemyTrackingX(this.x);
-                this.enemyTrackingY(this.y);
-            }
+            
+                    if (this.world.character.x > 1300 && !this.firstContact) {
+                        this.firstContact = true;
+                        setTimeout(() => {
+                            this.y = -20;
+                            this.x = 2700;
+                            i = 0;
+                            setTimeout(() => {
+                                this.EnemyTrackingActive = true;
+                            }, 3000);
+                        }, 4000);
+                    }
+            
+                    if (this.EnemyTrackingActive && !deathAnimationPlayed) {
+                        this.enemyTrackingX(this.x);
+                        this.enemyTrackingY(this.y);
+                    }
+                }
+            });
         }, 200);
     }
 
