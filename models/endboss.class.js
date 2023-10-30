@@ -126,5 +126,4 @@ class BigBoss extends MovableObject {
         }, 200);
     }
 
-
 }
