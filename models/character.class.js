@@ -1,6 +1,7 @@
 class Character extends MovableObject {
     // x = 150;
     speed = 20; //make it 8 if game finish
+    gameOver = false;
     images_IDLE = [
         './img/1.Sharkie/1.IDLE/1.png',
         './img/1.Sharkie/1.IDLE/2.png',
@@ -20,6 +21,9 @@ class Character extends MovableObject {
         './img/1.Sharkie/1.IDLE/16.png',
         './img/1.Sharkie/1.IDLE/17.png',
         './img/1.Sharkie/1.IDLE/18.png',
+    ];
+    images_GAMEOVER = [
+        './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00011.png',
     ];
     images_DEAD = [
         './img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00000.png',
@@ -86,6 +90,7 @@ class Character extends MovableObject {
     constructor(){
         super().loadImage('./img/1.Sharkie/1.IDLE/1.png');
         this.loadImages(this.images_IDLE);
+        this.loadImages(this.images_GAMEOVER);
         this.loadImages(this.images_DEAD);
         this.loadImages(this.images_HURT);
         this.loadImages(this.images_SWIM);
@@ -102,8 +107,14 @@ class Character extends MovableObject {
         setInterval(() => {
             this.swimming_Sound.pause();
             
-            if (this.isDead()) {
+            if (this.gameOver) {
+                this.playAnimation(this.images_GAMEOVER);
+                this.moveUp();
+            } else if (this.isDead()) {
                 this.playAnimation(this.images_DEAD);
+                setTimeout(() => {
+                    this.gameOver = true;
+                }, this.images_DEAD.length * 100);
             } else if(this.isHurt()) {
                 this.playAnimation(this.images_HURT);
             } else if (this.poisenBubbleAttackActive) {
@@ -144,6 +155,12 @@ class Character extends MovableObject {
                 this.playAnimation(this.images_IDLE);
             }
         }, 100);
+
+
+        // gameOverSection() {
+        //     i = 0;
+        //     this.gameOver = true;
+        // };
 
 
         setInterval(() => {
