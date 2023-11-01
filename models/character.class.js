@@ -88,6 +88,7 @@ class Character extends MovableObject {
     swimming_Sound = new Audio('sounds/swimmingFish.mp3');
     gameOver_Sound = new Audio('sounds/loose.mp3');
 
+
     constructor(){
         super().loadImage('./img/1.Sharkie/1.IDLE/1.png');
         this.loadImages(this.images_IDLE);
@@ -109,13 +110,15 @@ class Character extends MovableObject {
             this.swimming_Sound.pause();
             
             if (this.gameOver) {
+                let gameOverScreen = document.getElementById('gameOverOverlay');
                 this.playAnimation(this.images_GAMEOVER);
                 this.moveUp();
                 setTimeout(() => {
                     this.gameOver_Sound.pause();
                 }, 6000);
                 setTimeout(() => {
-                    //Image GameOver Screen
+                    console.log('GameOverScreen');
+                    gameOverScreen.style.display = 'flex';
                 }, 2000);
             } else if (this.isDead()) {
                 this.playAnimation(this.images_DEAD);
