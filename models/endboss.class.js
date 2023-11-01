@@ -60,6 +60,7 @@ class BigBoss extends MovableObject {
         './img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png',
     ];
     world;
+    gameWin_Sound = new Audio('sounds/win.mp3');
 
 
     constructor(){
@@ -87,6 +88,7 @@ class BigBoss extends MovableObject {
                     } else if (deathAnimationPlayed) {
                         this.playAnimation(this.images_PARADISE);
                         this.y = this.y -= 3;
+                        this.gameWin_Sound.play();
                     } else if (this.isDead()) {
                         this.playAnimation(this.images_DEAD);
                         setTimeout(() => {
