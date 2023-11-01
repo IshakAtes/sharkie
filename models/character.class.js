@@ -86,6 +86,7 @@ class Character extends MovableObject {
     ];
     world;
     swimming_Sound = new Audio('sounds/swimmingFish.mp3');
+    gameOver_Sound = new Audio('sounds/loose.mp3');
 
     constructor(){
         super().loadImage('./img/1.Sharkie/1.IDLE/1.png');
@@ -110,6 +111,10 @@ class Character extends MovableObject {
             if (this.gameOver) {
                 this.playAnimation(this.images_GAMEOVER);
                 this.moveUp();
+                this.gameOver_Sound.play();
+                setTimeout(() => {
+                    //Image GameOver Screen
+                }, 1000);
             } else if (this.isDead()) {
                 this.playAnimation(this.images_DEAD);
                 setTimeout(() => {
