@@ -116,7 +116,7 @@ class Character extends MovableObject {
                 }, 6000);
                 setTimeout(() => {
                     //Image GameOver Screen
-                }, 1000);
+                }, 2000);
             } else if (this.isDead()) {
                 this.playAnimation(this.images_DEAD);
                 setTimeout(() => {
