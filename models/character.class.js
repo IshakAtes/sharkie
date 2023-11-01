@@ -119,6 +119,8 @@ class Character extends MovableObject {
                 setTimeout(() => {
                     console.log('GameOverScreen');
                     gameOverScreen.style.display = 'flex';
+                    this.gameOver = false;
+                    this.energy = 100;
                 }, 2000);
             } else if (this.isDead()) {
                 this.playAnimation(this.images_DEAD);

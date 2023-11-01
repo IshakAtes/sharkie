@@ -9,10 +9,12 @@ let audioOn = false;
 
 
 function init(){
+    let gameOverScreen = document.getElementById('gameOverOverlay');
     canvas = document.getElementById('canvasId');
     world = new World(canvas, keyboard);
     backgroundAudio();
     console.log('My Character is', world);
+    gameOverScreen.style.display = 'none';
 }
 
 
