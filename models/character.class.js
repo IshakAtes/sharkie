@@ -111,7 +111,9 @@ class Character extends MovableObject {
             if (this.gameOver) {
                 this.playAnimation(this.images_GAMEOVER);
                 this.moveUp();
-                this.gameOver_Sound.play();
+                setTimeout(() => {
+                    this.gameOver_Sound.pause();
+                }, 6000);
                 setTimeout(() => {
                     //Image GameOver Screen
                 }, 1000);
@@ -119,6 +121,9 @@ class Character extends MovableObject {
                 this.playAnimation(this.images_DEAD);
                 setTimeout(() => {
                     this.gameOver = true;
+                    setTimeout(() => {
+                        this.gameOver_Sound.play();
+                    }, 1000);
                 }, this.images_DEAD.length * 100);
             } else if(this.isHurt()) {
                 this.playAnimation(this.images_HURT);

@@ -88,7 +88,9 @@ class BigBoss extends MovableObject {
                     } else if (deathAnimationPlayed) {
                         this.playAnimation(this.images_PARADISE);
                         this.y = this.y -= 3;
-                        this.gameWin_Sound.play();
+                        setTimeout(() => {
+                            this.gameWin_Sound.play();
+                        }, 1000);
                     } else if (this.isDead()) {
                         this.playAnimation(this.images_DEAD);
                         setTimeout(() => {
