@@ -27,7 +27,7 @@
     <script src="js/game.js"></script>
     <script src="./levels/level1.js"></script>
 </head>
-<body>
+<body onload="checkAndReplay()">
     <img src="./img/background.jpg" alt="backgrounIMG" id="backgroundIMG">
     
     <h1>Sharkie</h1>
@@ -51,7 +51,7 @@
     <div id="gameOverOverlay">
         <div class="gameOverContainer">
             <img src="./img/6.Botones/Tittles/Game Over/Recurso 9.png" alt="">
-            <img onclick="startGame()" class="tryAgainBtn" src="./img/6.Botones/Try again/Recurso 15.png" alt="">
+            <img onclick="tryAgain()" class="tryAgainBtn" src="./img/6.Botones/Try again/Recurso 15.png" alt="">
         </div>
     </div>
     
