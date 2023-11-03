@@ -1,26 +1,24 @@
 let gameStatement = false;
 let tryAgainStatement = false;
+let autoStart = localStorage.getItem('tryAgainLS');
+
+
+function tryAgain() {
+    localStorage.setItem('tryAgainLS', true);
+    window.location.href = 'index.html';
+}
 
 
 function checkAndReplay(){
-    console.log('Replay', tryAgainStatement);
-    if (tryAgainStatement) {
+    if (autoStart == 'true') {
+        tryAgainStatement = false;
+        localStorage.setItem('tryAgainLS', tryAgainStatement);
         startGame();
     }
 }
 
 
-function tryAgain() {
-    tryAgainStatement = true;
-    console.log(tryAgainStatement);
-    setTimeout(() => {
-        window.location.href = 'index.html';
-    }, 1000);
-}
-
-
 function startGame() {
-    tryAgainStatement = false;
     let startScreen = document.getElementById('startCtnId');
     startScreen.style.display = 'none';
     gameStatement = true;
