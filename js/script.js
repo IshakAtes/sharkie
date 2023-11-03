@@ -11,8 +11,7 @@ function tryAgain() {
 
 function checkAndReplay(){
     if (autoStart == 'true') {
-        tryAgainStatement = false;
-        localStorage.setItem('tryAgainLS', tryAgainStatement);
+        localStorage.setItem('tryAgainLS', false);
         startGame();
     }
 }
