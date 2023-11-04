@@ -110,6 +110,8 @@ canvas {
     position: absolute;
     top: 87px;
     height: 768px;
+    background-color: rgba(238, 13, 13, 0);
+    transition: background-color 10s;
 }
 
 .winningImgStyle {
