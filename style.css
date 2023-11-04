@@ -100,3 +100,26 @@ canvas {
     width: 300px !important;
     cursor: pointer ;
 }
+
+
+
+/* Winning-Screen */
+#winningOverlay {
+    display: none;
+    width: 1024px;
+    position: absolute;
+    top: 87px;
+    height: 768px;
+}
+
+.winningImgStyle {
+    width: 100%;
+    height: 100%;
+}
+
+.winBtn {
+    position: absolute;
+    top: 580px;
+    left: 500px;
+    margin-top: 0px;
+}
