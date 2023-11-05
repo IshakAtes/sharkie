@@ -31,7 +31,11 @@ canvas {
 
 /* Controll-Panel */
 #controllsOverlay {
-    display: flex;
+    display: none;
+}
+
+.toggleControlls {
+    display: flex !important;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -112,6 +116,7 @@ canvas {
     top: 87px;
     display: flex;
     justify-content: flex-end;
+    z-index: 2;
 }
 
 .iconContainer {

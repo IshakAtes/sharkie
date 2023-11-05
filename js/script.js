@@ -3,6 +3,12 @@ let tryAgainStatement = false;
 let autoStart = localStorage.getItem('tryAgainLS');
 
 
+function toggleControllPanel() {
+    let panel = document.getElementById('controllsOverlay');
+    panel.classList.toggle('toggleControlls');
+}
+
+
 function tryAgain() {
     localStorage.setItem('tryAgainLS', true);
     window.location.href = 'index.html';
