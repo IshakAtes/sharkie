@@ -86,6 +86,7 @@ class BigBoss extends MovableObject {
                     if (i < 9) {
                         this.playAnimation(this.images_SPAWNING);
                     } else if (deathAnimationPlayed) {
+                        this.world.character.wonTheGame = true;
                         let winningScreen = document.getElementById('winningOverlay');
                         this.playAnimation(this.images_PARADISE);
                         this.y = this.y -= 3;

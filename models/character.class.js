@@ -1,7 +1,8 @@
 class Character extends MovableObject {
     // x = 150;
-    speed = 20; //make it 8 if game finish
+    speed = 8; //make it 8 if game finish
     gameOver = false;
+    wonTheGame = false;
     images_IDLE = [
         './img/1.Sharkie/1.IDLE/1.png',
         './img/1.Sharkie/1.IDLE/2.png',
@@ -177,28 +178,28 @@ class Character extends MovableObject {
 
 
         setInterval(() => {
-            if (!this.gameOver && this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            if (!this.wonTheGame && !this.gameOver && this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
             }
-            if (!this.gameOver && this.world.keyboard.LEFT && this.x > -814) {
+            if (!this.wonTheGame && !this.gameOver && this.world.keyboard.LEFT && this.x > -814) {
                 this.moveLeft();
                 this.otherDirection = true; 
             }
             this.world.camera_x = -this.x + 200;
-            if (!this.gameOver && this.world.keyboard.UP) {
+            if (!this.wonTheGame && !this.gameOver && this.world.keyboard.UP) {
                 this.moveUp();
             }
-            if (!this.gameOver && this.world.keyboard.DOWN) {
+            if (!this.wonTheGame && !this.gameOver && this.world.keyboard.DOWN) {
                 this.moveDown();
             }
-            if (this.world.keyboard.SPACE) {
+            if (!this.wonTheGame && this.world.keyboard.SPACE) {
                 this.attackWithBubble();
             }
-            if (this.world.keyboard.B) {
+            if (!this.wonTheGame && this.world.keyboard.B) {
                 this.attackWithPoisenBubble();
             }
-            if (this.world.keyboard.V) {
+            if (!this.wonTheGame && this.world.keyboard.V) {
                 this.attackWithFinslap();
             }
         }, 30);

@@ -42,10 +42,30 @@
     <!-- Controlls -->
     <div class="controllsMain">
         <div class="iconContainer">
-            <img src="" alt="">
+            <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
             <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/mittleres-volumen.png" alt="SoundOn">
             <img onclick="toggleFullscreen()" id="fullscreenId" src="./img/7.Controlls/maximize.png" alt="fullscreen">
         </div>
+    </div>
+    <!-- Controll-Panel -->
+    <div id="controllsOverlay">
+        <div class="moveCt">
+            <img class="arrowKeys" src="./img/6.Botones/Key/arrow keys.png" alt="arrow keys">
+            <h1>Move Shark</h1>
+        </div>
+        <div class="moveCt">
+            <div class="normalAttackCt">
+                <img class="spaceStyle" src="./img/6.Botones/Key/Space Bar key.png" alt="">
+                <div class="keyStyle"><p>V</p></div>
+            </div>
+            <h1>Attack</h1>
+        </div>
+        <div class="moveCt">
+            <div class="keyStyle"><p>B</p></div>
+            <h1>Poisen Attack</h1>
+        </div>
+        
+
     </div>
     <!-- GameOver-Screen -->
     <div id="gameOverOverlay">

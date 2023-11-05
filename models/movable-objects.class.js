@@ -14,7 +14,6 @@ class MovableObject extends DrawableObjects {
     enemyTrackingX(X) {
         this.world.level.enemies.forEach(boss => {
             if (boss instanceof BigBoss) {
-                console.log(boss instanceof BigBoss);
                 if (X <= this.world.character.x) {
                     this.otherDirection = true;
                     if (!((X + 300) == this.world.character.x)) {

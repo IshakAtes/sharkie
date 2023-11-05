@@ -60,14 +60,12 @@ class World {
                         if (bubble instanceof PoisenAttack && enemy instanceof BigBoss) {
                             enemy.energy -= 1500;
                             enemy.isHurt = true;
-                            console.log(enemy.energy);
                         }
                     }
                 })
                 if (enemy.y <= -500) {
                     // Remove the enemy from the array
                     this.level.enemies.splice(index, 1);
-                    console.log(this.level.enemies)
                 }
             })
 

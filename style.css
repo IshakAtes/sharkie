@@ -29,6 +29,60 @@ canvas {
 }
 
 
+/* Controll-Panel */
+#controllsOverlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 1024px;
+    position: absolute;
+    top: 87px;
+    height: 768px;
+    background-color: rgba(30, 27, 30, 0.692);
+}
+
+.moveCt {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.arrowKeys {
+    width: 200px;
+}
+
+.normalAttackCt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%;
+}
+
+.spaceStyle {
+    width: 240px;
+}
+
+.keyStyle {
+    width: 60px;
+    height: 60px;
+    background-color: #7FFFE0;
+    border-radius: 16px;
+    border: 2px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.keyStyle p {
+    color:#531A82;
+    font-size: 20px;
+}
+
+
+
 
 /* Startscreen */
 .startscreenContainer {
