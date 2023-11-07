@@ -1,4 +1,8 @@
 /* GLOBAL */
+canvas {
+    display: block;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -185,3 +189,18 @@ canvas {
     left: 500px;
     margin-top: 0px;
 }
+
+
+/* RESPONSIVE */
+@media only screen and (max-width: 1024px) {
+    canvas {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    canvas {
+        height: 100vh;
+    }
+}
+
