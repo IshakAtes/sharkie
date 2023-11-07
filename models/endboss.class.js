@@ -93,7 +93,7 @@ class BigBoss extends MovableObject {
                         setTimeout(() => {
                             winningScreen.style.display = 'flex';
                             winningScreen.style.backgroundColor = 'rgb(0, 0, 0)';                            
-                        }, 3000);
+                        }, 4000);
                         setTimeout(() => {
                             this.gameWin_Sound.pause();                            
                         }, 6000);
