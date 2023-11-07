@@ -16,8 +16,9 @@ body h1 {
 }
 
 canvas {
-    background-color: black;
-    box-shadow: 0 0 10px 10px;
+    box-shadow: 0 0 20px 8px;
+    background-color: rgba(169, 30, 212, 0.678);
+    color: rgb(21, 149, 223);
 }
 
 #backgroundIMG {
