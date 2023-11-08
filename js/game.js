@@ -7,7 +7,6 @@ let audioOn = false;
 // startet, ist das spiel lautlos aber es ist das Lautsprecher offen icon zusehen.
 
 
-
 function init(){
     canvas = document.getElementById('canvasId');
     world = new World(canvas, keyboard);

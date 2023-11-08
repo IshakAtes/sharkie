@@ -1,8 +1,4 @@
 /* GLOBAL */
-canvas {
-    display: block;
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -20,6 +16,7 @@ body h1 {
 }
 
 canvas {
+    display: block;
     box-shadow: 0 0 20px 8px;
     background-color: rgba(169, 30, 212, 0.678);
     color: rgb(21, 149, 223);
@@ -302,9 +299,16 @@ canvas {
         width: 100%;
     }
 
-
     .arrow {
         opacity: 0.5;
+    }
+
+    .up {
+        width: 64px; /* Die gewünschte Breite des Buttons */
+        height: 64px; /* Die gewünschte Höhe des Buttons */
+        background: url('./img/arrows/hoch\ \(1\).png') no-repeat center center;
+        background-size: contain; /* Oder background-size: cover, je nach Anforderungen */
+        border: none; /* Entferne die Button-Rahmen, falls erforderlich */
     }
 
     .down {
