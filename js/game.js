@@ -15,13 +15,70 @@ function init(){
     console.log('My Character is', world);
 }
 
-
-
 function backgroundAudio() {
     if (audioOn) {
         background_sound.play();
         background_sound.loop = true;
     }
+}
+
+
+// MOVE CONTROLLER FOR SMARTPHONES
+function moveUp() {
+    keyboard.UP = true;
+}
+
+function moveDown() {
+    keyboard.DOWN = true;
+}
+
+function moveRight() {
+    keyboard.RIGHT = true;
+}
+
+function moveLeft() {
+    keyboard.LEFT = true;
+}
+
+function moveSlap() {
+    keyboard.V = true;
+}
+
+function movePoisenAtk() {
+    keyboard.B = true;
+}
+
+function moveNormalAtk() {
+    keyboard.SPACE = true;
+}
+
+
+function clearUp() {
+    keyboard.UP = false;
+}
+
+function clearDown() {
+    keyboard.DOWN = false;
+}
+
+function clearRight() {
+    keyboard.RIGHT = false;
+}
+
+function clearLeft() {
+    keyboard.LEFT = false;
+}
+
+function clearSlap() {
+    keyboard.V = false;
+}
+
+function clearPoisenAtk() {
+    keyboard.B = false;
+}
+
+function clearNormalAtk() {
+    keyboard.SPACE = false;
 }
 
 
