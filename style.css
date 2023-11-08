@@ -191,6 +191,42 @@ canvas {
 }
 
 
+/* Game Controller */
+.gameControllerMain {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    width: 200px;
+    background-color: #531A82;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ctRightAndLeft {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+
+.arrow {
+    opacity: 0.5;
+}
+
+.down {
+    rotate: 180deg;
+}
+
+.right {
+    rotate: 90deg;
+}
+
+.left {
+    rotate: 270deg;
+}
+
 /* RESPONSIVE */
 @media only screen and (max-width: 1024px) {
     canvas {
