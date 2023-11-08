@@ -190,43 +190,13 @@ canvas {
     margin-top: 0px;
 }
 
-
 /* Game Controller */
 .gameControllerMain {
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
-    width: 200px;
-    background-color: #531A82;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.ctRightAndLeft {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row-reverse;
-    width: 100%;
+    display: none;
 }
 
 
-.arrow {
-    opacity: 0.5;
-}
 
-.down {
-    rotate: 180deg;
-}
-
-.right {
-    rotate: 90deg;
-}
-
-.left {
-    rotate: 270deg;
-}
 
 /* RESPONSIVE */
 @media only screen and (max-width: 1024px) {
@@ -304,5 +274,73 @@ canvas {
         top: 0;
         height: 100vh;
     }
+
+    /* Game Controller */
+    .gameControllerMain {
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        width: 200px;
+        background-color: #531A82;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .ctRightAndLeft {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        width: 100%;
+    }
+
+
+    .arrow {
+        opacity: 0.5;
+    }
+
+    .down {
+        rotate: 180deg;
+    }
+
+    .right {
+        rotate: 90deg;
+    }
+
+    .left {
+        rotate: 270deg;
+    }
+
+
+    /* ATTACK-PANEL */
+    .attackPanel {
+        display: flex;
+        position: absolute;
+        right: 50px;
+        bottom: 30px;
+        width: 160px;
+        justify-content: space-between;
+    }
     
+    .attackPanel img {
+        width: 64px;
+        opacity: 0.5;
+    }
+
+    .bubbleDiv {
+        border: 4px solid #a3a3a3;
+        border-radius: 50px;
+        width: 56px;
+        height: 56px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        opacity: 0.5;
+    }
+
+    .bubbleDiv > img {
+        width: 46px;
+    }
 }
