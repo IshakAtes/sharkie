@@ -100,6 +100,7 @@ canvas {
     justify-content: space-between;
     position: absolute;
     top: 87px;
+    z-index: 1;
 }
 
 .startBtnStyle {
@@ -195,6 +196,11 @@ canvas {
     display: none;
 }
 
+.attackPanel {
+    display: none;
+}
+
+
 
 
 
@@ -233,6 +239,8 @@ canvas {
 
     .startscreenContainer {
         top: 0px;
+        width: 100%;
+        height: 100%;
     }
 
     .wallpaper {
@@ -281,7 +289,6 @@ canvas {
         left: 20px;
         bottom: 20px;
         width: 200px;
-        background-color: #531A82;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -317,8 +324,8 @@ canvas {
     .attackPanel {
         display: flex;
         position: absolute;
-        right: 50px;
-        bottom: 30px;
+        right: 54px;
+        bottom: 54px;
         width: 160px;
         justify-content: space-between;
     }
