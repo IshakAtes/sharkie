@@ -23,60 +23,75 @@ function backgroundAudio() {
 // MOVE CONTROLLER FOR SMARTPHONES
 function moveUp() {
     keyboard.UP = true;
+    document.getElementById('up').style.opacity = '0.7';
 }
 
 function moveDown() {
     keyboard.DOWN = true;
+    document.getElementById('down').style.opacity = '0.7';
 }
 
 function moveRight() {
     keyboard.RIGHT = true;
+    document.getElementById('right').style.opacity = '0.7';
 }
 
 function moveLeft() {
     keyboard.LEFT = true;
+    document.getElementById('left').style.opacity = '0.7';
 }
 
 function moveSlap() {
     keyboard.V = true;
+    document.getElementById('slap').style.opacity = '0.8';
 }
 
 function movePoisenAtk() {
     keyboard.B = true;
+    document.getElementById('poisenAttack').style.opacity = '0.8';
 }
 
 function moveNormalAtk() {
     keyboard.SPACE = true;
+    document.getElementById('normalBubble').style.opacity = '0.8';
 }
 
 
 function clearUp() {
     keyboard.UP = false;
+    document.getElementById('up').style.opacity = '0.5';
 }
 
 function clearDown() {
     keyboard.DOWN = false;
+    document.getElementById('down').style.opacity = '0.5';
 }
 
 function clearRight() {
     keyboard.RIGHT = false;
+    document.getElementById('right').style.opacity = '0.5';
 }
 
 function clearLeft() {
     keyboard.LEFT = false;
+    document.getElementById('left').style.opacity = '0.5';
 }
 
 function clearSlap() {
     keyboard.V = false;
+    document.getElementById('slap').style.opacity = '0.6';
 }
 
 function clearPoisenAtk() {
     keyboard.B = false;
+    document.getElementById('poisenAttack').style.opacity = '0.6';
 }
 
 function clearNormalAtk() {
     keyboard.SPACE = false;
+    document.getElementById('normalBubble').style.opacity = '0.6';
 }
+
 
 
 window.addEventListener('keydown', (event) => {
@@ -137,8 +152,8 @@ window.addEventListener('keyup', (event) => {
 
 document.addEventListener('touchstart', function(event) {
     event.preventDefault();
-  });
-  
-  document.addEventListener('contextmenu', function(event) {
+});
+
+document.addEventListener('contextmenu', function(event) {
     event.preventDefault();
-  });
+});

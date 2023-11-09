@@ -300,7 +300,7 @@ canvas {
     }
 
     .arrow {
-        opacity: 0.5;
+        opacity: 0.4;
     }
 
     .down {
@@ -320,15 +320,18 @@ canvas {
     .attackPanel {
         display: flex;
         position: absolute;
-        right: 54px;
+        right: 50px;
         bottom: 54px;
-        width: 160px;
+        width: 260px;
         justify-content: space-between;
+    }
+
+    .attackPanel > div {
+        opacity: 0.6;
     }
     
     .attackPanel img {
         width: 64px;
-        opacity: 0.5;
     }
 
     .bubbleDiv {
@@ -340,7 +343,6 @@ canvas {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        opacity: 0.5;
     }
 
     .bubbleDiv > img {
