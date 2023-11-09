@@ -39,7 +39,6 @@
     <script src="js/script.js"></script>
     <script src="js/game.js"></script>
     <script src="./levels/level1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 </head>
 <body onload="checkAndReplay()">
     <img src="./img/9272323_4128879.jpg" alt="backgrounIMG" id="backgroundIMG">
@@ -57,7 +56,7 @@
     <div class="controllsMain">
         <div class="iconContainer">
             <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
-            <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/mittleres-volumen.png" alt="SoundOn">
+            <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
             <img onclick="toggleFullscreen()" id="fullscreenId" src="./img/7.Controlls/maximize.png" alt="fullscreen">
         </div>
     </div>
@@ -109,24 +108,5 @@
     </div>
 
     <span class="iconCt" style="margin-top: 50px;"><a target="_blank" href="https://icons8.com/icon/rz3w03CW5Wly/animal">Animal</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></span>
-    
-    <script>
-        // Selektiere alle Elemente, auf die das Verhalten geändert werden soll
-        const elements = document.querySelectorAll('.unselectable');
-
-        // Iteriere durch die ausgewählten Elemente und füge das Eventlistener hinzu
-        elements.forEach(element => {
-            const hammer = new Hammer(element);
-            hammer.on('press', (event) => {
-                event.preventDefault(); // Unterdrücke das Kontextmenü
-                // Führe die Aktion aus (z.B., moveUp())
-            });
-
-            hammer.on('pressup', (event) => {
-                event.preventDefault(); // Unterdrücke weitere Aktionen beim Loslassen des Touch
-                // Führe die Aktion aus (z.B., clearUp())
-            });
-        });
-    </script>
 </body>
 </html>

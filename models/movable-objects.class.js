@@ -78,7 +78,9 @@ class MovableObject extends DrawableObjects {
     slapAttack(enemy) {
         if (enemy instanceof PufferFish || enemy instanceof BigBoss) {
             enemy.energy -= 100;
-            this.slap_sound.play();
+            if (audioOn) {
+                this.slap_sound.play();
+            }
         }
     }
     
@@ -113,9 +115,9 @@ class MovableObject extends DrawableObjects {
     }
 
     playhittingSound(enemy) {
-        if (enemy instanceof JellyFish) {
+        if (enemy instanceof JellyFish && audioOn) {
             this.shock_sound.play();
-        } else {
+        } else if (audioOn) {
             this.hit_sound.play();
         }
     }

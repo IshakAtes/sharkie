@@ -2,7 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let background_sound = new Audio('./sounds/underwater.mp3');
-let audioOn = true;
+let audioOn = false;
 
 
 function init(){

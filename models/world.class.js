@@ -73,8 +73,10 @@ class World {
                 if (this.character.isColliding(obt)) {
                     this.character.isCollectPoisen();
                     this.poisenBar.setPercentage(this.character.myPoisens);
-                    this.bottleCollected_Sound.play();
                     this.filterPoisenArray(obt);
+                    if (audioOn) {
+                        this.bottleCollected_Sound.play();
+                    }
                 }
             })
 
@@ -82,8 +84,10 @@ class World {
                 if (this.character.isColliding(obt)) {
                     this.character.isCollectCoin();
                     this.coinBar.setPercentage(this.character.myCoins);
-                    this.coinCollected_Sound.play();
                     this.filterCoinsArray(obt);
+                    if (audioOn) {
+                        this.coinCollected_Sound.play();
+                    }
                 }
             })
 

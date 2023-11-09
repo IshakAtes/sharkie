@@ -101,7 +101,9 @@ class BigBoss extends MovableObject {
                         this.playAnimation(this.images_DEAD);
                         setTimeout(() => {
                             deathAnimationPlayed = true; // Markiere, dass die Tod-Animation bereits abgespielt wurde
-                            this.gameWin_Sound.play();
+                            if (audioOn) {
+                                this.gameWin_Sound.play();
+                            }
                             // GameWin Screen
                         }, this.images_DEAD.length * 140);
                     } else if (this.isHurt) {

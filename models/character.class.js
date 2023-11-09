@@ -118,7 +118,6 @@ class Character extends MovableObject {
                     this.gameOver_Sound.pause();
                 }, 6000);
                 setTimeout(() => {
-                    console.log('GameOverScreen');
                     gameOverScreen.style.display = 'flex';
                 }, 2000);
             } else if (this.isDead()) {
@@ -126,7 +125,9 @@ class Character extends MovableObject {
                 setTimeout(() => {
                     this.gameOver = true;
                     setTimeout(() => {
-                        this.gameOver_Sound.play();
+                        if (audioOn) {
+                            this.gameOver_Sound.play();
+                        }
                     }, 1000);
                 }, this.images_DEAD.length * 100);
             } else if(this.isHurt()) {
@@ -164,7 +165,9 @@ class Character extends MovableObject {
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
                 // Swimm Animation
                 this.playAnimation(this.images_SWIM);
-                this.swimming_Sound.play();
+                if (audioOn) {
+                    this.swimming_Sound.play();
+                }
             } else {
                 this.playAnimation(this.images_IDLE);
             }
