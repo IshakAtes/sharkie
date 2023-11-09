@@ -303,14 +303,6 @@ canvas {
         opacity: 0.5;
     }
 
-    .up {
-        width: 64px; /* Die gewünschte Breite des Buttons */
-        height: 64px; /* Die gewünschte Höhe des Buttons */
-        background: url('./img/arrows/hoch\ \(1\).png') no-repeat center center;
-        background-size: contain; /* Oder background-size: cover, je nach Anforderungen */
-        border: none; /* Entferne die Button-Rahmen, falls erforderlich */
-    }
-
     .down {
         rotate: 180deg;
     }
