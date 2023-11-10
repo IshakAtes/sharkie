@@ -61,6 +61,7 @@ class BigBoss extends MovableObject {
     ];
     world;
     gameWin_Sound = new Audio('sounds/win.mp3');
+    endBoss_Sound = new Audio('./sounds/trailer.mp3')
 
 
     constructor(){
@@ -100,6 +101,7 @@ class BigBoss extends MovableObject {
                     } else if (this.isDead()) {
                         this.playAnimation(this.images_DEAD);
                         setTimeout(() => {
+                            this.endBoss_Sound.pause();
                             deathAnimationPlayed = true; // Markiere, dass die Tod-Animation bereits abgespielt wurde
                             if (audioOn) {
                                 this.gameWin_Sound.play();
@@ -125,6 +127,7 @@ class BigBoss extends MovableObject {
                             this.y = -20;
                             this.x = 2700;
                             i = 0;
+                            this.endBoss_Sound.play();
                             setTimeout(() => {
                                 this.EnemyTrackingActive = true;
                             }, 3000);
