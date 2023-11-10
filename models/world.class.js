@@ -16,7 +16,7 @@ class World {
     coinBar = new CoinBar();
     coinCollected_Sound = new Audio('sounds/coin.mp3');
     bottleCollected_Sound = new Audio('sounds/bottle.mp3');
-    immortal = false;
+    immortal = true;
     pushMovement = false;
 
 

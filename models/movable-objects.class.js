@@ -16,15 +16,19 @@ class MovableObject extends DrawableObjects {
             if (boss instanceof BigBoss) {
                 if (X <= this.world.character.x) {
                     this.otherDirection = true;
-                    if (!((X + 300) == this.world.character.x)) {
-                        let newCoordinateRight = boss.x += 10;
-                        boss.x = newCoordinateRight;
+                    if (!(this.world.character.x == (X + 300))) {
+                        if (!(this.world.character.x <= (X + 300))) {
+                            let newCoordinateRight = boss.x += 8;
+                            boss.x = newCoordinateRight;
+                        }
                     }
                 } else if (X > this.world.character.x) {
                     this.otherDirection = false;
-                    if (!((X - 60) == this.world.character.x)) {
-                        let newCoordinateLeft = boss.x -= 10;
-                        boss.x = newCoordinateLeft;
+                    if (!(this.world.character.x == (X - 60))) {
+                        if (!(this.world.character.x >= (X - 60))) {
+                            let newCoordinateLeft = boss.x -= 8;
+                            boss.x = newCoordinateLeft;
+                        }
                     }
                 }
             }
