@@ -20,6 +20,9 @@ class MovableObject extends DrawableObjects {
                         if (!(this.world.character.x <= (X + 300))) {
                             let newCoordinateRight = boss.x += 8;
                             boss.x = newCoordinateRight;
+                        } else {
+                            this.world.character.hit(boss);
+                            console.log('jetzt');
                         }
                     }
                 } else if (X > this.world.character.x) {
@@ -60,7 +63,7 @@ class MovableObject extends DrawableObjects {
     }
 
 
-    // isColliding(pufferFish)
+    // isColliding
     isColliding(char) {
         return this.x + this.width > char.x &&
         this.y + this.height > char.y &&
