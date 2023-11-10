@@ -127,7 +127,9 @@ class BigBoss extends MovableObject {
                             this.y = -20;
                             this.x = 2700;
                             i = 0;
-                            this.endBoss_Sound.play();
+                            if (audioOn) {
+                                this.endBoss_Sound.play();
+                            }
                             setTimeout(() => {
                                 this.EnemyTrackingActive = true;
                             }, 3000);

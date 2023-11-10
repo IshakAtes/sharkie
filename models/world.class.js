@@ -2,7 +2,7 @@ class World {
     character = new Character();
     level = level1;
     lights = [new Light(),];
-    barriers = [new BarrierBlock(),];
+    barriers = [new BarrierBlock(), new Stone(-1500, -100), new Stone(-1650, 50), new Stone(-1300, 400), new Hole()];
     coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),];
     poisens = [new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(),];
     canvas;

@@ -174,12 +174,6 @@ class Character extends MovableObject {
         }, 100);
 
 
-        // gameOverSection() {
-        //     i = 0;
-        //     this.gameOver = true;
-        // };
-
-
         setInterval(() => {
             if (!this.wonTheGame && !this.gameOver && this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
@@ -190,10 +184,10 @@ class Character extends MovableObject {
                 this.otherDirection = true; 
             }
             this.world.camera_x = -this.x + 200;
-            if (!this.wonTheGame && !this.gameOver && this.world.keyboard.UP) {
+            if (!this.wonTheGame && !this.gameOver && this.world.keyboard.UP && this.y > -40) {
                 this.moveUp();
             }
-            if (!this.wonTheGame && !this.gameOver && this.world.keyboard.DOWN) {
+            if (!this.wonTheGame && !this.gameOver && this.world.keyboard.DOWN && this.y < 600) {
                 this.moveDown();
             }
             if (!this.wonTheGame && this.world.keyboard.SPACE) {
