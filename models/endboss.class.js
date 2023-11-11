@@ -121,7 +121,7 @@ class BigBoss extends MovableObject {
                     i++;
     
             
-                    if (this.world.character.x > 1300 && !this.firstContact) {
+                    if (this.world.character.x > 1700 && !this.firstContact) {
                         this.firstContact = true;
                         setTimeout(() => {
                             this.y = -20;
