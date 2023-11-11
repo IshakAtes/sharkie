@@ -21,8 +21,8 @@ class MovableObject extends DrawableObjects {
                             let newCoordinateRight = boss.x += 8;
                             boss.x = newCoordinateRight;
                         } else if ((this.world.character.x > X && boss.collidingBigBoss(this.world.character))) {
-                            console.log(boss.collidingBigBoss(this.world.character));
                             this.world.character.hit(boss);
+                            this.world.statusBar.setPercentage(this.world.character.energy);
                         }
                     }
                 } else if (X > this.world.character.x) {
