@@ -20,9 +20,9 @@ class MovableObject extends DrawableObjects {
                         if (!(this.world.character.x <= (X + 300))) {
                             let newCoordinateRight = boss.x += 8;
                             boss.x = newCoordinateRight;
-                        } else {
+                        } else if ((this.world.character.x > X && boss.collidingBigBoss(this.world.character))) {
+                            console.log(boss.collidingBigBoss(this.world.character));
                             this.world.character.hit(boss);
-                            console.log('jetzt');
                         }
                     }
                 } else if (X > this.world.character.x) {
@@ -70,6 +70,14 @@ class MovableObject extends DrawableObjects {
         this.x < char.x &&
         this.y < char.y + char.height;
     }
+
+        // colliding BigBoss if you on the ride side
+        collidingBigBoss(char) {
+            return (this.x + 260) + this.width > char.x &&
+            this.y + this.height > char.y &&
+            (this.x + 260) < char.x &&
+            this.y < char.y + char.height;
+        }
 
 
     isCollectPoisen() {

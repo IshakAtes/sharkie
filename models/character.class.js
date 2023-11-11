@@ -1,6 +1,6 @@
 class Character extends MovableObject {
     // x = 150;
-    speed = 8; //make it 8 if game finish
+    speed = 15; //make it 8 if game finish
     gameOver = false;
     wonTheGame = false;
     images_IDLE = [
