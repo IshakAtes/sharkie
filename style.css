@@ -30,6 +30,17 @@ canvas {
     z-index: -2;
 }
 
+.fullscreen-Class {
+    width: 100vw;
+    height: 100vh;
+}
+
+.fullscreenAndTopZero {
+    width: 100vw !important;
+    height: 100vh !important;
+    top: 0 !important;
+}
+
 
 /* Controll-Panel */
 #controllsOverlay {

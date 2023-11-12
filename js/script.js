@@ -55,6 +55,11 @@ function toggleSound() {
         let iconCt = document.getElementById('panelCtId');
         iconCt.innerHTML = generateControllPanelHTML();
         enterFullscreen(fullscreen);
+        document.getElementById('canvasId').classList.add('fullscreen-Class');
+        document.getElementById('startScreenImageId').classList.add('fullscreen-Class');
+        document.getElementById('startCtnId').style.top = '0';
+        document.getElementById('gameOverOverlay').classList.add('fullscreenAndTopZero');
+        document.getElementById('winningOverlay').classList.add('fullscreenAndTopZero');
     }
 
     function enterFullscreen(element) {
@@ -78,9 +83,13 @@ function toggleSound() {
 
     function closeFullscreen() {
         let iconCt = document.getElementById('panelCtId');
-        iconCt.innerHTML = '';
         iconCt.innerHTML = generateStandartControllPanelHTML();
         exitFullscreen();
+        document.getElementById('canvasId').classList.remove('fullscreen-Class');
+        document.getElementById('startScreenImageId').classList.remove('fullscreen-Class');
+        document.getElementById('startCtnId').style.top = '87px';
+        document.getElementById('gameOverOverlay').classList.remove('fullscreenAndTopZero');
+        document.getElementById('winningOverlay').classList.remove('fullscreenAndTopZero');
     }
 
     function exitFullscreen() {
