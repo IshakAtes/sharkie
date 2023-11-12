@@ -11,6 +11,7 @@ function toggleControllPanel() {
 
 function tryAgain() {
     localStorage.setItem('tryAgainLS', true);
+    localStorage.setItem('soundStatus', audioOn);
     window.location.href = 'index.html';
 }
 
@@ -18,6 +19,7 @@ function tryAgain() {
 function checkAndReplay(){
     if (autoStart == 'true') {
         localStorage.setItem('tryAgainLS', false);
+        audioOn = localStorage.getItem('soundStatus');
         startGame();
     }
 }
