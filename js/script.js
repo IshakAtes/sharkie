@@ -71,15 +71,19 @@ function toggleSound() {
         return`
             <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
             <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
-            <img onclick="exitFullscreen()" id="fullscreenId" src="./img/7.Controlls/fullscreen (2).png" alt="fullscreen">
+            <img onclick="closeFullscreen()" id="fullscreenId" src="./img/7.Controlls/fullscreen (2).png" alt="fullscreen">
         `;
     }
 
 
-    function exitFullscreen() {
+    function closeFullscreen() {
         let iconCt = document.getElementById('panelCtId');
         iconCt.innerHTML = '';
         iconCt.innerHTML = generateStandartControllPanelHTML();
+        exitFullscreen();
+    }
+
+    function exitFullscreen() {
         if(document.exitFullscreen) {
             document.exitFullscreen();
         } else if(document.webkitExitFullscreen) {
