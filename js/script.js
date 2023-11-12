@@ -48,8 +48,6 @@ function toggleSound() {
 }
 
 
-    // let canvas = document.getElementById('canvasId');
-    // canvas.requestFullscreen();
     function openFullscreen() {
         let fullscreen = document.getElementById('screenId');
         let iconCt = document.getElementById('panelCtId');
@@ -57,9 +55,9 @@ function toggleSound() {
         enterFullscreen(fullscreen);
         document.getElementById('canvasId').classList.add('fullscreen-Class');
         document.getElementById('startScreenImageId').classList.add('fullscreen-Class');
-        document.getElementById('startCtnId').style.top = '0';
         document.getElementById('gameOverOverlay').classList.add('fullscreenAndTopZero');
         document.getElementById('winningOverlay').classList.add('fullscreenAndTopZero');
+        document.getElementById('startCtnId').style.top = '0';
     }
 
     function enterFullscreen(element) {
@@ -87,7 +85,12 @@ function toggleSound() {
         exitFullscreen();
         document.getElementById('canvasId').classList.remove('fullscreen-Class');
         document.getElementById('startScreenImageId').classList.remove('fullscreen-Class');
-        document.getElementById('startCtnId').style.top = '87px';
+        if (window.innerWidth > 1024) {
+            console.log('hallo');
+            document.getElementById('startCtnId').style.top = '87px';
+        } else {
+            document.getElementById('startCtnId').style.top = '0px';
+        }
         document.getElementById('gameOverOverlay').classList.remove('fullscreenAndTopZero');
         document.getElementById('winningOverlay').classList.remove('fullscreenAndTopZero');
     }
