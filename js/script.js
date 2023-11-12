@@ -48,7 +48,51 @@ function toggleSound() {
 }
 
 
-function toggleFullscreen() {
-    let canvas = document.getElementById('canvasId');
-    canvas.requestFullscreen();
-}
+    // let canvas = document.getElementById('canvasId');
+    // canvas.requestFullscreen();
+    function openFullscreen() {
+        let fullscreen = document.getElementById('screenId');
+        let iconCt = document.getElementById('panelCtId');
+        iconCt.innerHTML = generateControllPanelHTML();
+        enterFullscreen(fullscreen);
+    }
+
+    function enterFullscreen(element) {
+        if(element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if(element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
+            element.msRequestFullscreen();
+        } else if(element.webkitRequestFullscreen) {  // iOS Safari
+            element.webkitRequestFullscreen();
+        }
+    }
+
+    function generateControllPanelHTML() {
+        return`
+            <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
+            <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
+            <img onclick="exitFullscreen()" id="fullscreenId" src="./img/7.Controlls/fullscreen (2).png" alt="fullscreen">
+        `;
+    }
+
+
+    function exitFullscreen() {
+        let iconCt = document.getElementById('panelCtId');
+        iconCt.innerHTML = '';
+        iconCt.innerHTML = generateStandartControllPanelHTML();
+        if(document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if(document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    }
+
+
+
+    function generateStandartControllPanelHTML() {
+        return`
+            <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
+            <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
+            <img onclick="openFullscreen()" id="fullscreenId" src="./img/7.Controlls/maximize.png" alt="fullscreen">
+        `;
+    }

@@ -45,65 +45,67 @@
     
     <h1 class="title">Sharkie</h1>
 
-    <canvas id="canvasId" width="1024" height="768"></canvas>
+    <div id="screenId">
+        <canvas id="canvasId" width="1024" height="768"></canvas>
 
-    <!-- Startscreen -->
-    <div id="startCtnId" class="startscreenContainer">
-        <img class="wallpaper" src="./img/3. Background/Mesa de trabajo 1.png" alt="" width="1024px" height="768px">
-        <img onclick="startGame()" class="startBtnStyle" src="./img/6.Botones/Start/3.png" alt="">
-    </div>
-    <!-- Controlls -->
-    <div class="controllsMain">
-        <div class="iconContainer">
-            <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
-            <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
-            <img onclick="toggleFullscreen()" id="fullscreenId" src="./img/7.Controlls/maximize.png" alt="fullscreen">
+        <!-- Startscreen -->
+        <div id="startCtnId" class="startscreenContainer">
+            <img class="wallpaper" src="./img/3. Background/Mesa de trabajo 1.png" alt="" width="1024px" height="768px">
+            <img onclick="startGame()" class="startBtnStyle" src="./img/6.Botones/Start/3.png" alt="">
         </div>
-    </div>
-    <!-- Game Controller for Smartphones -->
-    <div class="gameControllerMain">
-        <div ontouchstart="moveUp()" ontouchend="clearUp()" id="up" class="up arrow"><img src="./img/arrows/hoch (1).png" alt=""></div>
-        <div class="ctRightAndLeft">
-            <div ontouchstart="moveRight()" ontouchend="clearRight()" id="right" class="right arrow"><img src="./img/arrows/hoch (1).png" alt=""></div>
-            <div ontouchstart="moveLeft()" ontouchend="clearLeft()" id="left" class="left arrow"><img src="./img/arrows/hoch (1).png" alt=""></div>
-        </div>
-        <div ontouchstart="moveDown()" ontouchend="clearDown()" id="down" class="down arrow"><img src="./img/arrows/hoch (1).png" alt=""></div>
-    </div>
-    <div class="attackPanel">
-        <div ontouchstart="moveSlap()" ontouchend="clearSlap()" id="slap"><img src="./img/arrows/shark.png" alt=""></div>
-        <div ontouchstart="moveNormalAtk()" ontouchend="clearNormalAtk()" id="normalBubble" class="bubbleDiv"><img src="./img/arrows/luftblasen.png" alt=""></div>
-        <div ontouchstart="movePoisenAtk()" ontouchend="clearPoisenAtk()" id="poisenAttack"><img src="./img/arrows/giftig.png" alt=""></div>
-    </div>
-    <!-- Information-Panel -->
-    <div id="controllsOverlay">
-        <div class="moveCt">
-            <img class="arrowKeys" src="./img/6.Botones/Key/arrow keys.png" alt="arrow keys">
-            <h1>Move Shark</h1>
-        </div>
-        <div class="moveCt">
-            <div class="normalAttackCt">
-                <img class="spaceStyle" src="./img/6.Botones/Key/Space Bar key.png" alt="">
-                <div class="keyStyle"><p>V</p></div>
+        <!-- Controlls -->
+        <div class="controllsMain">
+            <div id="panelCtId" class="iconContainer">
+                <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
+                <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
+                <img onclick="openFullscreen()" id="fullscreenId" src="./img/7.Controlls/maximize.png" alt="fullscreen">
             </div>
-            <h1>Attack</h1>
         </div>
-        <div class="moveCt">
-            <div class="keyStyle"><p>B</p></div>
-            <h1>Poisen Attack</h1>
+        <!-- Game Controller for Smartphones -->
+        <div class="gameControllerMain">
+            <div ontouchstart="moveUp()" ontouchend="clearUp()" id="up" class="up arrow"><img src="./img/arrows/hoch (1).png" alt=""></div>
+            <div class="ctRightAndLeft">
+                <div ontouchstart="moveRight()" ontouchend="clearRight()" id="right" class="right arrow"><img src="./img/arrows/hoch (1).png" alt=""></div>
+                <div ontouchstart="moveLeft()" ontouchend="clearLeft()" id="left" class="left arrow"><img src="./img/arrows/hoch (1).png" alt=""></div>
+            </div>
+            <div ontouchstart="moveDown()" ontouchend="clearDown()" id="down" class="down arrow"><img src="./img/arrows/hoch (1).png" alt=""></div>
         </div>
-    </div>
-    <!-- GameOver-Screen -->
-    <div id="gameOverOverlay">
-        <div class="gameOverContainer">
-            <img src="./img/6.Botones/Tittles/Game Over/Recurso 9.png" alt="">
-            <img onclick="tryAgain()" class="tryAgainBtn" src="./img/6.Botones/Try again/Recurso 15.png" alt="">
+        <div class="attackPanel">
+            <div ontouchstart="moveSlap()" ontouchend="clearSlap()" id="slap"><img src="./img/arrows/shark.png" alt=""></div>
+            <div ontouchstart="moveNormalAtk()" ontouchend="clearNormalAtk()" id="normalBubble" class="bubbleDiv"><img src="./img/arrows/luftblasen.png" alt=""></div>
+            <div ontouchstart="movePoisenAtk()" ontouchend="clearPoisenAtk()" id="poisenAttack"><img src="./img/arrows/giftig.png" alt=""></div>
         </div>
-    </div>
-    <!-- Winner-Screen -->
-    <div id="winningOverlay">
-        <div class="winContainer">
-            <img class="winningImgStyle" src="./img/6.Botones/Tittles/You win/Mesa de trabajo 1.png" alt="">
-            <img onclick="tryAgain()" class="tryAgainBtn winBtn" src="./img/6.Botones/Try again/Recurso 15.png" alt="">
+        <!-- Information-Panel -->
+        <div id="controllsOverlay">
+            <div class="moveCt">
+                <img class="arrowKeys" src="./img/6.Botones/Key/arrow keys.png" alt="arrow keys">
+                <h1>Move Shark</h1>
+            </div>
+            <div class="moveCt">
+                <div class="normalAttackCt">
+                    <img class="spaceStyle" src="./img/6.Botones/Key/Space Bar key.png" alt="">
+                    <div class="keyStyle"><p>V</p></div>
+                </div>
+                <h1>Attack</h1>
+            </div>
+            <div class="moveCt">
+                <div class="keyStyle"><p>B</p></div>
+                <h1>Poisen Attack</h1>
+            </div>
+        </div>
+        <!-- GameOver-Screen -->
+        <div id="gameOverOverlay">
+            <div class="gameOverContainer">
+                <img src="./img/6.Botones/Tittles/Game Over/Recurso 9.png" alt="">
+                <img onclick="tryAgain()" class="tryAgainBtn" src="./img/6.Botones/Try again/Recurso 15.png" alt="">
+            </div>
+        </div>
+        <!-- Winner-Screen -->
+        <div id="winningOverlay">
+            <div class="winContainer">
+                <img class="winningImgStyle" src="./img/6.Botones/Tittles/You win/Mesa de trabajo 1.png" alt="">
+                <img onclick="tryAgain()" class="tryAgainBtn winBtn" src="./img/6.Botones/Try again/Recurso 15.png" alt="">
+            </div>
         </div>
     </div>
 
