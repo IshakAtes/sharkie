@@ -7,13 +7,13 @@ let audioOn = false;
 
 function init(){
     canvas = document.getElementById('canvasId');
-    world = new World(canvas, keyboard);
     backgroundAudio();
+    world = new World(canvas, keyboard);
     console.log('My Character is', world);
 }
 
 function backgroundAudio() {
-    if (audioOn == 'true') {
+    if (audioOn) {
         let speaker = document.getElementById('speakerId');
         speaker.src = './img/7.Controlls/mittleres-volumen.png';
         background_sound.play();
