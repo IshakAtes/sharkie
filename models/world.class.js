@@ -32,9 +32,9 @@ class World {
     setWorld() {
         this.character.world = this;
         this.level.enemies[12].world = this;
-        for (let i = 0; i < this.barriers.length; i++) {
-            this.barriers[i].world = this;
-        }
+        // for (let i = 0; i < this.barriers.length; i++) {
+        //     this.barriers[i].world = this;
+        // }
     }
 
 

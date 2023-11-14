@@ -37,7 +37,6 @@ class BarrierBlock extends MovableObject {
 }
 
 class Stone extends MovableObject {
-    world;
     constructor(x, y, width, height){
         super().loadImage('./img/3. Background/Barrier/2.png');
         this.x = x;
@@ -48,7 +47,6 @@ class Stone extends MovableObject {
 }
 
 class Hole extends MovableObject {
-    world;
     constructor(x, y, width, height) {
         super().loadImage('./img/3. Background/Barrier/1.png');
         this.x = x;

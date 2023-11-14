@@ -66,9 +66,9 @@ class MovableObject extends DrawableObjects {
     // isColliding
     isColliding(char) {
         return this.x + this.width > char.x &&
-        this.y + this.height > char.y &&
-        this.x < char.x &&
-        this.y < char.y + char.height;
+        this.y + 60 + this.height - 90 > char.y &&
+        this.x < char.x + char.width &&
+        this.y + 60 < char.y + char.height;
     }
 
         // colliding BigBoss if you on the ride side

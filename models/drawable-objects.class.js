@@ -30,11 +30,15 @@ class DrawableObjects {
 
 
     drawCollisionFrame(ctx) {
-        if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss || this instanceof Stone){
+        if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss){
             ctx.beginPath();
             ctx.lineWidth = '3';
             ctx.strokeStyle = 'red';
-            ctx.rect(this.x, this.y, this.width, this.height);
+            if (this instanceof Character) {
+                ctx.rect(this.x + 25, this.y + 60, this.width - 50, this.height - 90);
+            } else {
+                ctx.rect(this.x, this.y, this.width, this.height);
+            }
             ctx.stroke();
         }
     }
