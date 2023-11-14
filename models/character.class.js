@@ -1,8 +1,4 @@
 class Character extends MovableObject {
-    // x = 150;
-    speed = 15; //make it 8 if game finish
-    gameOver = false;
-    wonTheGame = false;
     images_IDLE = [
         './img/1.Sharkie/1.IDLE/1.png',
         './img/1.Sharkie/1.IDLE/2.png',
@@ -86,8 +82,15 @@ class Character extends MovableObject {
         './img/1.Sharkie/4.Attack/Fin slap/8.png',
     ];
     world;
+    speed = 15; //make it 8 if game finish
+    gameOver = false;
+    wonTheGame = false;
     swimming_Sound = new Audio('sounds/swimmingFish.mp3');
     gameOver_Sound = new Audio('sounds/loose.mp3');
+    stopMoveRight = false;
+    stopMoveLeft = false;
+    stopMoveUp = false;
+    stopMoveDown = false;
 
 
     constructor(){
@@ -175,19 +178,19 @@ class Character extends MovableObject {
 
 
         setInterval(() => {
-            if (!this.wonTheGame && !this.gameOver && this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            if (!this.stopMoveRight && !this.wonTheGame && !this.gameOver && this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
             }
-            if (!this.wonTheGame && !this.gameOver && this.world.keyboard.LEFT && this.x > -814) {
+            if (!this.stopMoveLeft && !this.wonTheGame && !this.gameOver && this.world.keyboard.LEFT && this.x > -814) {
                 this.moveLeft();
                 this.otherDirection = true; 
             }
             this.world.camera_x = -this.x + 200;
-            if (!this.wonTheGame && !this.gameOver && this.world.keyboard.UP && this.y > -40) {
+            if (!this.stopMoveUp && !this.wonTheGame && !this.gameOver && this.world.keyboard.UP && this.y > -40) {
                 this.moveUp();
             }
-            if (!this.wonTheGame && !this.gameOver && this.world.keyboard.DOWN && this.y < 600) {
+            if (!this.stopMoveDown && !this.wonTheGame && !this.gameOver && this.world.keyboard.DOWN && this.y < 600) {
                 this.moveDown();
             }
             if (!this.wonTheGame && this.world.keyboard.SPACE) {

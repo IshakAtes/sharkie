@@ -2,7 +2,7 @@ class World {
     character = new Character();
     level = level1;
     lights = [new Light(),];
-    barriers = [new BarrierBlock(-920, 10, 1000), new Stone(-1500, -100, 800, 500), new Stone(-1650, 50, 800, 500), new Stone(-1300, 400, 800, 500), new Hole(-900, 0, 900, 700), new BarrierBlock(1300, 300, 450), new Hole(1400, 300, 600, 500), new Stone(1400, 220, 600, 100)];
+    barriers = [new BarrierBlock(-920, 10, 1000), new Stone(-1500, -100, 800, 500), new Stone(-1650, 50, 800, 500), new Stone(-1300, 400, 800, 500), new Hole(-900, 0, 900, 700), new BarrierBlock(1300, 300, 450), new Hole(1400, 300, 600, 500), new Stone(1400, 200, 600, 200)];
     coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),];
     poisens = [new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(),];
     canvas;
@@ -32,6 +32,9 @@ class World {
     setWorld() {
         this.character.world = this;
         this.level.enemies[12].world = this;
+        for (let i = 0; i < this.barriers.length; i++) {
+            this.barriers[i].world = this;
+        }
     }
 
 
@@ -45,7 +48,6 @@ class World {
                     //     this.pushSharkie(this.character.x);
                     // }
                     this.character.hit(enemy);
-                    // console.log('Character Energy', this.character.energy);
                     this.statusBar.setPercentage(this.character.energy);
                 }
                 this.attackingObjects.forEach( (bubble, i) => {
@@ -94,30 +96,6 @@ class World {
         }, 200)
     }
 
-
-    // pushSharkie(X) {
-    //     if (this.pushMovement) {
-    //         return; // Die Funktion wurde bereits gestartet, daher nichts tun.
-    //     }
-    //     this.pushMovement = true;
-    //     setTimeout(() => {
-    //         setInterval(() => {
-    //             if (this.pushMovement) {
-    //                 if (this.character.otherDirection) {
-    //                     X = this.character.x += 10;
-    //                     setTimeout(() => {
-    //                         this.pushMovement = false;
-    //                     }, 500);
-    //                 } else if (!this.character.otherDirection) {
-    //                     X = this.character.x -= 10;
-    //                     setTimeout(() => {
-    //                         this.pushMovement = false;
-    //                     }, 500);
-    //                 }
-    //             }
-    //         }, 100);
-    //     }, 1000);
-    // }
 
 
     filterPoisenArray(obt) {
@@ -206,4 +184,28 @@ class World {
         this.ctx.restore();
     }
     
+    
+    // pushSharkie(X) {
+    //     if (this.pushMovement) {
+    //         return; // Die Funktion wurde bereits gestartet, daher nichts tun.
+    //     }
+    //     this.pushMovement = true;
+    //     setTimeout(() => {
+    //         setInterval(() => {
+    //             if (this.pushMovement) {
+    //                 if (this.character.otherDirection) {
+    //                     X = this.character.x += 10;
+    //                     setTimeout(() => {
+    //                         this.pushMovement = false;
+    //                     }, 500);
+    //                 } else if (!this.character.otherDirection) {
+    //                     X = this.character.x -= 10;
+    //                     setTimeout(() => {
+    //                         this.pushMovement = false;
+    //                     }, 500);
+    //                 }
+    //             }
+    //         }, 100);
+    //     }, 1000);
+    // }
 }
