@@ -5,35 +5,35 @@ class BarrierBlock extends MovableObject {
         this.x = x;
         this.y = y;
         this.height = height;
-        this.checkColliding();
+        // this.checkColliding();
     }
 
-    checkColliding() {
-        setInterval(() => {
-            if ((this.world.character).isColliding(this)) {
-                console.log(this, this.world.character);
-                if (this.world.character.x < this.x) {
-                    this.world.character.stopMoveRight = true;
-                }
+    // checkColliding() {
+    //     setInterval(() => {
+    //         if ((this.world.character).isColliding(this)) {
+    //             console.log(this, this.world.character);
+    //             if (this.world.character.x < this.x) {
+    //                 this.world.character.stopMoveRight = true;
+    //             }
                 
-                if (this.world.character.y < this.y) {
-                    this.world.character.stopMoveDown = true;
-                }
-            } else if ((this).isColliding(this.world.character)) {
-                if (this.world.character.x > this.x) {
-                    this.world.character.stopMoveLeft = true;
-                }
-                if (this.world.character.y > this.y) {
-                    this.world.character.stopMoveUp = true;
-                }
-            } else if (!this.world.character.isColliding(this)) {
-                this.world.character.stopMoveRight = false;
-                this.world.character.stopMoveLeft = false;
-                this.world.character.stopMoveUp = false;
-                this.world.character.stopMoveDown = false;
-            }
-        }, 100);
-    }
+    //             if (this.world.character.y < this.y) {
+    //                 this.world.character.stopMoveDown = true;
+    //             }
+    //         } else if ((this).isColliding(this.world.character)) {
+    //             if (this.world.character.x > this.x) {
+    //                 this.world.character.stopMoveLeft = true;
+    //             }
+    //             if (this.world.character.y > this.y) {
+    //                 this.world.character.stopMoveUp = true;
+    //             }
+    //         } else if (!this.world.character.isColliding(this)) {
+    //             this.world.character.stopMoveRight = false;
+    //             this.world.character.stopMoveLeft = false;
+    //             this.world.character.stopMoveUp = false;
+    //             this.world.character.stopMoveDown = false;
+    //         }
+    //     }, 100);
+    // }
 }
 
 class Stone extends MovableObject {
@@ -45,7 +45,6 @@ class Stone extends MovableObject {
         this.width = width;
         this.height = height;
     }
-    
 }
 
 class Hole extends MovableObject {

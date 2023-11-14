@@ -79,13 +79,6 @@ class MovableObject extends DrawableObjects {
             this.y < char.y + char.height;
         }
 
-        collidingStone(char) {
-            return (this.x - 150) + this.width > char.x &&
-            this.y + this.height > char.y &&
-            (this.x - 150) < char.x &&
-            this.y < char.y + char.height;
-        }
-
 
     isCollectPoisen() {
         this.myPoisens += 10;

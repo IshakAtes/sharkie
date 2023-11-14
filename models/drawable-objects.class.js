@@ -30,7 +30,7 @@ class DrawableObjects {
 
 
     drawCollisionFrame(ctx) {
-        if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss || this instanceof Stone || this instanceof BarrierBlock){
+        if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss || this instanceof Stone){
             ctx.beginPath();
             ctx.lineWidth = '3';
             ctx.strokeStyle = 'red';
