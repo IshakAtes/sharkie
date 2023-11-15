@@ -13,12 +13,12 @@ function init(){
 }
 
 function backgroundAudio() {
-    if (audioOn) {
+    if (audioOn == true) {
         let speaker = document.getElementById('speakerId');
         speaker.src = './img/7.Controlls/mittleres-volumen.png';
         background_sound.play();
         background_sound.loop = true;
-    } else {
+    } else if (audioOn == false) {
         audioOn = false;
         let speaker = document.getElementById('speakerId');
         speaker.src = './img/7.Controlls/stumm (2).png';

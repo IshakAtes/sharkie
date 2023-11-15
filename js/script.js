@@ -11,7 +11,7 @@ function toggleControllPanel() {
 
 function tryAgain() {
     localStorage.setItem('tryAgainLS', true);
-    localStorage.setItem('soundStatus', audioOn);
+    localStorage.setItem('soundStatus', JSON.stringify(audioOn));
     window.location.href = 'index.html';
 }
 
@@ -19,7 +19,8 @@ function tryAgain() {
 function checkAndReplay(){
     if (autoStart == 'true') {
         localStorage.setItem('tryAgainLS', false);
-        audioOn = localStorage.getItem('soundStatus');
+        audioOn = JSON.parse(localStorage.getItem('soundStatus'));
+        console.log(localStorage.getItem('soundStatus'));
         startGame();
     }
 }
