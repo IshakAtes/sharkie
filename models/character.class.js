@@ -91,7 +91,7 @@ class Character extends MovableObject {
     stopMoveLeft = false;
     stopMoveUp = false;
     stopMoveDown = false;
-    offset = {top: 64, bottom: 90, left: 24, right: 50};
+    offset = {top: 68, bottom: 99, left: 30, right: 58};
 
 
     constructor(){
