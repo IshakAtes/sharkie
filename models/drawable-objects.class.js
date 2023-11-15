@@ -37,9 +37,10 @@ class DrawableObjects {
             ctx.rect(this.x, this.y, this.width, this.height);
             if (this instanceof Character) {
                 ctx.strokeStyle = 'red';
-                ctx.rect(this.x + 25, this.y + 60, this.width - 50, this.height - 90);
+                ctx.rect(this.x + this.offset.left , this.y + this.offset.top, this.width - this.offset.right, this.height - this.offset.bottom);
             }
             ctx.stroke();
+            // ctx.rect(this.x + 25, this.y + 60, this.width - 50, this.height - 90);
         }
     }
 
