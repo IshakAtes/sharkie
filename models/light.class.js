@@ -8,7 +8,5 @@ class Light extends MovableObject {
         // this.loadImage('./img/3. Background/Light/2.png');
 
         this.x = 100 + Math.random() * 500;
-        
     }
-    
 }

@@ -7,5 +7,4 @@ class Floor extends MovableObject {
         this.x = x;
         this.y = 768 - this.height; // y-koordinate berechnen indem die height (vom Object 500) von der vergebenen canvas höhe (768) abgezogen wird. So kann das Objekt an der unteren stelle vom Canvas positioniert werden, ohne mehrmals zu korrigieren oder anzupassen.
     }
-    
 }

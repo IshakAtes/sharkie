@@ -1,5 +1,4 @@
 class StatusBar extends DrawableObjects {
-
     IMAGES_HEALTH = [
         './img/4. Marcadores/orange/0_  copia.png',
         './img/4. Marcadores/orange/20_ copia 2.png',
@@ -8,7 +7,6 @@ class StatusBar extends DrawableObjects {
         './img/4. Marcadores/orange/80_  copia.png',
         './img/4. Marcadores/orange/100_  copia.png',
     ];
-
     percentage = 100;
 
     constructor() {
@@ -56,7 +54,6 @@ class PoisenBar extends DrawableObjects {
         './img/4. Marcadores/orange/80_ copia.png',
         './img/4. Marcadores/orange/100_ copia.png',
     ];
-
     percentagePoisen = 0;
 
     constructor() {
@@ -103,7 +100,6 @@ class CoinBar extends DrawableObjects {
         './img/4. Marcadores/orange/80_  copia 2.png',
         './img/4. Marcadores/orange/100_ copia 2.png',
     ];
-
     percentageCoins = 0;
 
     constructor() {

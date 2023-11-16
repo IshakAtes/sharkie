@@ -1,12 +1,4 @@
 class BigBoss extends MovableObject {
-    width = 400;
-    height = 300;
-    energy = 10000;
-    firstContact = false;
-    EnemyTrackingActive = false;
-    deadAnimationCompelete = false;
-    isHurt = false;
-    offset = {top: 140, bottom: 200, left: 12, right: 40};
     images_SPAWNING = [
         './img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
         './img/2.Enemy/3 Final Enemy/1.Introduce/2.png',
@@ -60,6 +52,14 @@ class BigBoss extends MovableObject {
         './img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png',
     ];
     world;
+    width = 400;
+    height = 300;
+    energy = 10000;
+    firstContact = false;
+    EnemyTrackingActive = false;
+    deadAnimationCompelete = false;
+    isHurt = false;
+    offset = {top: 140, bottom: 200, left: 12, right: 40};
     gameWin_Sound = new Audio('sounds/win.mp3');
     endBoss_Sound = new Audio('./sounds/trailer.mp3')
 
@@ -87,39 +87,17 @@ class BigBoss extends MovableObject {
                     if (i < 9) {
                         this.playAnimation(this.images_SPAWNING);
                     } else if (deathAnimationPlayed) {
-                        this.world.character.wonTheGame = true;
-                        let winningScreen = document.getElementById('winningOverlay');
-                        this.playAnimation(this.images_PARADISE);
-                        this.y = this.y -= 3;
-                        setTimeout(() => {
-                            winningScreen.style.display = 'flex';
-                            winningScreen.style.backgroundColor = 'rgb(0, 0, 0)';                            
-                        }, 4000);
-                        setTimeout(() => {
-                            this.gameWin_Sound.pause();                            
-                        }, 6000);
+                        this.gameIsFinished();
                     } else if (this.isDead()) {
-                        this.playAnimation(this.images_DEAD);
-                        setTimeout(() => {
-                            this.endBoss_Sound.pause();
-                            deathAnimationPlayed = true; // Markiere, dass die Tod-Animation bereits abgespielt wurde
-                            if (audioOn) {
-                                this.gameWin_Sound.play();
-                            }
-                            // GameWin Screen
-                        }, this.images_DEAD.length * 140);
+                        this.endBossIsDead();
                     } else if (this.isHurt) {
-                        this.playAnimation(this.images_HURT);
-                        setTimeout(() => {
-                            this.isHurt = false;
-                        }, this.images_HURT.length * 200);
+                        this.endBossIsHurt();
                     } else if (!this.isDead() && this.world.character.x >= boss.x - 150 && this.world.character.x <= boss.x + 400) {
-                            this.playAnimation(this.images_ATTACK);
-                        } else if (!this.isDead()) {
-                            this.playAnimation(this.images_IDLE);
+                        this.playAnimation(this.images_ATTACK);
+                    } else if (!this.isDead()) {
+                        this.playAnimation(this.images_IDLE);
                     }
                     i++;
-    
             
                     if (this.world.character.x > 1700 && !this.firstContact) {
                         this.firstContact = true;
@@ -135,7 +113,7 @@ class BigBoss extends MovableObject {
                             }, 3000);
                         }, 4000);
                     }
-            
+                    
                     if (this.EnemyTrackingActive && !deathAnimationPlayed) {
                         this.enemyTrackingX(this.x);
                         this.enemyTrackingY(this.y);
@@ -145,4 +123,37 @@ class BigBoss extends MovableObject {
         }, 200);
     }
 
+
+    endBossIsHurt() {
+        this.playAnimation(this.images_HURT);
+        setTimeout(() => {
+            this.isHurt = false;
+        }, this.images_HURT.length * 200);
+    }
+
+    endBossIsDead() {
+        this.playAnimation(this.images_DEAD);
+        setTimeout(() => {
+            this.endBoss_Sound.pause();
+            deathAnimationPlayed = true; // Markiere, dass die Tod-Animation bereits abgespielt wurde
+            if (audioOn) {
+                this.gameWin_Sound.play();
+            }
+            // GameWin Screen
+        }, this.images_DEAD.length * 140);
+    }
+
+    gameIsFinished() {
+        this.world.character.wonTheGame = true;
+        let winningScreen = document.getElementById('winningOverlay');
+        this.playAnimation(this.images_PARADISE);
+        this.y = this.y -= 3;
+        setTimeout(() => {
+            winningScreen.style.display = 'flex';
+            winningScreen.style.backgroundColor = 'rgb(0, 0, 0)';                            
+        }, 4000);
+        setTimeout(() => {
+            this.gameWin_Sound.pause();                            
+        }, 6000);
+    }
 }

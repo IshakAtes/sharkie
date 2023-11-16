@@ -72,13 +72,13 @@ class MovableObject extends DrawableObjects {
         this.y + this.offset.top < mo.y + mo.offset.top + mo.height - mo.offset.bottom;
     }
 
-        // colliding BigBoss if you on the ride side
-        collidingBigBoss(char) {
-            return (this.x + 260) + this.width > char.x &&
-            this.y + this.height > char.y &&
-            (this.x + 260) < char.x &&
-            this.y < char.y + char.height;
-        }
+    // colliding BigBoss if you on the ride side
+    collidingBigBoss(char) {
+        return (this.x + 260) + this.width > char.x &&
+        this.y + this.height > char.y &&
+        (this.x + 260) < char.x &&
+        this.y < char.y + char.height;
+    }
 
 
     isCollectPoisen() {
