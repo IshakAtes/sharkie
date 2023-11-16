@@ -56,32 +56,36 @@ class World {
                     this.level.enemies.splice(index, 1);
                 }
             })
-
-            this.poisens.forEach( (obt) => {
-                if (this.character.isColliding(obt)) {
-                    this.character.isCollectPoisen();
-                    this.poisenBar.setPercentage(this.character.myPoisens);
-                    this.filterPoisenArray(obt);
-                    if (audioOn) {
-                        this.bottleCollected_Sound.play();
-                    }
-                }
-            })
-
-            this.coins.forEach( (obt) => {
-                if (this.character.isColliding(obt)) {
-                    this.character.isCollectCoin();
-                    this.coinBar.setPercentage(this.character.myCoins);
-                    this.filterCoinsArray(obt);
-                    if (audioOn) {
-                        this.coinCollected_Sound.play();
-                    }
-                }
-            })
-
+            this.checkPoisenAtkCollidingWithEnemy();
+            this.checkCollectedPoisenBottles();
         }, 200)
     }
 
+    checkCollectedPoisenBottles() {
+        this.coins.forEach( (obt) => {
+            if (this.character.isColliding(obt)) {
+                this.character.isCollectCoin();
+                this.coinBar.setPercentage(this.character.myCoins);
+                this.filterCoinsArray(obt);
+                if (audioOn) {
+                    this.coinCollected_Sound.play();
+                }
+            }
+        })
+    }
+
+    checkPoisenAtkCollidingWithEnemy() {
+        this.poisens.forEach( (obt) => {
+            if (this.character.isColliding(obt)) {
+                this.character.isCollectPoisen();
+                this.poisenBar.setPercentage(this.character.myPoisens);
+                this.filterPoisenArray(obt);
+                if (audioOn) {
+                    this.bottleCollected_Sound.play();
+                }
+            }
+        })
+    }
 
     decreaseEnergyOffHittedEnemys(enemy, bubble, i) {
         if (enemy.isColliding(bubble)) {
@@ -179,7 +183,7 @@ class World {
         this.ctx.restore();
     }
     
-    
+
     // pushSharkie(X) {
     //     if (this.pushMovement) {
     //         return; // Die Funktion wurde bereits gestartet, daher nichts tun.
