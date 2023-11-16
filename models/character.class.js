@@ -110,101 +110,122 @@ class Character extends MovableObject {
 
 
     animate() {
-
-        setInterval(() => {
-            this.swimming_Sound.pause();
-            
-            if (this.gameOver) {
-                let gameOverScreen = document.getElementById('gameOverOverlay');
-                this.playAnimation(this.images_GAMEOVER);
-                this.moveUp();
-                setTimeout(() => {
-                    this.gameOver_Sound.pause();
-                }, 6000);
-                setTimeout(() => {
-                    gameOverScreen.style.display = 'flex';
-                }, 2000);
-            } else if (this.isDead()) {
-                this.playAnimation(this.images_DEAD);
-                setTimeout(() => {
-                    this.gameOver = true;
-                    setTimeout(() => {
-                        if (audioOn) {
-                            this.gameOver_Sound.play();
-                        }
-                    }, 1000);
-                }, this.images_DEAD.length * 100);
-            } else if(this.isHurt()) {
-                this.playAnimation(this.images_HURT);
-            } else if (this.poisenBubbleAttackActive) {
-                // Poisen Attack
-                this.playAnimation(this.images_POISENBUBBLE);
-                // this.poisenAttack();
-                if (!this.bubbleAnimationInProgress) {
-                    this.bubbleAnimationInProgress = true;
-                    setTimeout(() => {
-                        this.drawPoisenBubble();
-                        this.bubbleAnimationInProgress = false; // Markiere die Bubble-Animation als abgeschlossen
-                        this.poisenBubbleAttackActive = false;
-                    }, this.images_POISENBUBBLE.length * 100); // Hier wird die Dauer der Bubble-Animation verwendet
-                }
-            } else if (this.bubbleAttackActive) {
-                // Bubble Attack
-                this.playAnimation(this.images_BUBBLE);
-                if (!this.bubbleAnimationInProgress) {
-                    this.bubbleAnimationInProgress = true;
-                    setTimeout(() => {
-                        this.drawBubble();
-                        this.bubbleAnimationInProgress = false; // Markiere die Bubble-Animation als abgeschlossen
-                        this.bubbleAttackActive = false;
-                    }, this.images_BUBBLE.length * 95); // Hier wird die Dauer der Bubble-Animation verwendet
-                }
-            } else if (this.finslap) {
-                //FinSlap
-                this.playAnimation(this.images_FINSLAP);
-                this.world.finSlap();
-                setTimeout(() => {
-                    this.finslap = false;
-                }, this.images_FINSLAP.length * 100);
-            } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
-                // Swimm Animation
-                this.playAnimation(this.images_SWIM);
-                if (audioOn) {
-                    this.swimming_Sound.play();
-                }
-            } else {
-                this.playAnimation(this.images_IDLE);
-            }
-        }, 100);
+        setInterval(() => this.playCharacter(), 100);
+        setInterval(() => this.moveCharacter(), 30);
+    }
 
 
-        setInterval(() => {
-            if (!this.stopMoveRight && !this.wonTheGame && !this.gameOver && this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                this.moveRight();
-                this.otherDirection = false;
-            }
-            if (!this.stopMoveLeft && !this.wonTheGame && !this.gameOver && this.world.keyboard.LEFT && this.x > -814) {
-                this.moveLeft();
-                this.otherDirection = true; 
-            }
-            this.world.camera_x = -this.x + 200;
-            if (!this.stopMoveUp && !this.wonTheGame && !this.gameOver && this.world.keyboard.UP && this.y > -40) {
-                this.moveUp();
-            }
-            if (!this.stopMoveDown && !this.wonTheGame && !this.gameOver && this.world.keyboard.DOWN && this.y < 600) {
-                this.moveDown();
-            }
-            if (!this.wonTheGame && this.world.keyboard.SPACE) {
-                this.attackWithBubble();
-            }
-            if (!this.wonTheGame && this.world.keyboard.B) {
-                this.attackWithPoisenBubble();
-            }
-            if (!this.wonTheGame && this.world.keyboard.V) {
-                this.attackWithFinslap();
-            }
-        }, 30);
+    playCharacter() {
+        this.swimming_Sound.pause();
+        if (this.gameOver) {
+            this.gameIsOver();
+        } else if (this.isDead()) {
+            this.characterIsDead();
+        } else if(this.isHurt()) {
+            this.playAnimation(this.images_HURT);
+        } else if (this.poisenBubbleAttackActive) {
+            this.AttackWithPoisen();
+        } else if (this.bubbleAttackActive) {
+            this.BubbleAttack();
+        } else if (this.finslap) {
+            this.characterFinslap();
+        } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
+            this.swimAnimation();
+        } else {
+            this.playAnimation(this.images_IDLE);
+        }
+    }
 
+    swimAnimation() {
+        this.playAnimation(this.images_SWIM);
+        if (audioOn) {
+            this.swimming_Sound.play();
+        }
+    }
+
+    characterFinslap() {
+        this.playAnimation(this.images_FINSLAP);
+        this.world.finSlap();
+        setTimeout(() => {
+            this.finslap = false;
+        }, this.images_FINSLAP.length * 100);
+    }
+
+    BubbleAttack() {
+        this.playAnimation(this.images_BUBBLE);
+        if (!this.bubbleAnimationInProgress) {
+            this.bubbleAnimationInProgress = true;
+            setTimeout(() => {
+                this.drawBubble();
+                this.bubbleAnimationInProgress = false; // Markiere die Bubble-Animation als abgeschlossen
+                this.bubbleAttackActive = false;
+            }, this.images_BUBBLE.length * 95); // Hier wird die Dauer der Bubble-Animation verwendet
+        }
+    }
+
+    AttackWithPoisen() {
+        this.playAnimation(this.images_POISENBUBBLE);
+        if (!this.bubbleAnimationInProgress) {
+            this.bubbleAnimationInProgress = true;
+            setTimeout(() => {
+                this.drawPoisenBubble();
+                this.bubbleAnimationInProgress = false; // Markiere die Bubble-Animation als abgeschlossen
+                this.poisenBubbleAttackActive = false;
+            }, this.images_POISENBUBBLE.length * 100); // Hier wird die Dauer der Bubble-Animation verwendet
+        }
+    }
+
+    characterIsDead() {
+        this.playAnimation(this.images_DEAD);
+            setTimeout(() => {
+                this.gameOver = true;
+                setTimeout(() => {
+                    if (audioOn) {
+                        this.gameOver_Sound.play();
+                    }
+                }, 1000);
+            }, this.images_DEAD.length * 100);
+    }
+
+    gameIsOver() {
+        let gameOverScreen = document.getElementById('gameOverOverlay');
+            this.playAnimation(this.images_GAMEOVER);
+            this.moveUp();
+            setTimeout(() => {
+                this.gameOver_Sound.pause();
+            }, 6000);
+            setTimeout(() => {
+                gameOverScreen.style.display = 'flex';
+            }, 2000);
+    }
+
+
+    
+    moveCharacter() {
+        if (!this.stopMoveRight && !this.wonTheGame && !this.gameOver && this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            this.moveRight();
+            this.otherDirection = false;
+        }
+        if (!this.stopMoveLeft && !this.wonTheGame && !this.gameOver && this.world.keyboard.LEFT && this.x > -814) {
+            this.moveLeft();
+            this.otherDirection = true; 
+        }
+        this.world.camera_x = -this.x + 200;
+        if (!this.stopMoveUp && !this.wonTheGame && !this.gameOver && this.world.keyboard.UP && this.y > -40) {
+            this.moveUp();
+        }
+        if (!this.stopMoveDown && !this.wonTheGame && !this.gameOver && this.world.keyboard.DOWN && this.y < 600) {
+            this.moveDown();
+        }
+        if (!this.wonTheGame && this.world.keyboard.SPACE) {
+            this.attackWithBubble();
+        }
+        if (!this.wonTheGame && this.world.keyboard.B) {
+            this.attackWithPoisenBubble();
+        }
+        if (!this.wonTheGame && this.world.keyboard.V) {
+            this.attackWithFinslap();
+        }
     }
 
 }
