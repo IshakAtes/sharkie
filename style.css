@@ -6,6 +6,7 @@ body {
     align-items: center;
     margin: 0px;
     font-family: 'Luckiest Guy', 'Permanent Marker', cursive;
+    overflow: hidden;
 }
 
 body h1 {
@@ -18,7 +19,6 @@ body h1 {
 canvas {
     display: block;
     box-shadow: 0 0 20px 8px;
-    background-color: rgba(169, 30, 212, 0.678);
     color: rgb(21, 149, 223);
 }
 
@@ -39,6 +39,10 @@ canvas {
     width: 100vw !important;
     height: 100vh !important;
     top: 0 !important;
+}
+
+#infoOverlay {
+    display: none;
 }
 
 
@@ -372,5 +376,20 @@ canvas {
 
     .bubbleDiv > img {
         width: 46px;
+    }
+}
+
+
+@media only screen and (max-height: 850px) {
+    #titleId {
+        display: none;
+    }
+
+    canvas {
+        margin-top: 20px;
+    }
+
+    .controllsMain {
+        top: 50px;
     }
 }
