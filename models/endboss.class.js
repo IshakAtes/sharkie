@@ -6,7 +6,7 @@ class BigBoss extends MovableObject {
     EnemyTrackingActive = false;
     deadAnimationCompelete = false;
     isHurt = false;
-    
+    offset = {top: 140, bottom: 200, left: 12, right: 40};
     images_SPAWNING = [
         './img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
         './img/2.Enemy/3 Final Enemy/1.Introduce/2.png',

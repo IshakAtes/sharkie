@@ -21,6 +21,7 @@ class PufferFish extends MovableObject {
     images_BLOWTED = [
         './img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 1 (can animate by going up).png',
     ];
+    offset = {top: 4, bottom: 20, left: 0, right: 6};
 
     constructor(){
         super().loadImage('./img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png');
@@ -98,6 +99,7 @@ class JellyFish extends MovableObject {
     width = 70;
     x = 600 + Math.random() * 500;
     y = 200;
+    offset = {top: 4, bottom: 14, left: 2, right: 4};
     images_IDLE = [
         './img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png',
         './img/2.Enemy/2 Jelly fish/Regular damage/Lila 2.png',

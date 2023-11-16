@@ -34,13 +34,12 @@ class DrawableObjects {
             ctx.beginPath();
             ctx.lineWidth = '3';
             ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            if (this instanceof Character) {
+            // ctx.rect(this.x, this.y, this.width, this.height);
+            if (this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss || this instanceof Coin || this instanceof Poisen) {
                 ctx.strokeStyle = 'red';
                 ctx.rect(this.x + this.offset.left , this.y + this.offset.top, this.width - this.offset.right, this.height - this.offset.bottom);
             }
             ctx.stroke();
-            // ctx.rect(this.x + 25, this.y + 60, this.width - 50, this.height - 90);
         }
     }
 
