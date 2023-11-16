@@ -156,3 +156,68 @@ class JellyFish extends MovableObject {
     }
     
 }
+
+
+class ElectroJelly extends MovableObject {
+    height = 70;
+    width = 70;
+    y = 650;
+    offset = {top: 4, bottom: 14, left: 2, right: 4};
+    energy = 300;
+    images_IDLE = [
+        './img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png',
+        './img/2.Enemy/2 Jelly fish/Súper dangerous/Green 2.png',
+        './img/2.Enemy/2 Jelly fish/Súper dangerous/Green 3.png',
+        './img/2.Enemy/2 Jelly fish/Súper dangerous/Green 4.png',
+    ];
+    images_DEAD = [
+        './img/2.Enemy/2 Jelly fish/Dead/green/g1.png',
+        './img/2.Enemy/2 Jelly fish/Dead/green/g2.png',
+        './img/2.Enemy/2 Jelly fish/Dead/green/g3.png',
+        './img/2.Enemy/2 Jelly fish/Dead/green/g4.png',
+    ];
+    constructor(x){
+        super().loadImage('./img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png');
+        this.loadImages(this.images_IDLE);
+        this.loadImages(this.images_DEAD);
+        this.animate();
+        this.speed = 1.15 + Math.random() * 0.25;
+        this.x = x;
+    }
+
+    animate() {
+        // setInterval(() => {
+        //     let i = this.currentImage % this.images_IDLE.length;
+        //     let path = this.images_IDLE[i];
+        //     this.img = this.imageCache[path];
+        //     this.currentImage++;
+        // }, 200);
+        setInterval(() => {
+            if (this.isDead()) {
+                this.playAnimation(this.images_DEAD);
+                this.otherDirection = false;
+                this.moveUp();
+            } else {
+                this.playAnimation(this.images_IDLE);
+            }
+        }, 200);
+
+        setInterval(() => {
+            if (this.isDead()) {
+                this.otherDirection = false;
+                this.moveUp();
+            } else if (this.y > 300 && !this.otherDirection) {
+                this.moveUp();
+                if (this.y <= 300) {
+                    this.otherDirection = true;
+                }
+            } else if (this.y <= 650 && this.otherDirection && !this.isDead()) {
+                this.moveDown();
+                if (this.y >= 650) {
+                    this.otherDirection = false;
+                }
+            }
+        }, 1000 / 60);
+    }
+    
+}

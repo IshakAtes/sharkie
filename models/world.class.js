@@ -56,6 +56,12 @@ class World {
                         if (enemy instanceof JellyFish) {
                             enemy.energy -= 101;
                         }
+                        if (enemy instanceof ElectroJelly) {
+                            enemy.energy -= 101;
+                        }
+                        if (bubble instanceof PoisenAttack && enemy instanceof ElectroJelly) {
+                            enemy.energy -= 1500;
+                        }
                         if (enemy instanceof BigBoss) {
                             enemy.energy -= 101;
                         }

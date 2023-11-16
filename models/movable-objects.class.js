@@ -102,7 +102,11 @@ class MovableObject extends DrawableObjects {
     
     hit(enemy) {
         this.playhittingSound(enemy);
-        this.energy -= 5;
+        if (enemy instanceof ElectroJelly) {
+            this.energy -= 30;
+        } else {
+            this.energy -= 5;
+        }
         if(this.energy <= 0) {
             this.energy = 0;
         } else {
