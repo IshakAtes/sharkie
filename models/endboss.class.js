@@ -62,6 +62,7 @@ class BigBoss extends MovableObject {
     offset = {top: 140, bottom: 200, left: 12, right: 40};
     gameWin_Sound = new Audio('sounds/win.mp3');
     endBoss_Sound = new Audio('./sounds/trailer.mp3')
+    deathAnimationPlayed = false; // Eine Variable, um zu verfolgen, ob die Tod-Animation bereits abgespielt wurde
 
 
     constructor(){
@@ -79,14 +80,12 @@ class BigBoss extends MovableObject {
 
     animate() {
         let i = 0;
-        let deathAnimationPlayed = false; // Eine Variable, um zu verfolgen, ob die Tod-Animation bereits abgespielt wurde
-    
         setInterval(() => {
             this.world.level.enemies.forEach(boss => {
                 if (boss instanceof BigBoss) {
                     if (i < 9) {
                         this.playAnimation(this.images_SPAWNING);
-                    } else if (deathAnimationPlayed) {
+                    } else if (this.deathAnimationPlayed) {
                         this.gameIsFinished();
                     } else if (this.isDead()) {
                         this.endBossIsDead();
@@ -113,8 +112,8 @@ class BigBoss extends MovableObject {
                             }, 3000);
                         }, 4000);
                     }
-                    
-                    if (this.EnemyTrackingActive && !deathAnimationPlayed) {
+
+                    if (this.EnemyTrackingActive && !this.deathAnimationPlayed) {
                         this.enemyTrackingX(this.x);
                         this.enemyTrackingY(this.y);
                     }
@@ -135,7 +134,7 @@ class BigBoss extends MovableObject {
         this.playAnimation(this.images_DEAD);
         setTimeout(() => {
             this.endBoss_Sound.pause();
-            deathAnimationPlayed = true; // Markiere, dass die Tod-Animation bereits abgespielt wurde
+            this.deathAnimationPlayed = true; // Markiere, dass die Tod-Animation bereits abgespielt wurde
             if (audioOn) {
                 this.gameWin_Sound.play();
             }

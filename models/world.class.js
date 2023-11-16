@@ -50,27 +50,7 @@ class World {
                     this.character.hit(enemy);
                     this.statusBar.setPercentage(this.character.energy);
                 }
-                this.attackingObjects.forEach( (bubble, i) => {
-                    if (enemy.isColliding(bubble)) {
-                        this.attackingObjects.splice(i, 1);
-                        if (enemy instanceof JellyFish) {
-                            enemy.energy -= 101;
-                        }
-                        if (enemy instanceof ElectroJelly) {
-                            enemy.energy -= 101;
-                        }
-                        if (bubble instanceof PoisenAttack && enemy instanceof ElectroJelly) {
-                            enemy.energy -= 1500;
-                        }
-                        if (enemy instanceof BigBoss) {
-                            enemy.energy -= 101;
-                        }
-                        if (bubble instanceof PoisenAttack && enemy instanceof BigBoss) {
-                            enemy.energy -= 1500;
-                            enemy.isHurt = true;
-                        }
-                    }
-                })
+                this.attackingObjects.forEach( (bubble, i) => this.decreaseEnergyOffHittedEnemys(enemy, bubble, i));
                 if (enemy.y <= -500) {
                     // Remove the enemy from the array
                     this.level.enemies.splice(index, 1);
@@ -103,6 +83,27 @@ class World {
     }
 
 
+    decreaseEnergyOffHittedEnemys(enemy, bubble, i) {
+        if (enemy.isColliding(bubble)) {
+            this.attackingObjects.splice(i, 1);
+            if (enemy instanceof JellyFish) {
+                enemy.energy -= 101;
+            }
+            if (enemy instanceof ElectroJelly) {
+                enemy.energy -= 101;
+            }
+            if (bubble instanceof PoisenAttack && enemy instanceof ElectroJelly) {
+                enemy.energy -= 1500;
+            }
+            if (enemy instanceof BigBoss) {
+                enemy.energy -= 101;
+            }
+            if (bubble instanceof PoisenAttack && enemy instanceof BigBoss) {
+                enemy.energy -= 1500;
+                enemy.isHurt = true;
+            }
+        }
+    }
 
     filterPoisenArray(obt) {
         let poisenIndex = this.poisens.indexOf(obt);
@@ -114,7 +115,6 @@ class World {
         this.coins.splice(coinIndex, 1);
     }
 
-
     finSlap() {
         clearTimeout(this.immortalTimeout); // Timer zurücksetzen, falls er bereits läuft
         this.immortal = true;
@@ -124,10 +124,8 @@ class World {
     }
 
 
-
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.water);
         this.addObjectsToMap(this.level.bgShadow);
@@ -136,18 +134,15 @@ class World {
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.coins);
         this.addObjectsToMap(this.poisens);
-
         this.ctx.translate(-this.camera_x, 0); //back
         this.addToMap(this.statusBar);
         this.addToMap(this.poisenBar);
         this.addToMap(this.coinBar);
         this.ctx.translate(this.camera_x, 0); // forwards
-
         this.addToMap(this.character);
         this.addObjectsToMap(this.attackingObjects);
         this.addObjectsToMap(this.lights);
         this.ctx.translate(-this.camera_x, 0);
-
         // Draw() wird immer wieder aufgerufen. "this" funktioniert in einer normalen Funktion nicht mehr, deshalb übergeben wir "this" an eine Variable "let self" um sie dann in der Funktion anwenden zukönnen.
         let self = this;
         requestAnimationFrame(function(){
@@ -155,29 +150,23 @@ class World {
         });
     };
 
-
-
     addObjectsToMap(objects){
         objects.forEach(ob => {
             this.addToMap(ob);
         });
     };
 
-
     addToMap(char) {
         if(char.otherDirection) {
             this.flipImage(char);
         }
-        
         char.draw(this.ctx);
         char.drawCollisionFrame(this.ctx);
-
         if(char.otherDirection) {
             this.flipImageBack(char);
         }
     };
     
-
     flipImage(char) {
         this.ctx.save();
         this.ctx.translate(char.width, 0);
