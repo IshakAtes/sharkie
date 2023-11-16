@@ -12,7 +12,6 @@ class DrawableObjects {
     width = 150;
 
 
-
     loadImage(path) {
         this.img = new Image(); // new Image() ist keine Klasse. Es ist das gleiche wie ein img tag in Javascript <img src="#" alt="">
         this.img.src = path;

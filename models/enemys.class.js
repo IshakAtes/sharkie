@@ -1,8 +1,4 @@
 class PufferFish extends MovableObject {
-    height = 70;
-    width = 70;
-    x = 400 + Math.random() * 500;
-    y = 600;
     images_IDLE = [
         './img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png',
         './img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim2.png',
@@ -22,6 +18,10 @@ class PufferFish extends MovableObject {
         './img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 1 (can animate by going up).png',
     ];
     offset = {top: 4, bottom: 20, left: 0, right: 6};
+    height = 70;
+    width = 70;
+    x = 400 + Math.random() * 500;
+    y = 600;
 
     constructor(){
         super().loadImage('./img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png');
@@ -95,11 +95,6 @@ class PufferFish extends MovableObject {
 
 
 class JellyFish extends MovableObject {
-    height = 70;
-    width = 70;
-    x = 600 + Math.random() * 500;
-    y = 200;
-    offset = {top: 4, bottom: 14, left: 2, right: 4};
     images_IDLE = [
         './img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png',
         './img/2.Enemy/2 Jelly fish/Regular damage/Lila 2.png',
@@ -112,6 +107,12 @@ class JellyFish extends MovableObject {
         './img/2.Enemy/2 Jelly fish/Dead/Lila/L3.png',
         './img/2.Enemy/2 Jelly fish/Dead/Lila/L4.png',
     ];
+    height = 70;
+    width = 70;
+    x = 600 + Math.random() * 500;
+    y = 200;
+    offset = {top: 4, bottom: 14, left: 2, right: 4};
+
     constructor(){
         super().loadImage('./img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png');
         this.loadImages(this.images_IDLE);
@@ -154,16 +155,10 @@ class JellyFish extends MovableObject {
             }
         }, 1000 / 60);
     }
-    
 }
 
 
 class ElectroJelly extends MovableObject {
-    height = 70;
-    width = 70;
-    y = 650;
-    offset = {top: 4, bottom: 14, left: 2, right: 4};
-    energy = 300;
     images_IDLE = [
         './img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png',
         './img/2.Enemy/2 Jelly fish/Súper dangerous/Green 2.png',
@@ -176,6 +171,12 @@ class ElectroJelly extends MovableObject {
         './img/2.Enemy/2 Jelly fish/Dead/green/g3.png',
         './img/2.Enemy/2 Jelly fish/Dead/green/g4.png',
     ];
+    height = 70;
+    width = 70;
+    y = 650;
+    offset = {top: 4, bottom: 14, left: 2, right: 4};
+    energy = 300;
+
     constructor(x){
         super().loadImage('./img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png');
         this.loadImages(this.images_IDLE);
@@ -186,12 +187,6 @@ class ElectroJelly extends MovableObject {
     }
 
     animate() {
-        // setInterval(() => {
-        //     let i = this.currentImage % this.images_IDLE.length;
-        //     let path = this.images_IDLE[i];
-        //     this.img = this.imageCache[path];
-        //     this.currentImage++;
-        // }, 200);
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.images_DEAD);
@@ -219,5 +214,4 @@ class ElectroJelly extends MovableObject {
             }
         }, 1000 / 60);
     }
-    
 }
