@@ -57,6 +57,7 @@ canvas {
     top: 87px;
     height: 768px;
     background-color: rgba(30, 27, 30, 0.692);
+    z-index: 1;
 }
 
 .moveCt {
@@ -298,6 +299,11 @@ canvas {
         top: 0;
         height: 100vh;
     }
+
+    .normalAttackCt {
+        width: 60%;
+    }
+
 
     /* Game Controller */
     .gameControllerMain {
