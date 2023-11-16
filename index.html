@@ -56,6 +56,7 @@
         <!-- Controlls -->
         <div class="controllsMain">
             <div id="panelCtId" class="iconContainer">
+                <img onclick="toggleInfoPanel()" src="./img/7.Controlls/buchstabe-i.png" alt="">
                 <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
                 <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
                 <img onclick="openFullscreen()" id="fullscreenId" src="./img/7.Controlls/maximize.png" alt="fullscreen">
@@ -75,7 +76,11 @@
             <div ontouchstart="moveNormalAtk()" ontouchend="clearNormalAtk()" id="normalBubble" class="bubbleDiv"><img src="./img/arrows/luftblasen.png" alt=""></div>
             <div ontouchstart="movePoisenAtk()" ontouchend="clearPoisenAtk()" id="poisenAttack"><img src="./img/arrows/giftig.png" alt=""></div>
         </div>
-        <!-- Information-Panel -->
+        <!-- INFO-PANEL -->
+        <div id="infoOverlay">
+            <span class="iconCt" style="margin-top: 50px;"><a target="_blank" href="https://icons8.com/icon/rz3w03CW5Wly/animal">Animal</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></span>
+        </div>
+        <!-- CONTROL-Panel -->
         <div id="controllsOverlay">
             <div class="moveCt">
                 <img class="arrowKeys" src="./img/6.Botones/Key/arrow keys.png" alt="arrow keys">
@@ -108,7 +113,5 @@
             </div>
         </div>
     </div>
-
-    <span class="iconCt" style="margin-top: 50px;"><a target="_blank" href="https://icons8.com/icon/rz3w03CW5Wly/animal">Animal</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></span>
 </body>
 </html>

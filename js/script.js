@@ -2,6 +2,11 @@ let gameStatement = false;
 let tryAgainStatement = false;
 let autoStart = localStorage.getItem('tryAgainLS');
 
+function toggleInfoPanel() {
+    let panel = document.getElementById('infoOverlay');
+    panel.classList.toggle('toggleControlls');
+}
+
 
 function toggleControllPanel() {
     let panel = document.getElementById('controllsOverlay');
