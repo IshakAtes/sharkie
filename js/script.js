@@ -93,14 +93,15 @@ function toggleSound() {
         exitFullscreen();
         document.getElementById('canvasId').classList.remove('fullscreen-Class');
         document.getElementById('startScreenImageId').classList.remove('fullscreen-Class');
-        if (window.innerWidth > 1024) {
-            console.log('hallo');
-            document.getElementById('startCtnId').style.top = '87px';
-        } else {
-            document.getElementById('startCtnId').style.top = '0px';
-        }
         document.getElementById('gameOverOverlay').classList.remove('fullscreenAndTopZero');
         document.getElementById('winningOverlay').classList.remove('fullscreenAndTopZero');
+        if (window.innerWidth > 1024 && window.innerHeight <= 982) {
+            document.getElementById('startCtnId').style.top = '20px';
+        } else if (window.innerWidth < 1024) {
+            document.getElementById('startCtnId').style.top = '0px';
+        } else {
+            document.getElementById('startCtnId').style.top = '87px';
+        }
     }
 
     function exitFullscreen() {
