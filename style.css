@@ -217,6 +217,26 @@ canvas {
 
 
 
+@media only screen and (max-height: 850px) {
+    #titleId {
+        display: none;
+    }
+
+    canvas {
+        margin-top: 20px;
+    }
+
+    .controllsMain {
+        top: 50px;
+    }
+
+    .startscreenContainer {
+        top: 20px;
+    }
+}
+
+
+
 
 /* RESPONSIVE */
 @media only screen and (max-width: 1024px) {
@@ -252,10 +272,6 @@ canvas {
     }
 
     .title {
-        display: none;
-    }
-
-    .iconCt {
         display: none;
     }
 
@@ -300,7 +316,7 @@ canvas {
 
     .toggleControlls {
         width: 100%;
-        top: 0;
+        top: 0 !important;
         height: 100vh;
     }
 
@@ -377,23 +393,8 @@ canvas {
     .bubbleDiv > img {
         width: 46px;
     }
-}
-
-
-@media only screen and (max-height: 850px) {
-    #titleId {
-        display: none;
-    }
 
     canvas {
-        margin-top: 20px;
-    }
-
-    .controllsMain {
-        top: 50px;
-    }
-
-    .startscreenContainer {
-        top: 20px;
+        margin-top: 0px !important;
     }
 }
