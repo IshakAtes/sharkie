@@ -53,7 +53,6 @@ class PufferFish extends MovableObject {
             }
         }, 99);
 
-        
         setInterval(() => {
             if (this.isDead() && !isDeadMovementExecuted && this.otherDirection) {
                 this.x = this.x -= 15;

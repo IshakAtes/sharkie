@@ -31,13 +31,12 @@ class DrawableObjects {
     drawCollisionFrame(ctx) {
         if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss){
             ctx.beginPath();
-            ctx.lineWidth = '3';
-            ctx.strokeStyle = 'blue';
-            // ctx.rect(this.x, this.y, this.width, this.height);
-            if (this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss || this instanceof Coin || this instanceof Poisen) {
-                ctx.strokeStyle = 'red';
-                ctx.rect(this.x + this.offset.left , this.y + this.offset.top, this.width - this.offset.right, this.height - this.offset.bottom);
-            }
+            // ctx.lineWidth = '3';
+            // ctx.strokeStyle = 'blue';
+            // if (this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss || this instanceof Coin || this instanceof Poisen) {
+            //     ctx.strokeStyle = 'red';
+            //     ctx.rect(this.x + this.offset.left , this.y + this.offset.top, this.width - this.offset.right, this.height - this.offset.bottom);
+            // }
             ctx.stroke();
         }
     }
