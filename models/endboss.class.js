@@ -97,31 +97,37 @@ class BigBoss extends MovableObject {
                         this.playAnimation(this.images_IDLE);
                     }
                     i++;
-            
-                    if (this.world.character.x > 1700 && !this.firstContact) {
-                        this.firstContact = true;
-                        setTimeout(() => {
-                            this.y = -20;
-                            this.x = 2700;
-                            i = 0;
-                            if (audioOn) {
-                                this.endBoss_Sound.play();
-                            }
-                            setTimeout(() => {
-                                this.EnemyTrackingActive = true;
-                            }, 3000);
-                        }, 4000);
-                    }
-
-                    if (this.EnemyTrackingActive && !this.deathAnimationPlayed) {
-                        this.enemyTrackingX(this.x);
-                        this.enemyTrackingY(this.y);
-                    }
+                    this.ContactWithEnemy(i)
+                    this.tracking()
                 }
             });
         }, 200);
     }
 
+
+    ContactWithEnemy(i) {
+        if (this.world.character.x > 1700 && !this.firstContact) {
+            this.firstContact = true;
+            setTimeout(() => {
+                this.y = -20;
+                this.x = 2700;
+                i = 0;
+                if (audioOn) {
+                    this.endBoss_Sound.play();
+                }
+                setTimeout(() => {
+                    this.EnemyTrackingActive = true;
+                }, 3000);
+            }, 4000);
+        }
+    }
+
+    tracking() {
+        if (this.EnemyTrackingActive && !this.deathAnimationPlayed) {
+            this.enemyTrackingX(this.x);
+            this.enemyTrackingY(this.y);
+        }
+    }
 
     endBossIsHurt() {
         this.playAnimation(this.images_HURT);

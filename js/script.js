@@ -70,72 +70,72 @@ function toggleSound() {
 }
 
 
-    function openFullscreen() {
-        let fullscreen = document.getElementById('screenId');
-        let iconCt = document.getElementById('panelCtId');
-        iconCt.innerHTML = generateControllPanelHTML();
-        enterFullscreen(fullscreen);
-        document.getElementById('canvasId').classList.add('fullscreen-Class');
-        document.getElementById('startScreenImageId').classList.add('fullscreen-Class');
-        document.getElementById('gameOverOverlay').classList.add('fullscreenAndTopZero');
-        document.getElementById('winningOverlay').classList.add('fullscreenAndTopZero');
-        document.getElementById('startCtnId').style.top = '0';
+function openFullscreen() {
+    let fullscreen = document.getElementById('screenId');
+    let iconCt = document.getElementById('panelCtId');
+    iconCt.innerHTML = generateControllPanelHTML();
+    enterFullscreen(fullscreen);
+    document.getElementById('canvasId').classList.add('fullscreen-Class');
+    document.getElementById('startScreenImageId').classList.add('fullscreen-Class');
+    document.getElementById('gameOverOverlay').classList.add('fullscreenAndTopZero');
+    document.getElementById('winningOverlay').classList.add('fullscreenAndTopZero');
+    document.getElementById('startCtnId').style.top = '0';
+}
+
+function enterFullscreen(element) {
+    if(element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if(element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
+        element.msRequestFullscreen();
+    } else if(element.webkitRequestFullscreen) {  // iOS Safari
+        element.webkitRequestFullscreen();
     }
+}
 
-    function enterFullscreen(element) {
-        if(element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if(element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
-            element.msRequestFullscreen();
-        } else if(element.webkitRequestFullscreen) {  // iOS Safari
-            element.webkitRequestFullscreen();
-        }
+function generateControllPanelHTML() {
+    return`
+        <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
+        <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
+        <img onclick="closeFullscreen()" id="fullscreenId" src="./img/7.Controlls/fullscreen (2).png" alt="fullscreen">
+    `;
+}
+
+
+function closeFullscreen() {
+    let iconCt = document.getElementById('panelCtId');
+    iconCt.innerHTML = generateStandartControllPanelHTML();
+    exitFullscreen();
+    document.getElementById('canvasId').classList.remove('fullscreen-Class');
+    document.getElementById('startScreenImageId').classList.remove('fullscreen-Class');
+    document.getElementById('gameOverOverlay').classList.remove('fullscreenAndTopZero');
+    document.getElementById('winningOverlay').classList.remove('fullscreenAndTopZero');
+    if (window.innerWidth > 1024 && window.innerHeight <= 982) {
+        document.getElementById('startCtnId').style.top = '20px';
+    } else if (window.innerWidth < 1024) {
+        document.getElementById('startCtnId').style.top = '0px';
+    } else {
+        document.getElementById('startCtnId').style.top = '87px';
     }
+}
 
-    function generateControllPanelHTML() {
-        return`
-            <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
-            <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
-            <img onclick="closeFullscreen()" id="fullscreenId" src="./img/7.Controlls/fullscreen (2).png" alt="fullscreen">
-        `;
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+        window.top.document.msExitFullscreen();
     }
-
-
-    function closeFullscreen() {
-        let iconCt = document.getElementById('panelCtId');
-        iconCt.innerHTML = generateStandartControllPanelHTML();
-        exitFullscreen();
-        document.getElementById('canvasId').classList.remove('fullscreen-Class');
-        document.getElementById('startScreenImageId').classList.remove('fullscreen-Class');
-        document.getElementById('gameOverOverlay').classList.remove('fullscreenAndTopZero');
-        document.getElementById('winningOverlay').classList.remove('fullscreenAndTopZero');
-        if (window.innerWidth > 1024 && window.innerHeight <= 982) {
-            document.getElementById('startCtnId').style.top = '20px';
-        } else if (window.innerWidth < 1024) {
-            document.getElementById('startCtnId').style.top = '0px';
-        } else {
-            document.getElementById('startCtnId').style.top = '87px';
-        }
-    }
-
-    function exitFullscreen() {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-            window.top.document.msExitFullscreen();
-        }
-    }
+}
 
 
 
-    function generateStandartControllPanelHTML() {
-        return`
-            <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
-            <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
-            <img onclick="openFullscreen()" id="fullscreenId" src="./img/7.Controlls/maximize.png" alt="fullscreen">
-        `;
-    }
+function generateStandartControllPanelHTML() {
+    return`
+        <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
+        <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
+        <img onclick="openFullscreen()" id="fullscreenId" src="./img/7.Controlls/maximize.png" alt="fullscreen">
+    `;
+}
