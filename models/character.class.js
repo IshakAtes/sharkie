@@ -82,7 +82,7 @@ class Character extends MovableObject {
         './img/1.Sharkie/4.Attack/Fin slap/8.png',
     ];
     world;
-    speed = 15; //make it 8 if game finish
+    speed = 8; //make it 8 if game finish
     gameOver = false;
     wonTheGame = false;
     swimming_Sound = new Audio('sounds/swimmingFish.mp3');
@@ -196,6 +196,9 @@ class Character extends MovableObject {
             }, 6000);
             setTimeout(() => {
                 gameOverScreen.style.display = 'flex';
+                if (window.innerHeight < 930 && window.innerWidth > 1024) {
+                    gameOverScreen.style.top = '20px';
+                }
             }, 2000);
     }
 

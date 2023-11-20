@@ -149,7 +149,10 @@ class BigBoss extends MovableObject {
         this.y = this.y -= 3;
         setTimeout(() => {
             winningScreen.style.display = 'flex';
-            winningScreen.style.backgroundColor = 'rgb(0, 0, 0)';                            
+            winningScreen.style.backgroundColor = 'rgb(0, 0, 0)';
+            if (window.innerHeight < 930) {
+                winningScreen.style.top = '20px';
+            }
         }, 4000);
         setTimeout(() => {
             this.gameWin_Sound.pause();                            
