@@ -9,7 +9,6 @@ function init(){
     canvas = document.getElementById('canvasId');
     backgroundAudio();
     world = new World(canvas, keyboard);
-    console.log('My Character is', world);
 }
 
 function backgroundAudio() {

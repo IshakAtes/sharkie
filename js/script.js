@@ -35,6 +35,14 @@ function checkAndReplay(){
         console.log(localStorage.getItem('soundStatus'));
         startGame();
     }
+    setInterval(() => {
+        if (keyboard.ESC == true) {
+            closeFullscreen();
+            if (window.innerWidth > 1024 && window.innerHeight >= 931) {
+                document.getElementById('startCtnId').style.top = '87px';
+            }
+        }
+    }, 100);
 }
 
 
@@ -112,10 +120,14 @@ function toggleSound() {
     }
 
     function exitFullscreen() {
-        if(document.exitFullscreen) {
+        if (document.exitFullscreen) {
             document.exitFullscreen();
-        } else if(document.webkitExitFullscreen) {
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
             document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            window.top.document.msExitFullscreen();
         }
     }
 
