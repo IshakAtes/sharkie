@@ -32,7 +32,6 @@ function checkAndReplay(){
     if (autoStart == 'true') {
         localStorage.setItem('tryAgainLS', false);
         audioOn = JSON.parse(localStorage.getItem('soundStatus'));
-        console.log(localStorage.getItem('soundStatus'));
         startGame();
     }
     setInterval(() => {
