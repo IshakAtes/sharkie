@@ -13,6 +13,20 @@ class AttackObject extends MovableObject {
         setTimeout(() => {
             this.applyGravity();
         }, 200);
+        this.bubbleMove(direction);
+        this.removeFiredBubbles();
+    }
+
+    removeFiredBubbles() {
+        setInterval(() => {
+            const indexToRemove = world.attackingObjects.findIndex(obj => obj.y < -1000);
+            if (indexToRemove !== -1) {
+                world.attackingObjects.splice(indexToRemove, 1);
+            }
+        }, 1000)
+    }
+
+    bubbleMove(direction) {
         setInterval(() => {
             if (this.y > 0) {
                 if (!direction) {
@@ -25,19 +39,13 @@ class AttackObject extends MovableObject {
                 }, 2500);
             }
         }, 1000 / 100);
-        setInterval(() => {
-            const indexToRemove = world.attackingObjects.findIndex(obj => obj.y < -1000);
-            if (indexToRemove !== -1) {
-                world.attackingObjects.splice(indexToRemove, 1);
-            }
-        }, 1000)
     }
 
 }
 
 
-class PoisenAttack extends MovableObject {
 
+class PoisenAttack extends MovableObject {
     constructor(x, y, direction){
         super().loadImage('./img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png')
         this.x = x;
@@ -51,6 +59,10 @@ class PoisenAttack extends MovableObject {
         setTimeout(() => {
             this.applyGravity();
         }, 200);
+        this.bubbleMove(direction);
+    }
+
+    bubbleMove(direction) {
         setInterval(() => {
             if (this.y > 0) {
                 if (!direction) {
