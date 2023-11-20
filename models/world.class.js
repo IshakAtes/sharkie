@@ -32,9 +32,6 @@ class World {
     setWorld() {
         this.character.world = this;
         this.level.enemies[12].world = this;
-        // for (let i = 0; i < this.barriers.length; i++) {
-        //     this.barriers[i].world = this;
-        // }
     }
 
 
@@ -44,9 +41,6 @@ class World {
                 if (this.immortal && this.character.isColliding(enemy) && !(enemy instanceof JellyFish)) {
                     this.character.slapAttack(enemy);
                 } else if(this.character.isColliding(enemy) && enemy.energy >= 1) {
-                    // if (enemy instanceof BigBoss) {
-                    //     this.pushSharkie(this.character.x);
-                    // }
                     this.character.hit(enemy);
                     this.statusBar.setPercentage(this.character.energy);
                 }
@@ -147,7 +141,6 @@ class World {
         this.addObjectsToMap(this.attackingObjects);
         this.addObjectsToMap(this.lights);
         this.ctx.translate(-this.camera_x, 0);
-        // Draw() wird immer wieder aufgerufen. "this" funktioniert in einer normalen Funktion nicht mehr, deshalb übergeben wir "this" an eine Variable "let self" um sie dann in der Funktion anwenden zukönnen.
         let self = this;
         requestAnimationFrame(function(){
             self.draw();
@@ -183,28 +176,4 @@ class World {
         this.ctx.restore();
     }
     
-
-    // pushSharkie(X) {
-    //     if (this.pushMovement) {
-    //         return; // Die Funktion wurde bereits gestartet, daher nichts tun.
-    //     }
-    //     this.pushMovement = true;
-    //     setTimeout(() => {
-    //         setInterval(() => {
-    //             if (this.pushMovement) {
-    //                 if (this.character.otherDirection) {
-    //                     X = this.character.x += 10;
-    //                     setTimeout(() => {
-    //                         this.pushMovement = false;
-    //                     }, 500);
-    //                 } else if (!this.character.otherDirection) {
-    //                     X = this.character.x -= 10;
-    //                     setTimeout(() => {
-    //                         this.pushMovement = false;
-    //                     }, 500);
-    //                 }
-    //             }
-    //         }, 100);
-    //     }, 1000);
-    // }
 }

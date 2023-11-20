@@ -127,6 +127,10 @@ window.addEventListener('keydown', (event) => {
     if (event.keyCode == 32) {
         keyboard.SPACE = true;
     }
+
+    if (event.keyCode == 27) {
+        keyboard.ESC = true;
+    }
 });
 
 
@@ -152,6 +156,10 @@ window.addEventListener('keyup', (event) => {
     }
     if (event.keyCode == 32) {
         keyboard.SPACE = false;
+    }
+
+    if (event.keyCode == 27) {
+        keyboard.ESC = false;
     }
     console.log(event)
 });

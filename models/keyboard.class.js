@@ -7,4 +7,5 @@ class Keyboard {
     V = false;
     B = false;
     SPACE = false;
+    ESC = false;
 }
