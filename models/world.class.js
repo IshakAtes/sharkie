@@ -64,6 +64,7 @@ class World {
                 screen.style.display = 'flex';
             } else {
                 screen.style.display = 'none';
+                document.getElementById('fullscreenId').click();
             }
         });
     }
