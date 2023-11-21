@@ -61,6 +61,7 @@ class World {
             const portrait = e.matches;
             let screen = document.getElementById('rotation');
             if (portrait) {
+                document.getElementById('smallscreenId').click();
                 screen.style.display = 'flex';
             } else {
                 screen.style.display = 'none';
