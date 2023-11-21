@@ -35,6 +35,7 @@ function checkAndReplay(){
         startGame();
     }
     setInterval(() => {
+        checkDeviceOrientation();
         if (keyboard.ESC == true) {
             closeFullscreen();
             if (window.innerWidth > 1024 && window.innerHeight >= 931) {
@@ -42,6 +43,20 @@ function checkAndReplay(){
             }
         }
     }, 100);
+}
+
+function checkDeviceOrientation() {
+    window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
+        const portrait = e.matches;
+        let screen = document.getElementById('rotation');
+        if (portrait) {
+            document.getElementById('smallscreenId').click();
+            screen.style.display = 'flex';
+        } else {
+            screen.style.display = 'none';
+            document.getElementById('fullscreenId').click();
+        }
+    });
 }
 
 
@@ -129,7 +144,6 @@ function exitFullscreen() {
         window.top.document.msExitFullscreen();
     }
 }
-
 
 
 function generateStandartControllPanelHTML() {
