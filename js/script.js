@@ -41,6 +41,7 @@ function checkAndReplay(){
                 document.getElementById('startCtnId').style.top = '87px';
             }
         }
+        
     }, 100);
 }
 

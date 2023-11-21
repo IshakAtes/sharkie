@@ -37,6 +37,7 @@ class World {
 
     checkGame() {
         setInterval(() =>{
+            this.checkDeviceOrientation();
             this.level.enemies.forEach( (enemy, index) => {
                 if (this.immortal && this.character.isColliding(enemy) && !(enemy instanceof JellyFish)) {
                     this.character.slapAttack(enemy);
@@ -53,6 +54,18 @@ class World {
             this.checkPoisenAtkCollidingWithEnemy();
             this.checkCollectedPoisenBottles();
         }, 200)
+    }
+
+    checkDeviceOrientation() {
+        window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
+            const portrait = e.matches;
+            let screen = document.getElementById('rotation');
+            if (portrait) {
+                screen.style.display = 'flex';
+            } else {
+                screen.style.display = 'none';
+            }
+        });
     }
 
     checkCollectedPoisenBottles() {

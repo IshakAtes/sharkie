@@ -46,6 +46,25 @@ canvas {
 }
 
 
+/* ROTATION */
+.rotationCt {
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(136, 62, 165, 0.796);
+}
+
+.rotationCt img {
+    width: 300px;
+}
+
+
+
 /* Controll-Panel */
 #controllsOverlay {
     display: none;
