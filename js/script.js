@@ -74,12 +74,22 @@ function openFullscreen() {
     let fullscreen = document.getElementById('screenId');
     let iconCt = document.getElementById('panelCtId');
     iconCt.innerHTML = generateControllPanelHTML();
+    actuallySpeaker();
     enterFullscreen(fullscreen);
     document.getElementById('canvasId').classList.add('fullscreen-Class');
     document.getElementById('startScreenImageId').classList.add('fullscreen-Class');
     document.getElementById('gameOverOverlay').classList.add('fullscreenAndTopZero');
     document.getElementById('winningOverlay').classList.add('fullscreenAndTopZero');
     document.getElementById('startCtnId').style.top = '0';
+}
+
+function actuallySpeaker() {
+    let speakerIcon = document.getElementById('speakerId');
+    if (audioOn) {
+        speakerIcon.src = './img/7.Controlls/mittleres-volumen.png';
+    } else {
+        speakerIcon.src = './img/7.Controlls/stumm (2).png';
+    }
 }
 
 function enterFullscreen(element) {
@@ -105,6 +115,7 @@ function generateControllPanelHTML() {
 function closeFullscreen() {
     let iconCt = document.getElementById('panelCtId');
     iconCt.innerHTML = generateStandartControllPanelHTML();
+    actuallySpeaker();
     exitFullscreen();
     document.getElementById('canvasId').classList.remove('fullscreen-Class');
     document.getElementById('startScreenImageId').classList.remove('fullscreen-Class');
