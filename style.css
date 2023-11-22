@@ -417,3 +417,18 @@ canvas {
         margin-top: 0px !important;
     }
 }
+
+
+
+/* DEVICE-ORIENTATION */
+@media screen and (orientation: portrait) {
+    .rotationCt {
+        display: flex;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .rotationCt {
+        display: none;
+    }
+}

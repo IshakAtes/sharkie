@@ -55,7 +55,6 @@ class World {
         }, 200)
     }
 
-
     checkCollectedPoisenBottles() {
         this.coins.forEach( (obt) => {
             if (this.character.isColliding(obt)) {

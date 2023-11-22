@@ -35,7 +35,6 @@ function checkAndReplay(){
         startGame();
     }
     setInterval(() => {
-        checkDeviceOrientation();
         if (keyboard.ESC == true) {
             closeFullscreen();
             if (window.innerWidth > 1024 && window.innerHeight >= 931) {
@@ -43,20 +42,6 @@ function checkAndReplay(){
             }
         }
     }, 100);
-}
-
-function checkDeviceOrientation() {
-    window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
-        const portrait = e.matches;
-        let screen = document.getElementById('rotation');
-        if (portrait) {
-            document.getElementById('smallscreenId').click();
-            screen.style.display = 'flex';
-        } else {
-            screen.style.display = 'none';
-            document.getElementById('fullscreenId').click();
-        }
-    });
 }
 
 
@@ -109,6 +94,7 @@ function enterFullscreen(element) {
 
 function generateControllPanelHTML() {
     return`
+        <img onclick="toggleInfoPanel()" src="./img/7.Controlls/buchstabe-i.png" alt="">
         <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
         <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
         <img onclick="closeFullscreen()" id="smallscreenId" src="./img/7.Controlls/fullscreen (2).png" alt="fullscreen">
@@ -148,6 +134,7 @@ function exitFullscreen() {
 
 function generateStandartControllPanelHTML() {
     return`
+        <img onclick="toggleInfoPanel()" src="./img/7.Controlls/buchstabe-i.png" alt="">
         <img onclick="toggleControllPanel()" src="./img/7.Controlls/spielcontroller.png" alt="">
         <img onclick="toggleSound()" id="speakerId" src="./img/7.Controlls/stumm (2).png" alt="SoundOnOrOff">
         <img onclick="openFullscreen()" id="fullscreenId" src="./img/7.Controlls/maximize.png" alt="fullscreen">
