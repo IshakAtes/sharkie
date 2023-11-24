@@ -56,13 +56,14 @@ class BigBoss extends MovableObject {
     height = 300;
     energy = 10000;
     firstContact = false;
-    EnemyTrackingActive = false;
+    enemyTrackingActive = false;
     deadAnimationCompelete = false;
     isHurt = false;
     offset = {top: 140, bottom: 200, left: 12, right: 40};
     gameWin_Sound = new Audio('sounds/win.mp3');
     endBoss_Sound = new Audio('./sounds/trailer.mp3')
-    deathAnimationPlayed = false; // Eine Variable, um zu verfolgen, ob die Tod-Animation bereits abgespielt wurde
+    deathAnimationPlayed = false;
+    i = 0;
 
 
     constructor(){
@@ -79,51 +80,46 @@ class BigBoss extends MovableObject {
     }
 
     animate() {
-        let i = 0;
         setInterval(() => {
-            this.world.level.enemies.forEach(boss => {
-                if (boss instanceof BigBoss) {
-                    if (i < 9) {
-                        this.playAnimation(this.images_SPAWNING);
-                    } else if (this.deathAnimationPlayed) {
-                        this.gameIsFinished();
-                    } else if (this.isDead()) {
-                        this.endBossIsDead();
-                    } else if (this.isHurt) {
-                        this.endBossIsHurt();
-                    } else if (!this.isDead() && this.world.character.x >= boss.x - 150 && this.world.character.x <= boss.x + 400) {
-                        this.playAnimation(this.images_ATTACK);
-                    } else if (!this.isDead()) {
-                        this.playAnimation(this.images_IDLE);
-                    }
-                    i++;
-                    this.ContactWithEnemy(i)
-                    this.tracking()
+                if (this.i < 9) {
+                    this.playAnimation(this.images_SPAWNING);
+                } else if (this.deathAnimationPlayed) {
+                    this.gameIsFinished();
+                } else if (this.isDead()) {
+                    this.endBossIsDead();
+                } else if (this.isHurt) {
+                    this.endBossIsHurt();
+                } else if (!this.isDead() && this.world.character.x >= this.world.finalBoss[0].x - 150 && this.world.character.x <= this.world.finalBoss[0].x + 400) {
+                    this.playAnimation(this.images_ATTACK);
+                } else if (!this.isDead()) {
+                    this.playAnimation(this.images_IDLE);
                 }
-            });
+                this.i++;
+                this.ContactWithEnemy()
+                this.tracking()
         }, 200);
     }
 
 
-    ContactWithEnemy(i) {
+    ContactWithEnemy() {
         if (this.world.character.x > 1700 && !this.firstContact) {
             this.firstContact = true;
             setTimeout(() => {
                 this.y = -20;
                 this.x = 2700;
-                i = 0;
+                this.i = 0;
                 if (audioOn) {
                     this.endBoss_Sound.play();
                 }
                 setTimeout(() => {
-                    this.EnemyTrackingActive = true;
+                    this.enemyTrackingActive = true;
                 }, 3000);
             }, 4000);
         }
     }
 
     tracking() {
-        if (this.EnemyTrackingActive && !this.deathAnimationPlayed) {
+        if (this.enemyTrackingActive && !this.deathAnimationPlayed) {
             this.enemyTrackingX(this.x);
             this.enemyTrackingY(this.y);
         }
@@ -144,7 +140,6 @@ class BigBoss extends MovableObject {
             if (audioOn) {
                 this.gameWin_Sound.play();
             }
-            // GameWin Screen
         }, this.images_DEAD.length * 140);
     }
 

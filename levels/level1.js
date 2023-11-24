@@ -12,7 +12,6 @@ const level1 = new Level(
         new JellyFish(),
         new JellyFish(),
         new JellyFish(),
-        new BigBoss(),
         new ElectroJelly(1500),
         new ElectroJelly(1600),
         new ElectroJelly(1700),

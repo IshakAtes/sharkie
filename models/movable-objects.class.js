@@ -13,44 +13,32 @@ class MovableObject extends DrawableObjects {
 
 
     enemyTrackingX(X) {
-        this.world.level.enemies.forEach(boss => {
-            if (boss instanceof BigBoss) {
-                if (X <= this.world.character.x) {
-                    this.otherDirection = true;
-                    if (!(this.world.character.x == (X + 300))) {
-                        if (!(this.world.character.x <= (X + 300))) {
-                            let newCoordinateRight = boss.x += 8;
-                            boss.x = newCoordinateRight;
-                        } else if ((this.world.character.x > X && boss.collidingBigBoss(this.world.character))) {
-                            this.world.character.hit(boss);
-                            this.world.statusBar.setPercentage(this.world.character.energy);
-                        }
-                    }
-                } else if (X > this.world.character.x) {
-                    this.otherDirection = false;
-                    if (!(this.world.character.x == (X - 60))) {
-                        if (!(this.world.character.x >= (X - 60))) {
-                            let newCoordinateLeft = boss.x -= 8;
-                            boss.x = newCoordinateLeft;
-                        }
-                    }
+        if (X <= this.world.character.x) {
+            this.otherDirection = true;
+            if (!(this.world.character.x == (X + 300))) {
+                if (!(this.world.character.x <= (X + 300))) {
+                    this.world.finalBoss[0].x = this.world.finalBoss[0].x += 8;
+                } else if ((this.world.character.x > X && this.world.finalBoss[0].collidingBigBoss(this.world.character))) {
+                    this.world.character.hit(this.world.finalBoss[0]);
+                    this.world.statusBar.setPercentage(this.world.character.energy);
                 }
             }
-        });
+        } else if (X > this.world.character.x) {
+            this.otherDirection = false;
+            if (!(this.world.character.x == (X - 60))) {
+                if (!(this.world.character.x >= (X - 60))) {
+                    this.world.finalBoss[0].x = this.world.finalBoss[0].x -= 8;
+                }
+            }
+        }
     }
 
     enemyTrackingY(Y) {
-        this.world.level.enemies.forEach(boss => {
-            if (boss instanceof BigBoss) {
-                if ((Y + 100) < this.world.character.y) {
-                    let newCoordinateUp = boss.y += 10;
-                    boss.y = newCoordinateUp;
-                } else if ((Y + 100) > this.world.character.y) {
-                    let newCoordinateDown = boss.y -= 10;
-                    boss.y = newCoordinateDown;
-                }
-            }
-        });
+        if ((Y + 100) < this.world.character.y) {
+            this.world.finalBoss[0].y = this.world.finalBoss[0].y += 10;
+        } else if ((Y + 100) > this.world.character.y) {
+            this.world.finalBoss[0].y = this.world.finalBoss[0].y -= 10;
+        }
     }
 
 

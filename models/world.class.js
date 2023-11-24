@@ -5,6 +5,7 @@ class World {
     barriers = [new BarrierBlock(-920, 10, 1000), new Stone(-1500, -100, 800, 500), new Stone(-1650, 50, 800, 500), new Stone(-1300, 400, 800, 500), new Hole(-900, 0, 900, 700), new BarrierBlock(1300, 300, 450), new Hole(1400, 300, 600, 500), new Stone(1400, 200, 600, 200)];
     coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),];
     poisens = [new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(),];
+    finalBoss = [new BigBoss,];
     canvas;
     ctx;
     keyboard;
@@ -31,28 +32,41 @@ class World {
 
     setWorld() {
         this.character.world = this;
-        this.level.enemies[12].world = this;
+        this.finalBoss[0].world = this;
     }
 
 
     checkGame() {
         setInterval(() =>{
-            this.level.enemies.forEach( (enemy, index) => {
-                if (this.immortal && this.character.isColliding(enemy) && !(enemy instanceof JellyFish)) {
-                    this.character.slapAttack(enemy);
-                } else if(this.character.isColliding(enemy) && enemy.energy >= 1) {
-                    this.character.hit(enemy);
-                    this.statusBar.setPercentage(this.character.energy);
-                }
-                this.attackingObjects.forEach( (bubble, i) => this.decreaseEnergyOffHittedEnemys(enemy, bubble, i));
-                if (enemy.y <= -500) {
-                    // Remove the enemy from the array
-                    this.level.enemies.splice(index, 1);
-                }
-            })
+            this.checkCollisionWithEnemies();
+            this.checkCollisionWithFinalBoss();
             this.checkPoisenAtkCollidingWithEnemy();
             this.checkCollectedPoisenBottles();
         }, 200)
+    }
+
+
+    checkCollisionWithEnemies() {
+        this.level.enemies.forEach( (enemy, index) => {
+            if (this.immortal && this.character.isColliding(enemy) && !(enemy instanceof JellyFish) && !(enemy instanceof ElectroJelly)) {
+                this.character.slapAttack(enemy);
+            } else if(this.character.isColliding(enemy) && enemy.energy >= 1) {
+                this.character.hit(enemy);
+                this.statusBar.setPercentage(this.character.energy);
+            }
+            this.attackingObjects.forEach( (bubble, i) => this.decreaseEnergyOffHittedEnemys(enemy, bubble, i));
+            if (enemy.y <= -500) {
+                this.level.enemies.splice(index, 1);
+            }
+        })
+    }
+
+    checkCollisionWithFinalBoss() {
+        if(this.character.isColliding(this.finalBoss[0]) && this.finalBoss[0].energy >= 1) {
+            this.character.hit(this.finalBoss[0]);
+            this.statusBar.setPercentage(this.character.energy);
+        }
+        this.attackingObjects.forEach( (bubble, i) => this.decreaseEnergyOffHittedEnemys(this.finalBoss[0], bubble, i));
     }
 
     checkCollectedPoisenBottles() {
@@ -130,6 +144,7 @@ class World {
         this.addObjectsToMap(this.barriers);
         this.addObjectsToMap(this.level.ground);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.finalBoss);
         this.addObjectsToMap(this.coins);
         this.addObjectsToMap(this.poisens);
         this.ctx.translate(-this.camera_x, 0); //back

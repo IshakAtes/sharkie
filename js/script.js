@@ -5,7 +5,6 @@ let autoStart = localStorage.getItem('tryAgainLS');
 function toggleInfoPanel() {
     let panel = document.getElementById('infoOverlay');
     panel.classList.toggle('toggleControlls');
-    console.log(window.innerHeight);
     if (window.innerHeight < 930) {
         panel.style.top = '20px';
     }

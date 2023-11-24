@@ -160,7 +160,6 @@ window.addEventListener('keyup', (event) => {
     if (event.keyCode == 27) {
         keyboard.ESC = false;
     }
-    console.log(event)
 });
 
 
