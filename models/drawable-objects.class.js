@@ -13,7 +13,7 @@ class DrawableObjects {
 
 
     loadImage(path) {
-        this.img = new Image(); // new Image() ist keine Klasse. Es ist das gleiche wie ein img tag in Javascript <img src="#" alt="">
+        this.img = new Image();
         this.img.src = path;
     }
 
@@ -31,12 +31,6 @@ class DrawableObjects {
     drawCollisionFrame(ctx) {
         if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss){
             ctx.beginPath();
-            // ctx.lineWidth = '3';
-            // ctx.strokeStyle = 'blue';
-            // if (this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss || this instanceof Coin || this instanceof Poisen) {
-            //     ctx.strokeStyle = 'red';
-            //     ctx.rect(this.x + this.offset.left , this.y + this.offset.top, this.width - this.offset.right, this.height - this.offset.bottom);
-            // }
             ctx.stroke();
         }
     }
@@ -44,7 +38,7 @@ class DrawableObjects {
 
     loadImages(arr) {
         arr.forEach((path) => {
-            let img = new Image(); // new Image() ist keine Klasse. Es ist das gleiche wie ein img tag in Javascript <img src="#" alt="">
+            let img = new Image();
             img.src = path;
             this.imageCache[path] = img;
         });
@@ -53,7 +47,7 @@ class DrawableObjects {
 
     drawBubble() {
         if(!this.world.character.otherDirection) {
-            let bubble = new AttackObject(this.world.character.x + 122, this.world.character.y + 60); //112, 72
+            let bubble = new AttackObject(this.world.character.x + 122, this.world.character.y + 60);
             this.world.attackingObjects.push(bubble);
         } else if(this.world.character.otherDirection) {
             let bubble = new AttackObject(this.world.character.x + 0, this.world.character.y + 60, this.world.character.otherDirection); //70, 72
@@ -64,7 +58,7 @@ class DrawableObjects {
 
     drawPoisenBubble() {
         if(!this.world.character.otherDirection && this.world.character.myPoisens >= 10) {
-            let infectedBubble = new PoisenAttack(this.world.character.x + 122, this.world.character.y + 60); //112, 72
+            let infectedBubble = new PoisenAttack(this.world.character.x + 122, this.world.character.y + 60);
             this.world.attackingObjects.push(infectedBubble);
             this.world.character.myPoisens -= 10;
             this.world.poisenBar.setPercentage(this.world.character.myPoisens);

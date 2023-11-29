@@ -204,7 +204,6 @@ class Character extends MovableObject {
             const startTime = new Date().getTime();
             const duration = 15000;
             const endTime = startTime + duration;
-
             this.goSleepTimer = setTimeout(() => {
                 this.longWait = true;
                 this.wakeUp = false;
