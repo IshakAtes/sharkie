@@ -14,21 +14,28 @@ class MovableObject extends DrawableObjects {
 
     enemyTrackingX(X) {
         if (X <= this.world.character.x) {
-            this.otherDirection = true;
-            if (!(this.world.character.x == (X + 300))) {
-                if (!(this.world.character.x <= (X + 300))) {
-                    this.world.finalBoss[0].x = this.world.finalBoss[0].x += 8;
-                } else if ((this.world.character.x > X && this.world.finalBoss[0].collidingBigBoss(this.world.character))) {
-                    this.world.character.hit(this.world.finalBoss[0]);
-                    this.world.statusBar.setPercentage(this.world.character.energy);
-                }
-            }
+            this.trackingRightSide(X);
         } else if (X > this.world.character.x) {
-            this.otherDirection = false;
-            if (!(this.world.character.x == (X - 60))) {
-                if (!(this.world.character.x >= (X - 60))) {
-                    this.world.finalBoss[0].x = this.world.finalBoss[0].x -= 8;
-                }
+            this.trackingLeftSide(X);
+        }
+    }
+    trackingLeftSide(X) {
+        this.otherDirection = false;
+        if (!(this.world.character.x == (X - 60))) {
+            if (!(this.world.character.x >= (X - 60))) {
+                this.world.finalBoss[0].x = this.world.finalBoss[0].x -= 8;
+            }
+        }
+    }
+
+    trackingRightSide(X) {
+        this.otherDirection = true;
+        if (!(this.world.character.x == (X + 300))) {
+            if (!(this.world.character.x <= (X + 300))) {
+                this.world.finalBoss[0].x = this.world.finalBoss[0].x += 8;
+            } else if ((this.world.character.x > X && this.world.finalBoss[0].collidingBigBoss(this.world.character))) {
+                this.world.character.hit(this.world.finalBoss[0]);
+                this.world.statusBar.setPercentage(this.world.character.energy);
             }
         }
     }

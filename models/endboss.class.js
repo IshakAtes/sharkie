@@ -105,16 +105,20 @@ class BigBoss extends MovableObject {
         if (this.world.character.x > 1700 && !this.firstContact) {
             this.firstContact = true;
             setTimeout(() => {
-                this.y = -20;
-                this.x = 2700;
-                this.i = 0;
-                if (audioOn) {
-                    this.endBoss_Sound.play();
-                }
+                this.SpawnEnemyToCordinate();
                 setTimeout(() => {
                     this.enemyTrackingActive = true;
                 }, 3000);
             }, 4000);
+        }
+    }
+
+    SpawnEnemyToCordinate() {
+        this.y = -20;
+        this.x = 2700;
+        this.i = 0;
+        if (audioOn) {
+            this.endBoss_Sound.play();
         }
     }
 
@@ -145,9 +149,16 @@ class BigBoss extends MovableObject {
 
     gameIsFinished() {
         this.world.character.wonTheGame = true;
-        let winningScreen = document.getElementById('winningOverlay');
         this.playAnimation(this.images_PARADISE);
         this.y = this.y -= 3;
+        this.showWinnerScreen();
+        setTimeout(() => {
+            this.gameWin_Sound.pause();                            
+        }, 6000);
+    }
+
+    showWinnerScreen() {
+        let winningScreen = document.getElementById('winningOverlay');
         setTimeout(() => {
             winningScreen.style.display = 'flex';
             winningScreen.style.backgroundColor = 'rgb(0, 0, 0)';
@@ -155,8 +166,5 @@ class BigBoss extends MovableObject {
                 winningScreen.style.top = '20px';
             }
         }, 4000);
-        setTimeout(() => {
-            this.gameWin_Sound.pause();                            
-        }, 6000);
     }
 }
