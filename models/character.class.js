@@ -116,6 +116,7 @@ class Character extends MovableObject {
     longWait = false;
     characterIsSleeping = false;
     wakeUp = true;
+    snoring_Sound = new Audio('sounds/snoring.mp3')
     offset = {top: 68, bottom: 99, left: 30, right: 58};
 
 
@@ -183,6 +184,10 @@ class Character extends MovableObject {
     sharkieGoesSleep() {
         if (!this.wakeUp && !this.characterIsSleeping) {
             this.playAnimation(this.images_GOSLEEP);
+            if (audioOn) {
+                this.snoring_Sound.play();
+                this.snoring_Sound.loop = true;
+            }
             this.sleepTimer = setTimeout(() => {
                 this.characterIsSleeping = true;
                 this.longWait = false;
@@ -197,7 +202,7 @@ class Character extends MovableObject {
         this.playAnimation(this.images_IDLE);
         if (this.wakeUp && !this.goSleepTimer) {
             const startTime = new Date().getTime();
-            const duration = 4000;
+            const duration = 10000;
             const endTime = startTime + duration;
 
             this.goSleepTimer = setTimeout(() => {
@@ -216,6 +221,7 @@ class Character extends MovableObject {
     }
 
     wakeSharkie() {
+        this.snoring_Sound.pause();
         this.wakeUp = true;
         this.characterIsSleeping = false;
         clearTimeout(this.goSleepTimer);
