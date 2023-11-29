@@ -83,25 +83,25 @@ class Character extends MovableObject {
     ];
     images_GOSLEEP = [
         './img/1.Sharkie/2.Long_IDLE/i1.png',
-        './img/1.Sharkie/2.Long_IDLE/i2.png',
-        './img/1.Sharkie/2.Long_IDLE/i3.png',
-        './img/1.Sharkie/2.Long_IDLE/i4.png',
-        './img/1.Sharkie/2.Long_IDLE/i5.png',
-        './img/1.Sharkie/2.Long_IDLE/i6.png',
-        './img/1.Sharkie/2.Long_IDLE/i7.png',
-        './img/1.Sharkie/2.Long_IDLE/i8.png',
-        './img/1.Sharkie/2.Long_IDLE/i9.png',
-        './img/1.Sharkie/2.Long_IDLE/i10.png',
-        './img/1.Sharkie/2.Long_IDLE/i11.png',
-        './img/1.Sharkie/2.Long_IDLE/i12.png',
-        './img/1.Sharkie/2.Long_IDLE/i13.png',
-        './img/1.Sharkie/2.Long_IDLE/i14.png',
+        './img/1.Sharkie/2.Long_IDLE/I2.png',
+        './img/1.Sharkie/2.Long_IDLE/I3.png',
+        './img/1.Sharkie/2.Long_IDLE/I4.png',
+        './img/1.Sharkie/2.Long_IDLE/I5.png',
+        './img/1.Sharkie/2.Long_IDLE/I6.png',
+        './img/1.Sharkie/2.Long_IDLE/I7.png',
+        './img/1.Sharkie/2.Long_IDLE/I8.png',
+        './img/1.Sharkie/2.Long_IDLE/I9.png',
+        './img/1.Sharkie/2.Long_IDLE/I10.png',
+        './img/1.Sharkie/2.Long_IDLE/I11.png',
+        './img/1.Sharkie/2.Long_IDLE/I12.png',
+        './img/1.Sharkie/2.Long_IDLE/I13.png',
+        './img/1.Sharkie/2.Long_IDLE/I14.png',
     ];
     images_SLEEP = [
-        './img/1.Sharkie/2.Long_IDLE/i11.png',
-        './img/1.Sharkie/2.Long_IDLE/i12.png',
-        './img/1.Sharkie/2.Long_IDLE/i13.png',
-        './img/1.Sharkie/2.Long_IDLE/i14.png',
+        './img/1.Sharkie/2.Long_IDLE/I11.png',
+        './img/1.Sharkie/2.Long_IDLE/I12.png',
+        './img/1.Sharkie/2.Long_IDLE/I13.png',
+        './img/1.Sharkie/2.Long_IDLE/I14.png',
     ];
     world;
     speed = 8; //make it 8 if game finish
@@ -113,8 +113,9 @@ class Character extends MovableObject {
     stopMoveLeft = false;
     stopMoveUp = false;
     stopMoveDown = false;
-    longTime = false;
+    longWait = false;
     characterIsSleeping = false;
+    wakeUp = true;
     offset = {top: 68, bottom: 99, left: 30, right: 58};
 
 
@@ -155,43 +156,76 @@ class Character extends MovableObject {
             this.BubbleAttack();
         } else if (this.finslap) {
             this.characterFinslap();
-        } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
+        } else
+            this.characterStandSleepOrMove();
+    }
+
+    characterStandSleepOrMove() {
+        if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
             this.swimAnimation();
-        } else if (this.characterIsSleeping) {
-            this.playAnimation(this.images_SLEEP);
-            if (this.y < 580) {
-                this.moveDown();
-            }
-        } else if (this.longTime) {
-            this.playAnimation(this.images_GOSLEEP);
-            setTimeout(() => {
-                this.characterIsSleeping = true;
-            }, this.images_GOSLEEP.length * 80);
-            if (this.y < 580) {
-                this.moveDown();
-            }
+        } else if (this.characterIsSleeping && !this.wakeUp) {
+            this.sharkieSleeped();
+        } else if (this.longWait && !this.wakeUp) {
+            this.sharkieGoesSleep();
         } else {
             this.characterStands();
         }
     }
 
+
+    sharkieSleeped() {
+        this.playAnimation(this.images_SLEEP);
+        if (this.y < 580) {
+            this.moveDown();
+        }
+    }
+
+    sharkieGoesSleep() {
+        if (!this.wakeUp && !this.characterIsSleeping) {
+            this.playAnimation(this.images_GOSLEEP);
+            this.sleepTimer = setTimeout(() => {
+                this.characterIsSleeping = true;
+                this.longWait = false;
+            }, this.images_GOSLEEP.length * 80);
+            if (this.y < 580) {
+                this.moveDown();
+            }
+        }
+    }
+
     characterStands() {
         this.playAnimation(this.images_IDLE);
-        setTimeout(() => {
-            this.longTime = true;
-        }, 10000);
+        if (this.wakeUp && !this.goSleepTimer) {
+            const startTime = new Date().getTime();
+            const duration = 4000;
+            const endTime = startTime + duration;
+
+            this.goSleepTimer = setTimeout(() => {
+                this.longWait = true;
+                this.wakeUp = false;
+            }, endTime - (new Date().getTime()));
+        }
     }
 
     swimAnimation() {
-        this.longTime = false;
-        this.characterIsSleeping = false;
+        this.wakeSharkie();
         this.playAnimation(this.images_SWIM);
         if (audioOn) {
             this.swimming_Sound.play();
         }
     }
 
+    wakeSharkie() {
+        this.wakeUp = true;
+        this.characterIsSleeping = false;
+        clearTimeout(this.goSleepTimer);
+        this.goSleepTimer = null;
+        clearTimeout(this.sleepTimer);
+        this.sleepTimer = null;
+    }
+
     characterFinslap() {
+        this.wakeSharkie();
         this.playAnimation(this.images_FINSLAP);
         this.world.finSlap();
         setTimeout(() => {
@@ -200,6 +234,7 @@ class Character extends MovableObject {
     }
 
     BubbleAttack() {
+        this.wakeSharkie();
         this.playAnimation(this.images_BUBBLE);
         if (!this.bubbleAnimationInProgress) {
             this.bubbleAnimationInProgress = true;
@@ -212,6 +247,7 @@ class Character extends MovableObject {
     }
 
     AttackWithPoisen() {
+        this.wakeSharkie();
         this.playAnimation(this.images_POISENBUBBLE);
         if (!this.bubbleAnimationInProgress) {
             this.bubbleAnimationInProgress = true;
@@ -259,7 +295,7 @@ class Character extends MovableObject {
         }
         if (!this.stopMoveLeft && !this.wonTheGame && !this.gameOver && this.world.keyboard.LEFT && this.x > -814) {
             this.moveLeft();
-            this.otherDirection = true; 
+            this.otherDirection = true;
         }
         this.world.camera_x = -this.x + 200;
         if (!this.stopMoveUp && !this.wonTheGame && !this.gameOver && this.world.keyboard.UP && this.y > -40) {
