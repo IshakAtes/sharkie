@@ -19,7 +19,7 @@ class BackgroundObject extends MovableObject {
             this.x -= speed;
             console.log(this.world);
         }
-        if (this.world.keyboard.LEFT) {
+        if (this.world.keyboard.LEFT && this.world.character.x > -814) {
             this.x += speed;
         }
     }
