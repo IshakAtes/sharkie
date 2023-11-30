@@ -1,12 +1,25 @@
 class Light extends MovableObject {
+    world;
     y = 0;
-    width = 1200;
+    width = 4000;
     height = 900;
 
     constructor(){
-        super().loadImage('./img/3. Background/Layers/1. Light/1.png');
-        // this.loadImage('./img/3. Background/Light/2.png');
+        super().loadImage('./img/3. Background/Layers/1. Light/COMPLETO.png');
+        this.x = -500;
+        this.animate();
+    }
 
-        this.x = 100 + Math.random() * 500;
+    animate() {
+        setInterval(() => this.moveLight(), 100);
+    }
+
+    moveLight() {
+        if (this.world.keyboard.RIGHT) {
+            this.x -= 1;
+        }
+        if (this.world.keyboard.LEFT) {
+            this.x += 1;
+        }
     }
 }
