@@ -29,11 +29,11 @@ const level1 = new Level(
         new Water('./img/3. Background/Layers/5. Water/L1.png', 2048),
     ],
     [
-        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L1.png', -1024, 740, 4),
-        new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/L2.png', 0, 740, 4),
-        new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/L1.png', 1024, 740, 4),
-        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L2.png', 2048, 740, 4),
-        new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/L1.png', 3072, 740, 4),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L1.png', -1024, 740, 2),
+        new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/L2.png', 0, 740, 2),
+        new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/L1.png', 1024, 740, 2),
+        new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L2.png', 2048, 740, 2),
+        new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/L1.png', 3072, 740, 2),
         // blau
         new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/D2.png', -1024, 768, 1),
         new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/D1.png', 0, 768, 1),
