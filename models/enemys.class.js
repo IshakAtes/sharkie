@@ -21,11 +21,10 @@ class PufferFish extends MovableObject {
     height = 70;
     width = 70;
     x = 400 + Math.random() * 500;
-    y = 620;
+    y = 624;
 
     constructor(){
         super().loadImage('./img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png');
-        
         this.loadImages(this.images_IDLE);
         this.loadImages(this.images_INCOMA);
         this.loadImages(this.images_BLOW);

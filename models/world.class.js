@@ -34,6 +34,7 @@ class World {
         this.character.world = this;
         this.finalBoss[0].world = this;
         this.lights[0].world = this;
+        this.level.bgShadow.forEach(element => {element.world = this;});
     }
 
 
