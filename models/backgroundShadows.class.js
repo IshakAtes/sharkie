@@ -17,7 +17,6 @@ class BackgroundObject extends MovableObject {
     moveBackground(speed) {
         if (this.world.keyboard.RIGHT && this.world.character.x < this.world.level.level_end_x) {
             this.x -= speed;
-            console.log(this.world);
         }
         if (this.world.keyboard.LEFT && this.world.character.x > -814) {
             this.x += speed;

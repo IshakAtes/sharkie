@@ -95,8 +95,8 @@ class BigBoss extends MovableObject {
                     this.playAnimation(this.images_IDLE);
                 }
                 this.i++;
-                this.ContactWithEnemy()
-                this.tracking()
+                this.ContactWithEnemy();
+                this.tracking();
         }, 200);
     }
 
