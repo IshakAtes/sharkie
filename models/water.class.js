@@ -16,9 +16,8 @@ class Water extends MovableObject {
     }
 
     moveWater() {
-        let waterDirection = this.world.level.water[0].x <= -1024;
-        // console.log(this.world);
-        if (this.world.level.water[12].x > this.world.level.level_end_x && !this.waterRightCommand) {
+        let waterDirection = this.world.waters[0].x <= -1024;
+        if (this.world.waters[12].x > this.world.level.level_end_x && !this.waterRightCommand) {
             this.x -= 1;
         } else {
             this.waterRightCommand = true;

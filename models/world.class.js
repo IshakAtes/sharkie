@@ -6,6 +6,8 @@ class World {
     coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),];
     poisens = [new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(), new Poisen(),];
     finalBoss = [new BigBoss,];
+    waters = [new Water('./img/3. Background/Layers/5. Water/L2.png', -1024), new Water('./img/3. Background/Layers/5. Water/L1.png', -2), new Water('./img/3. Background/Layers/5. Water/L2.png', 1020), new Water('./img/3. Background/Layers/5. Water/L1.png', 2042), new Water('./img/3. Background/Layers/5. Water/L2.png', 3064), new Water('./img/3. Background/Layers/5. Water/L1.png', 4086), new Water('./img/3. Background/Layers/5. Water/L2.png', 5108), new Water('./img/3. Background/Layers/5. Water/L1.png', 6130), new Water('./img/3. Background/Layers/5. Water/L2.png', 7152), new Water('./img/3. Background/Layers/5. Water/L1.png', 8174), new Water('./img/3. Background/Layers/5. Water/L2.png', 9196), new Water('./img/3. Background/Layers/5. Water/L1.png', 10218), new Water('./img/3. Background/Layers/5. Water/L2.png', 11240),];
+    backgroundShadows = [new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L1.png', -1024, 740, 2), new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/L2.png', 0, 740, 2), new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/L1.png', 1024, 740, 2), new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/L2.png', 2048, 740, 2), new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/L1.png', 3072, 740, 2), new BackgroundObject('./img/3. Background/Legacy/Layers/4.Fondo 2/D2.png', -1024, 768, 1), new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/D1.png', 0, 768, 1), new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/D2.png', 1024, 768, 1), new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/D1.png', 2048, 768, 1), new BackgroundObject('./img/3. Background/Layers/4.Fondo 2/D2.png', 3072, 768, 1),];
     canvas;
     ctx;
     keyboard;
@@ -25,6 +27,7 @@ class World {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
+        console.log(this);
         this.draw();
         this.setWorld();
         this.checkGame();
@@ -34,8 +37,8 @@ class World {
         this.character.world = this;
         this.finalBoss[0].world = this;
         this.lights[0].world = this;
-        this.level.bgShadow.forEach(element => {element.world = this;});
-        this.level.water.forEach(element => {element.world = this;});
+        this.backgroundShadows.forEach(element => {element.world = this;});
+        this.waters.forEach(element => {element.world = this;});
     }
 
 
@@ -142,8 +145,8 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
-        this.addObjectsToMap(this.level.water);
-        this.addObjectsToMap(this.level.bgShadow);
+        this.addObjectsToMap(this.waters);
+        this.addObjectsToMap(this.backgroundShadows);
         this.addObjectsToMap(this.barriers);
         this.addObjectsToMap(this.level.ground);
         this.addObjectsToMap(this.level.enemies);
