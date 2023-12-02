@@ -27,12 +27,14 @@ class World {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
-        console.log(this);
         this.draw();
         this.setWorld();
         this.checkGame();
     }
 
+    /**
+     * Share world Data with models
+     */
     setWorld() {
         this.character.world = this;
         this.finalBoss[0].world = this;
@@ -41,7 +43,9 @@ class World {
         this.waters.forEach(element => {element.world = this;});
     }
 
-
+/**
+ * Check some Game Functions
+ */
     checkGame() {
         setInterval(() =>{
             this.checkCollisionWithEnemies();
@@ -51,7 +55,13 @@ class World {
         }, 200)
     }
 
-
+/**
+ * Check Collision with Enemie
+ * @param {object} enemy Data from Enemy who collides with the character
+ * @param {number} index id number from enemy who collides with the character
+ * @param {DataTransfer} bubble Data from bubble
+ * @param {number} i id number from the bubble who collides with a enemy
+ */
     checkCollisionWithEnemies() {
         this.level.enemies.forEach( (enemy, index) => {
             if (this.immortal && this.character.isColliding(enemy) && !(enemy instanceof JellyFish) && !(enemy instanceof ElectroJelly)) {
@@ -67,6 +77,10 @@ class World {
         })
     }
 
+    /**
+     * Check Collision with Final Enemy
+     * @param {}
+     */
     checkCollisionWithFinalBoss() {
         if(this.character.isColliding(this.finalBoss[0]) && this.finalBoss[0].energy >= 1) {
             this.character.hit(this.finalBoss[0]);

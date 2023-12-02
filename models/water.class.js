@@ -15,6 +15,9 @@ class Water extends MovableObject {
         setInterval(() => this.moveWater(), 1000 / 60);
     }
 
+    /**
+     * Make Water moveable
+     */
     moveWater() {
         let waterDirection = this.world.waters[0].x <= -1024;
         if (this.world.waters[12].x > this.world.level.level_end_x && !this.waterRightCommand) {
