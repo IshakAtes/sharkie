@@ -21,6 +21,29 @@ class World {
     bottleCollected_Sound = new Audio('sounds/bottle.mp3');
     immortal = false;
     pushMovement = false;
+    /**
+     * @typedef {object} character
+     * @typedef {object} lights
+     * @typedef {object} barriers
+     * @typedef {object} coins
+     * @typedef {object} poisens
+     * @typedef {object} finalBoss
+     * @typedef {object} waters
+     * @typedef {object} backgroundShadows
+     * @param {*} canvas 
+     * @param {*} keyboard 
+     * @param {*} ctx
+     * @param {number} camera_x
+     * @param {Array} attackingObjects
+     * @param {boolean} dead
+     * @typedef {object} statusBar
+     * @typedef {object} poisenBar
+     * @typedef {object} coinBar
+     * @param {sound} coinCollected_Sound
+     * @param {sound} bottleCollected_Sound
+     * @param {boolean} immortal
+     * @param {boolean} pushMovement
+     */
 
 
     constructor(canvas, keyboard){
@@ -79,7 +102,8 @@ class World {
 
     /**
      * Check Collision with Final Enemy
-     * @param {}
+     * @typedef {object} bubble
+     * @param {number} i 
      */
     checkCollisionWithFinalBoss() {
         if(this.character.isColliding(this.finalBoss[0]) && this.finalBoss[0].energy >= 1) {
@@ -89,6 +113,10 @@ class World {
         this.attackingObjects.forEach( (bubble, i) => this.decreaseEnergyOffHittedEnemys(this.finalBoss[0], bubble, i));
     }
 
+    /**
+     * check which Poisenbottle you collect
+     * @typedef {object} obt
+     */
     checkCollectedPoisenBottles() {
         this.coins.forEach( (obt) => {
             if (this.character.isColliding(obt)) {

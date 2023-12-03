@@ -8,6 +8,10 @@ class AttackObject extends MovableObject {
         this.bubbleAttack(direction);
     }
 
+    /**
+     * Animate the Bubble Attack
+     * @param {boolean} direction returns the message in which direction it is going
+     */
     bubbleAttack(direction) {
         setTimeout(() => {
             this.applyGravity();
