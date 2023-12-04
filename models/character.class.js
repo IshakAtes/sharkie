@@ -328,6 +328,7 @@ class Character extends MovableObject {
                 setTimeout(() => {
                     if (audioOn) {
                         this.gameOver_Sound.play();
+                        this.snoring_Sound.pause();
                     }
                 }, 1000);
             }, this.images_DEAD.length * 100);
