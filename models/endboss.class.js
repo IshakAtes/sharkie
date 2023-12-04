@@ -64,9 +64,24 @@ class BigBoss extends MovableObject {
     endBoss_Sound = new Audio('./sounds/trailer.mp3')
     deathAnimationPlayed = false;
     i = 0;
+    /**
+     * @typedef {object} world
+     * @param {number} width
+     * @param {number} height
+     * @param {number} energy energy from FinalEnemy
+     * @param {boolean} firstContact
+     * @param {boolean} enemyTrackingActive activate Enemy tracking
+     * @param {boolean} deadAnimationCompelete show if deadAnimation is completed
+     * @param {boolean} isHurt
+     * @param {object} offset
+     * @param {sound} gameWin_Sound Contains the link to the sound file
+     * @param {sound}endBoss_Sound Contains the link to the sound file
+     * @param {boolean} deathAnimationPlayed
+     * @param {number} i
+     */
 
     /**
-     * the constructor is always executed first when the structure is called
+     * The constructor is always executed first when the structure is called
      */
     constructor(){
         super().loadImage('./img/2.Enemy/3 Final Enemy/2.floating/1.png');
@@ -81,28 +96,41 @@ class BigBoss extends MovableObject {
         this.animate();
     }
 
+    /**
+     * This function set the Intervall, how fast the Final Enemy Animated
+     */
     animate() {
         setInterval(() => {
-                if (this.i < 9) {
-                    this.playAnimation(this.images_SPAWNING);
-                } else if (this.deathAnimationPlayed) {
-                    this.gameIsFinished();
-                } else if (this.isDead()) {
-                    this.endBossIsDead();
-                } else if (this.isHurt) {
-                    this.endBossIsHurt();
-                } else if (!this.isDead() && this.world.character.x >= this.world.finalBoss[0].x - 150 && this.world.character.x <= this.world.finalBoss[0].x + 400) {
-                    this.playAnimation(this.images_ATTACK);
-                } else if (!this.isDead()) {
-                    this.playAnimation(this.images_IDLE);
-                }
-                this.i++;
-                this.ContactWithEnemy();
-                this.tracking();
+            this.playWhale();
+            this.i++;
+            this.ContactWithEnemy();
+            this.tracking();
         }, 200);
     }
 
+    /**
+     * This function Animate the Final Enemy
+     */
+    playWhale() {
+        if (this.i < 9) {
+            this.playAnimation(this.images_SPAWNING);
+        } else if (this.deathAnimationPlayed) {
+            this.gameIsFinished();
+        } else if (this.isDead()) {
+            this.endBossIsDead();
+        } else if (this.isHurt) {
+            this.endBossIsHurt();
+        } else if (!this.isDead() && this.world.character.x >= this.world.finalBoss[0].x - 150 && this.world.character.x <= this.world.finalBoss[0].x + 400) {
+            this.playAnimation(this.images_ATTACK);
+        } else if (!this.isDead()) {
+            this.playAnimation(this.images_IDLE);
+        }
+    }
 
+
+    /**
+     * This function check if Sharkie reach the area from Final Enemy
+     */
     ContactWithEnemy() {
         if (this.world.character.x > 1700 && !this.firstContact) {
             this.firstContact = true;
@@ -115,6 +143,9 @@ class BigBoss extends MovableObject {
         }
     }
 
+    /**
+     * This function Teleport the whale to the right place and play the EndGame Sound
+     */
     SpawnEnemyToCordinate() {
         this.y = -20;
         this.x = 2700;
@@ -124,6 +155,9 @@ class BigBoss extends MovableObject {
         }
     }
 
+    /**
+     * This function start the tracking from sharkie
+     */
     tracking() {
         if (this.enemyTrackingActive && !this.deathAnimationPlayed) {
             this.enemyTrackingX(this.x);
@@ -131,6 +165,9 @@ class BigBoss extends MovableObject {
         }
     }
 
+    /**
+     * This function show if endBoss is Hurt
+     */
     endBossIsHurt() {
         this.playAnimation(this.images_HURT);
         setTimeout(() => {
@@ -138,6 +175,9 @@ class BigBoss extends MovableObject {
         }, this.images_HURT.length * 200);
     }
 
+    /**
+     * This function show if EndBoss is dead and play the Game win Sound
+     */
     endBossIsDead() {
         this.playAnimation(this.images_DEAD);
         setTimeout(() => {
@@ -149,6 +189,9 @@ class BigBoss extends MovableObject {
         }, this.images_DEAD.length * 140);
     }
 
+    /**
+     * This function Show the Whale if he ist dead and play the Winning sound
+     */
     gameIsFinished() {
         this.world.character.wonTheGame = true;
         this.playAnimation(this.images_PARADISE);
@@ -159,6 +202,9 @@ class BigBoss extends MovableObject {
         }, 6000);
     }
 
+    /**
+     * This function Shows the Game Win screen
+     */
     showWinnerScreen() {
         let winningScreen = document.getElementById('winningOverlay');
         setTimeout(() => {

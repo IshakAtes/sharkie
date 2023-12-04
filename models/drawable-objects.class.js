@@ -12,12 +12,20 @@ class DrawableObjects {
     width = 150;
 
 
+    /**
+     * This function load the image
+     * @param {string} path cointain the link to the image 
+     */
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
     }
 
 
+    /**
+     * This function make the image visible on the canvas
+     * @param {*} ctx 
+     */
     draw(ctx) {
         try {
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
@@ -28,6 +36,10 @@ class DrawableObjects {
     }
 
 
+    /**
+     * This function draws a frame around the objects
+     * @param {*} ctx 
+     */
     drawCollisionFrame(ctx) {
         if(this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof BigBoss){
             ctx.beginPath();
@@ -36,6 +48,10 @@ class DrawableObjects {
     }
 
 
+    /**
+     * This function load a Array with some images from an Object
+     * @param {object} arr 
+     */
     loadImages(arr) {
         arr.forEach((path) => {
             let img = new Image();
@@ -45,6 +61,9 @@ class DrawableObjects {
     }
 
 
+    /**
+     * This function push a bubble in the Array attackingObjects and make the Bubble visible
+     */
     drawBubble() {
         if(!this.world.character.otherDirection) {
             let bubble = new AttackObject(this.world.character.x + 122, this.world.character.y + 60);
@@ -56,6 +75,9 @@ class DrawableObjects {
     }
 
 
+    /**
+     * This function push a bubble in the Array attackingObjects and make the Bubble visible
+     */
     drawPoisenBubble() {
         if(!this.world.character.otherDirection && this.world.character.myPoisens >= 10) {
             let infectedBubble = new PoisenAttack(this.world.character.x + 122, this.world.character.y + 60);

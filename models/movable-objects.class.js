@@ -9,9 +9,24 @@ class MovableObject extends DrawableObjects {
     shock_sound = new Audio('sounds/shock.mp3');
     slap_sound = new Audio('sounds/slap.mp3');
     offset = {top: 0, bottom: 0, left: 0, right: 0};
+    /**
+     * 
+     * @param {number} speed
+     * @param {number} energy
+     * @param {number} myCoins
+     * @param {number} myPoisens
+     * @param {number} lastHit
+     * @param {sound} hit_sound
+     * @param {sound} shock_sound
+     * @param {sound} slap_sound
+     * @typedef {object} offset 
+     */
 
 
-
+    /**
+     * This function start the tracking from sharkie coordinates
+     * @param {number} X Coordinates from Whale
+     */
     enemyTrackingX(X) {
         if (X <= this.world.character.x) {
             this.trackingRightSide(X);
@@ -19,6 +34,12 @@ class MovableObject extends DrawableObjects {
             this.trackingLeftSide(X);
         }
     }
+
+    /**
+     * This function track sharkie on the Left from Whale and the Whale follow him
+     * 
+     * @param {number} X Coordinates from Whale 
+     */
     trackingLeftSide(X) {
         this.otherDirection = false;
         if (!(this.world.character.x == (X - 60))) {
@@ -28,6 +49,11 @@ class MovableObject extends DrawableObjects {
         }
     }
 
+    /**
+     *  This function track sharkie on the Right from Whale and the Whale follow him
+     * 
+     * @param {number} X Coordinates from Whale
+     */
     trackingRightSide(X) {
         this.otherDirection = true;
         if (!(this.world.character.x == (X + 300))) {
@@ -40,6 +66,10 @@ class MovableObject extends DrawableObjects {
         }
     }
 
+    /**
+     * This function track Sharkie and the Whale follow him Up and Down
+     * @param {number} Y 
+     */
     enemyTrackingY(Y) {
         if ((Y + 100) < this.world.character.y) {
             this.world.finalBoss[0].y = this.world.finalBoss[0].y += 10;
@@ -49,7 +79,9 @@ class MovableObject extends DrawableObjects {
     }
 
 
-
+    /**
+     * This function i need for the gravitation of the Bubble
+     */
     applyGravity() {
         setInterval(() => {
             if (this.y > 0) {
@@ -59,7 +91,12 @@ class MovableObject extends DrawableObjects {
     }
 
 
-    // isColliding
+    /**
+     * This function returns if character colliding with some other Objects
+     * 
+     * @param {object} mo 
+     * @returns 
+     */
     isColliding(mo) {
         return this.x + this.offset.left + this.width - this.offset.right > mo.x + mo.offset.left &&
         this.y + this.offset.top + this.height - this.offset.bottom > mo.y + mo.offset.top &&
@@ -67,7 +104,11 @@ class MovableObject extends DrawableObjects {
         this.y + this.offset.top < mo.y + mo.offset.top + mo.height - mo.offset.bottom;
     }
 
-    // colliding BigBoss if you on the ride side
+    /**
+     * This function returns if you colliding with the Whale
+     * @param {object} char 
+     * @returns 
+     */
     collidingBigBoss(char) {
         return (this.x + 260) + this.width > char.x &&
         this.y + this.height > char.y &&
@@ -76,16 +117,26 @@ class MovableObject extends DrawableObjects {
     }
 
 
+    /**
+     * This function increase my poisens Inventar
+     */
     isCollectPoisen() {
         this.myPoisens += 10;
     }
 
 
+    /**
+     * This function increase myCoins Inventar
+     */
     isCollectCoin() {
         this.myCoins += 10;
     }
 
-
+    /**
+     * This function Check and slap the detected enemies
+     * 
+     * @param {object} enemy 
+     */
     slapAttack(enemy) {
         if (enemy instanceof PufferFish || enemy instanceof BigBoss) {
             enemy.energy -= 100;
@@ -95,6 +146,11 @@ class MovableObject extends DrawableObjects {
         }
     }
     
+    /**
+     * This function hit sharkie and decrease energy
+     * 
+     * @param {object} enemy 
+     */
     hit(enemy) {
         this.playhittingSound(enemy);
         if (enemy instanceof ElectroJelly) {
@@ -110,6 +166,10 @@ class MovableObject extends DrawableObjects {
     }
 
 
+    /**
+     * This function check and returns the time how passed, to damage again the Shark
+     * @returns 
+     */
     isHurt(){
         let timepassed = new Date().getTime() - this.lastHit; // Difference in ms
         timepassed = timepassed / 1000;
@@ -117,11 +177,19 @@ class MovableObject extends DrawableObjects {
     }
 
 
+    /**
+     * This function return if the Character are dead or alive
+     * @returns 
+     */
     isDead() {
         return this.energy <= 0;
     }
 
 
+    /**
+     * This function play a array with images
+     * @param {Array} images 
+     */
     playAnimation(images) {
         let i = this.currentImage % images.length;
         let path = images[i];
@@ -129,8 +197,13 @@ class MovableObject extends DrawableObjects {
         this.currentImage++;
     }
 
+    /**
+     * This function play a sound if you collide with a Jelly
+     * 
+     * @param {object} enemy 
+     */
     playhittingSound(enemy) {
-        if (enemy instanceof JellyFish && audioOn) {
+        if (enemy instanceof JellyFish && audioOn || enemy instanceof ElectroJelly && audioOn) {
             this.shock_sound.play();
         } else if (audioOn) {
             this.hit_sound.play();
@@ -139,34 +212,55 @@ class MovableObject extends DrawableObjects {
 
 
 
+    /**
+     * This function increase your position x
+     */
     moveRight() {
         this.x += this.speed;
     }
 
 
+    /**
+     * This function decrease your position x
+     */
     moveLeft() {
         this.x -= this.speed;
     }
 
 
+    /**
+     * This function decrease you position y
+     */
     moveUp() {
         this.y -= this.speed;
     }
 
 
+    /**
+     * This function increase your position y
+     */
     moveDown() {
         this.y += this.speed;
     }
 
 
+    /**
+     * This function set a boolean true to show, Sharkie is in Bubble Attack mode
+     */
     attackWithBubble() {
         this.bubbleAttackActive = true;
     }
 
+    /**
+     * This function set a boolean true to show, Sharkie is in Poisen Bubble Attack mode
+     */
     attackWithPoisenBubble() {
         this.poisenBubbleAttackActive = true;
     }
 
+    /**
+     * This function set a boolean true to show, Sharkie is in Slap Attack mode
+     */
     attackWithFinslap() {
         this.finslap = true;
     }

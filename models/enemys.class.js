@@ -23,6 +23,9 @@ class PufferFish extends MovableObject {
     x = 400 + Math.random() * 500;
     y = 624;
 
+    /**
+     * The constructor is always executed first when the structure is called
+     */
     constructor(){
         super().loadImage('./img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png');
         this.loadImages(this.images_IDLE);
@@ -33,6 +36,9 @@ class PufferFish extends MovableObject {
         this.speed = 0.15 + Math.random() * 0.55;
     }
 
+    /**
+     * This function Animate the movement from the puffer fish
+     */
     animate() {
         let isDeadMovementExecuted = false;
         let blowUp = false;
@@ -111,6 +117,9 @@ class JellyFish extends MovableObject {
     y = 200;
     offset = {top: 4, bottom: 14, left: 2, right: 4};
 
+    /**
+     * The constructor is always executed first when the structure is called
+     */
     constructor(){
         super().loadImage('./img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png');
         this.loadImages(this.images_IDLE);
@@ -119,6 +128,9 @@ class JellyFish extends MovableObject {
         this.speed = 0.15 + Math.random() * 0.25;
     }
 
+    /**
+     * This function animate the Jellyfish
+     */
     animate() {
         setInterval(() => {
             if (this.isDead()) {
@@ -169,6 +181,9 @@ class ElectroJelly extends MovableObject {
     offset = {top: 4, bottom: 14, left: 2, right: 4};
     energy = 300;
 
+    /**
+     * The constructor is always executed first when the structure is called
+     */
     constructor(x){
         super().loadImage('./img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png');
         this.loadImages(this.images_IDLE);
@@ -178,6 +193,9 @@ class ElectroJelly extends MovableObject {
         this.x = x;
     }
 
+    /**
+     * This function animate the Jellyfish
+     */
     animate() {
         setInterval(() => {
             if (this.isDead()) {

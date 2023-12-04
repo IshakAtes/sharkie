@@ -14,6 +14,9 @@ class Water extends MovableObject {
         this.animate();
     }
 
+    /**
+     * This function set the Intervall, how fast the Water move
+     */
     animate() {
         setInterval(() => this.moveWater(), 1000 / 60);
     }

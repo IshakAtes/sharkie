@@ -133,7 +133,7 @@ class Character extends MovableObject {
      * @param {boolean} characterIsSleeping
      * @param {boolean} wakeUp Show if Character sleep or not
      * @param {sound} snoring_Sound Contains the link to the sound file
-     * @typedef {Array} offset
+     * @typedef {object} offset
      */
 
     /**

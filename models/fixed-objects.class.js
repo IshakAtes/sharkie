@@ -9,6 +9,9 @@ class StatusBar extends DrawableObjects {
     ];
     percentage = 100;
 
+    /**
+     * The constructor is always executed first when the structure is called
+     */
     constructor() {
         super();
         this.loadImages(this.IMAGES_HEALTH);
@@ -19,12 +22,20 @@ class StatusBar extends DrawableObjects {
         this.setPercentage(100);
     }
 
+    /**
+     * This function show , how many energy the character have
+     * @param {number} percentage 
+     */
     setPercentage(percentage) {
         this.percentage = percentage;
         this.path = this.IMAGES_HEALTH[this.resolveImageIndex()];
         this.img = this.imageCache[this.path];
     }
 
+    /**
+     * This function check how energy sharkie have
+     * @returns {number}
+     */
     resolveImageIndex() {
         if (this.percentage == 100) {
             return 5;
@@ -56,6 +67,9 @@ class PoisenBar extends DrawableObjects {
     ];
     percentagePoisen = 0;
 
+    /**
+     * The constructor is always executed first when the structure is called
+     */
     constructor() {
         super();
         this.loadImages(this.IMAGES_Poisen);
@@ -66,12 +80,21 @@ class PoisenBar extends DrawableObjects {
         this.setPercentage(0);
     }
 
+    /**
+     * This function show, how many Poisen Bottles you collected
+     * 
+     * @param {number} percentagePoisen 
+     */
     setPercentage(percentagePoisen) {
         this.percentagePoisen = percentagePoisen;
         this.path = this.IMAGES_Poisen[this.resolveImageIndex()];
         this.img = this.imageCache[this.path];
     }
 
+    /**
+     * This function check, how many Poisens you collected
+     * @returns {number}
+     */
     resolveImageIndex() {
         if (this.percentagePoisen >= 100) {
             return 5;
@@ -102,6 +125,9 @@ class CoinBar extends DrawableObjects {
     ];
     percentageCoins = 0;
 
+    /**
+     * The constructor is always executed first when the structure is called
+     */
     constructor() {
         super();
         this.loadImages(this.IMAGES_COINS);
@@ -112,12 +138,21 @@ class CoinBar extends DrawableObjects {
         this.setPercentage(0);
     }
 
+    /**
+     * This function show, how many Coins you collected
+     * 
+     * @param {number} percentageCoins 
+     */
     setPercentage(percentageCoins) {
         this.percentageCoins = percentageCoins;
         this.path = this.IMAGES_COINS[this.resolveImageIndex()];
         this.img = this.imageCache[this.path];
     }
 
+    /**
+     * This function check, how many Coins you collected
+     * @returns {number}
+     */
     resolveImageIndex() {
         if (this.percentageCoins >= 100) {
             return 5;
