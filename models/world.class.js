@@ -116,7 +116,7 @@ class World {
     }
 
     /**
-     * check which Poisenbottle you collect
+     * Check which Poisenbottle you collect
      * @typedef {object} obt
      */
     checkCollectedPoisenBottles() {
@@ -132,6 +132,9 @@ class World {
         })
     }
 
+    /**
+     * Check if Poisen Attack colliding with Enemy
+     */
     checkPoisenAtkCollidingWithEnemy() {
         this.poisens.forEach( (obt) => {
             if (this.character.isColliding(obt)) {
@@ -145,6 +148,13 @@ class World {
         })
     }
 
+    /**
+     * Check which enemy Colliding with Bubble Attack and decrease his energy
+     * 
+     * @param {object} enemy 
+     * @param {object} bubble 
+     * @param {number} i 
+     */
     decreaseEnergyOffHittedEnemys(enemy, bubble, i) {
         if (enemy.isColliding(bubble)) {
             this.attackingObjects.splice(i, 1);
@@ -167,25 +177,39 @@ class World {
         }
     }
 
+    /**
+     * This function delete the Collected Poisen from Array
+     * @param {object} obt 
+     */
     filterPoisenArray(obt) {
         let poisenIndex = this.poisens.indexOf(obt);
         this.poisens.splice(poisenIndex, 1);
     }
 
+    /**
+     * This function delete the Collected Coins from Array
+     * @param {object} obt 
+     */
     filterCoinsArray(obt) {
         let coinIndex = this.coins.indexOf(obt);
         this.coins.splice(coinIndex, 1);
     }
 
+    /**
+     * This function make the shark immortal for the length of the slap attack
+     */
     finSlap() {
-        clearTimeout(this.immortalTimeout); // Timer zurücksetzen, falls er bereits läuft
+        clearTimeout(this.immortalTimeout);
         this.immortal = true;
         this.immortalTimeout = setTimeout(() => {
-            this.immortal = false; // Immunität nach 0,6 Sekunde deaktivieren
-        }, 600);
+            this.immortal = false;
+        }, 400);
     }
 
 
+    /**
+     * This function draw all Objects in the Canvas
+     */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
@@ -212,12 +236,22 @@ class World {
         });
     };
 
+    /**
+     * This function add the object to Map
+     * 
+     * @param {object} objects 
+     */
     addObjectsToMap(objects){
         objects.forEach(ob => {
             this.addToMap(ob);
         });
     };
 
+    /**
+     * This function add the Characters to the map
+     * 
+     * @param {object} char 
+     */
     addToMap(char) {
         if(char.otherDirection) {
             this.flipImage(char);
@@ -229,6 +263,10 @@ class World {
         }
     };
     
+    /**
+     * This function flip the Characters to the other direction
+     * @param {object} char 
+     */
     flipImage(char) {
         this.ctx.save();
         this.ctx.translate(char.width, 0);
@@ -236,6 +274,11 @@ class World {
         char.x = char.x * -1;
     }
 
+    /**
+     * This function flip the Characters to her normally directions
+     * 
+     * @param {object} char 
+     */
     flipImageBack(char) {
         char.x = char.x * -1;
         this.ctx.restore();
