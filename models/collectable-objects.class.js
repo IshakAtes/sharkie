@@ -10,13 +10,18 @@ class Coin extends MovableObject {
         './img/4. Marcadores/1. Coins/4.png',
     ];
 
+    /**
+     * The constructor is always executed first when the structure is called
+     */
     constructor(){
         super().loadImage('./img/4. Marcadores/1. Coins/1.png');
         this.loadImages(this.images_Coin);
         this.animate();
     }
 
-
+    /**
+     * This function set the Intervall, how fast the Coins are Animated
+     */
     animate() {
         setInterval(() => {
             this.playAnimation(this.images_Coin);
@@ -43,6 +48,9 @@ class Poisen extends MovableObject {
         './img/4. Marcadores/Posión/Animada/8.png',
     ];
 
+    /**
+     * The constructor is always executed first when the structure is called
+     */
     constructor(){
         super().loadImage('./img/4. Marcadores/Posión/Animada/1.png');
         this.loadImages(this.images_Poisen);
@@ -50,10 +58,12 @@ class Poisen extends MovableObject {
     }
 
 
+    /**
+     * This function set the Intervall, how fast the PoisenBottles are Animated
+     */
     animate() {
         setInterval(() => {
             this.playAnimation(this.images_Poisen);
         }, 99);
     }
-
 }

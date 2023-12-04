@@ -5,6 +5,9 @@ class Water extends MovableObject {
     height = 800;
     waterRightCommand = false;
 
+    /**
+     * the constructor is always executed first when the structure is called
+     */
     constructor(imagePath, x){
         super().loadImage(imagePath);
         this.x = x;

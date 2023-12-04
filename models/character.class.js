@@ -104,7 +104,7 @@ class Character extends MovableObject {
         './img/1.Sharkie/2.Long_IDLE/I14.png',
     ];
     world;
-    speed = 8; //make it 8 if game finish
+    speed = 8;
     gameOver = false;
     wonTheGame = false;
     swimming_Sound = new Audio('sounds/swimmingFish.mp3');
@@ -118,8 +118,27 @@ class Character extends MovableObject {
     wakeUp = true;
     snoring_Sound = new Audio('sounds/snoring.mp3')
     offset = {top: 68, bottom: 99, left: 30, right: 58};
+    /**
+     * @typedef {object} world
+     * @param {number} speed how fast Sharkie Swim
+     * @param {boolean} gameOver Show if you die or not
+     * @param {boolean} wonTheGame Show if you Won the game
+     * @param {sound} swimming_Sound Contains the link to the sound file
+     * @param {sound} gameOver Contains the link to the sound file
+     * @param {boolean} stopMoveRight
+     * @param {boolean} stopMoveLeft
+     * @param {boolean} stopMoveUp
+     * @param {boolean} stopMoveDown
+     * @param {boolean} longWait
+     * @param {boolean} characterIsSleeping
+     * @param {boolean} wakeUp Show if Character sleep or not
+     * @param {sound} snoring_Sound Contains the link to the sound file
+     * @typedef {Array} offset
+     */
 
-
+    /**
+     * The constructor is always executed first when the structure is called
+     */
     constructor(){
         super().loadImage('./img/1.Sharkie/1.IDLE/1.png');
         this.loadImages(this.images_IDLE);
@@ -137,12 +156,18 @@ class Character extends MovableObject {
     }
 
 
+    /**
+     * This function set the Intervall, how fast the character Animated
+     */
     animate() {
         setInterval(() => this.playCharacter(), 100);
         setInterval(() => this.moveCharacter(), 30);
     }
 
 
+    /**
+     * This function Contain how the Character Animated and play
+     */
     playCharacter() {
         this.swimming_Sound.pause();
         if (this.gameOver) {
@@ -161,6 +186,9 @@ class Character extends MovableObject {
             this.characterStandSleepOrMove();
     }
 
+    /**
+     * This function Contain how the Character sleep
+     */
     characterStandSleepOrMove() {
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
             this.swimAnimation();
@@ -174,6 +202,9 @@ class Character extends MovableObject {
     }
 
 
+    /**
+     * This function show if sharkie is in deepSleep
+     */
     sharkieSleeped() {
         this.playAnimation(this.images_SLEEP);
         if (this.y < 580) {
@@ -181,6 +212,11 @@ class Character extends MovableObject {
         }
     }
 
+    /**
+     * This function show how Sharkie go Sleep
+     * 
+     * @param {boolean} audioOn Contain if Audio is On or Off
+     */
     sharkieGoesSleep() {
         if (!this.wakeUp && !this.characterIsSleeping) {
             this.playAnimation(this.images_GOSLEEP);
@@ -198,6 +234,9 @@ class Character extends MovableObject {
         }
     }
 
+    /**
+     * This function show Sharkie if he stay
+     */
     characterStands() {
         this.playAnimation(this.images_IDLE);
         if (this.wakeUp && !this.goSleepTimer) {
@@ -211,6 +250,9 @@ class Character extends MovableObject {
         }
     }
 
+    /**
+     * This function show how Sharkie Swim
+     */
     swimAnimation() {
         this.wakeSharkie();
         this.playAnimation(this.images_SWIM);
@@ -219,6 +261,9 @@ class Character extends MovableObject {
         }
     }
 
+    /**
+     * This function awakens the character and Clear some Timer
+     */
     wakeSharkie() {
         this.snoring_Sound.pause();
         this.wakeUp = true;
@@ -229,6 +274,9 @@ class Character extends MovableObject {
         this.sleepTimer = null;
     }
 
+    /**
+     * This function shows the Finslap attack
+     */
     characterFinslap() {
         this.wakeSharkie();
         this.playAnimation(this.images_FINSLAP);
@@ -238,6 +286,9 @@ class Character extends MovableObject {
         }, this.images_FINSLAP.length * 100);
     }
 
+    /**
+     * This function Animate the Bubble Attack
+     */
     BubbleAttack() {
         this.wakeSharkie();
         this.playAnimation(this.images_BUBBLE);
@@ -251,6 +302,9 @@ class Character extends MovableObject {
         }
     }
 
+    /**
+     * This function Animate the Poisen Bubble Attack
+     */
     AttackWithPoisen() {
         this.wakeSharkie();
         this.playAnimation(this.images_POISENBUBBLE);
@@ -264,6 +318,9 @@ class Character extends MovableObject {
         }
     }
 
+    /**
+     * This function Animate the Character if he is Dead
+     */
     characterIsDead() {
         this.playAnimation(this.images_DEAD);
             setTimeout(() => {
@@ -276,6 +333,9 @@ class Character extends MovableObject {
             }, this.images_DEAD.length * 100);
     }
 
+    /**
+     * This function ends the game and the sound
+     */
     gameIsOver() {
         let gameOverScreen = document.getElementById('gameOverOverlay');
             this.playAnimation(this.images_GAMEOVER);
@@ -292,7 +352,9 @@ class Character extends MovableObject {
     }
 
 
-    
+    /**
+     * This function shows how you can move Sharkie
+     */
     moveCharacter() {
         if (!this.stopMoveRight && !this.wonTheGame && !this.gameOver && this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
             this.moveRight();

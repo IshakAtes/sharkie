@@ -65,7 +65,9 @@ class BigBoss extends MovableObject {
     deathAnimationPlayed = false;
     i = 0;
 
-
+    /**
+     * the constructor is always executed first when the structure is called
+     */
     constructor(){
         super().loadImage('./img/2.Enemy/3 Final Enemy/2.floating/1.png');
         this.loadImages(this.images_SPAWNING);

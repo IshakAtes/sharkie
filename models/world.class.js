@@ -45,7 +45,9 @@ class World {
      * @param {boolean} pushMovement
      */
 
-
+    /**
+     * The constructor is always executed first when the structure is called
+     */
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
