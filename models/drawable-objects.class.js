@@ -1,5 +1,4 @@
 class DrawableObjects {
-    world;
     poisenBubbleAttackActive = false;
     bubbleAttackActive = false;
     finslap = false;
@@ -58,37 +57,5 @@ class DrawableObjects {
             img.src = path;
             this.imageCache[path] = img;
         });
-    }
-
-
-    /**
-     * This function push a bubble in the Array attackingObjects and make the Bubble visible
-     */
-    drawBubble() {
-        if(!this.world.character.otherDirection) {
-            let bubble = new AttackObject(this.world.character.x + 122, this.world.character.y + 60);
-            this.world.attackingObjects.push(bubble);
-        } else if(this.world.character.otherDirection) {
-            let bubble = new AttackObject(this.world.character.x + 0, this.world.character.y + 60, this.world.character.otherDirection); //70, 72
-            this.world.attackingObjects.push(bubble);
-        }
-    }
-
-
-    /**
-     * This function push a bubble in the Array attackingObjects and make the Bubble visible
-     */
-    drawPoisenBubble() {
-        if(!this.world.character.otherDirection && this.world.character.myPoisens >= 10) {
-            let infectedBubble = new PoisenAttack(this.world.character.x + 122, this.world.character.y + 60);
-            this.world.attackingObjects.push(infectedBubble);
-            this.world.character.myPoisens -= 10;
-            this.world.poisenBar.setPercentage(this.world.character.myPoisens);
-        } else if(this.world.character.otherDirection && this.world.character.myPoisens >= 10) {
-            let infectedBubble = new PoisenAttack(this.world.character.x + 0, this.world.character.y + 60, this.world.character.otherDirection); //70, 72
-            this.world.attackingObjects.push(infectedBubble);
-            this.world.character.myPoisens -= 10;
-            this.world.poisenBar.setPercentage(this.world.character.myPoisens);
-        }
     }
 }
