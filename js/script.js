@@ -2,6 +2,9 @@ let gameStatement = false;
 let tryAgainStatement = false;
 let autoStart = localStorage.getItem('tryAgainLS');
 
+/**
+ * This function show some Information about the Game Supporters
+ */
 function toggleInfoPanel() {
     let panel = document.getElementById('infoOverlay');
     panel.classList.toggle('toggleControlls');
@@ -10,7 +13,9 @@ function toggleInfoPanel() {
     }
 }
 
-
+/**
+ * This function show, how to play this Game
+ */
 function toggleControllPanel() {
     let panel = document.getElementById('controllsOverlay');
     panel.classList.toggle('toggleControlls');
@@ -19,14 +24,18 @@ function toggleControllPanel() {
     }
 }
 
-
+/**
+ * This function save the sound Mode and Relaading the Game
+ */
 function tryAgain() {
     localStorage.setItem('tryAgainLS', true);
     localStorage.setItem('soundStatus', JSON.stringify(audioOn));
     window.location.href = 'index.html';
 }
 
-
+/**
+ * This function Check the local Storage if index finished loading and Start the Game autmaticly if the tryAgainLS boolead are true
+ */
 function checkAndReplay(){
     if (autoStart == 'true') {
         localStorage.setItem('tryAgainLS', false);
@@ -43,7 +52,9 @@ function checkAndReplay(){
     }, 100);
 }
 
-
+/**
+ * This function Starts the Game
+ */
 function startGame() {
     let startScreen = document.getElementById('startCtnId');
     startScreen.style.display = 'none';
@@ -51,7 +62,9 @@ function startGame() {
     init();
 }
 
-
+/**
+ * This function toggle the Sound
+ */
 function toggleSound() {
     let speakerPath = document.getElementById('speakerId');
     if (audioOn) {
@@ -68,7 +81,9 @@ function toggleSound() {
     }
 }
 
-
+/**
+ * This function edit some Styles for Fullscreen
+ */
 function openFullscreen() {
     let fullscreen = document.getElementById('screenId');
     let iconCt = document.getElementById('panelCtId');
@@ -82,6 +97,9 @@ function openFullscreen() {
     document.getElementById('startCtnId').style.top = '0';
 }
 
+/**
+ * This function check the audioOn boolean and replace the speaker image
+ */
 function actuallySpeaker() {
     let speakerIcon = document.getElementById('speakerId');
     if (audioOn) {
@@ -91,6 +109,11 @@ function actuallySpeaker() {
     }
 }
 
+/**
+ * This function open your Game in Fullscreen
+ * 
+ * @param {div} element 
+ */
 function enterFullscreen(element) {
     if(element.requestFullscreen) {
         element.requestFullscreen();
@@ -101,6 +124,10 @@ function enterFullscreen(element) {
     }
 }
 
+/**
+ * This function generate the Controll panel if you are in Fullscreen Mode
+ * @returns 
+ */
 function generateControllPanelHTML() {
     return`
         <img onclick="toggleInfoPanel()" src="./img/7.Controlls/buchstabe-i.png" alt="">
@@ -110,7 +137,9 @@ function generateControllPanelHTML() {
     `;
 }
 
-
+/**
+ * This function edit some styles if you close the Fullscreen
+ */
 function closeFullscreen() {
     let iconCt = document.getElementById('panelCtId');
     iconCt.innerHTML = generateStandartControllPanelHTML();
@@ -129,6 +158,9 @@ function closeFullscreen() {
     }
 }
 
+/**
+ * This function close the Fullscreen
+ */
 function exitFullscreen() {
     if (document.exitFullscreen) {
         document.exitFullscreen();
@@ -141,7 +173,10 @@ function exitFullscreen() {
     }
 }
 
-
+/**
+ * This function generate the Controll Panel, when you exit the fullscreen Mode
+ * @returns 
+ */
 function generateStandartControllPanelHTML() {
     return`
         <img onclick="toggleInfoPanel()" src="./img/7.Controlls/buchstabe-i.png" alt="">
