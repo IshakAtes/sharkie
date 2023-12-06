@@ -109,6 +109,9 @@ class Character extends MovableObject {
     wonTheGame = false;
     swimming_Sound = new Audio('sounds/swimmingFish.mp3');
     gameOver_Sound = new Audio('sounds/loose.mp3');
+    bubbleAnimationInProgress = false;
+    poisenBubbleAttackActive = false;
+    bubbleAttackActive = false;
     stopMoveRight = false;
     stopMoveLeft = false;
     stopMoveUp = false;
@@ -125,6 +128,9 @@ class Character extends MovableObject {
      * @param {boolean} wonTheGame Show if you Won the game
      * @param {sound} swimming_Sound Contains the link to the sound file
      * @param {sound} gameOver Contains the link to the sound file
+     * @param {boolean} bubbleAnimationInProgress
+     * @param {boolean} poisenBubbleAttackActive
+     * @param {boolean} bubbleAttackActive
      * @param {boolean} stopMoveRight
      * @param {boolean} stopMoveLeft
      * @param {boolean} stopMoveUp

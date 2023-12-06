@@ -1,6 +1,4 @@
 class DrawableObjects {
-    poisenBubbleAttackActive = false;
-    bubbleAttackActive = false;
     finslap = false;
     img;
     imageCache = {};
