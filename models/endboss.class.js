@@ -193,12 +193,13 @@ class BigBoss extends MovableObject {
      * This function Show the Whale if he ist dead and play the Winning sound
      */
     gameIsFinished() {
+        this.world.character.snoring_Sound.pause();
         this.world.character.wonTheGame = true;
         this.playAnimation(this.images_PARADISE);
         this.y = this.y -= 3;
         this.showWinnerScreen();
         setTimeout(() => {
-            this.gameWin_Sound.pause();                            
+            this.gameWin_Sound.pause();
         }, 6000);
     }
 
