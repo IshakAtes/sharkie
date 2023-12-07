@@ -161,20 +161,15 @@ window.addEventListener('keydown', (event) => {
     if (event.keyCode == 40) {
         keyboard.DOWN = true;
     }
-
-    // Attack Methods
     if (event.keyCode == 86) {
         keyboard.V = true;
     }
-
     if (event.keyCode == 66) {
         keyboard.B = true;
     }
-
     if (event.keyCode == 32) {
         keyboard.SPACE = true;
     }
-
     if (event.keyCode == 27) {
         keyboard.ESC = true;
     }
@@ -196,7 +191,6 @@ window.addEventListener('keyup', (event) => {
     if (event.keyCode == 40) {
         keyboard.DOWN = false;
     }
-    // Attack Methods
     if (event.keyCode == 86) {
         keyboard.V = false;
     }
@@ -225,19 +219,15 @@ document.addEventListener('touchstart', (event) => {
     if (event.keyCode == 40) {
         event.preventDefault();
     }
-
     if (event.keyCode == 86) {
         event.preventDefault();
     }
-
     if (event.keyCode == 66) {
         event.preventDefault();
     }
-
     if (event.keyCode == 32) {
         event.preventDefault();
     }
-
     if (event.keyCode == 27) {
         event.preventDefault();
     }
