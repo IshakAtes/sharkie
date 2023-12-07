@@ -50,12 +50,13 @@ canvas {
 .rotationCt {
     position: absolute;
     top: 0;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    z-index: 3;
     background-color: rgba(136, 62, 165, 0.796);
 }
 
