@@ -206,15 +206,41 @@ window.addEventListener('keyup', (event) => {
     if (event.keyCode == 32) {
         keyboard.SPACE = false;
     }
-
     if (event.keyCode == 27) {
         keyboard.ESC = false;
     }
 });
 
 
-document.addEventListener('touchstart', function(event) {
-    event.preventDefault();
+document.addEventListener('touchstart', (event) => {
+    if (event.keyCode == 39) {
+        event.preventDefault();
+    }
+    if (event.keyCode == 37) {
+        event.preventDefault();
+    }
+    if (event.keyCode == 38) {
+        event.preventDefault();
+    }
+    if (event.keyCode == 40) {
+        event.preventDefault();
+    }
+
+    if (event.keyCode == 86) {
+        event.preventDefault();
+    }
+
+    if (event.keyCode == 66) {
+        event.preventDefault();
+    }
+
+    if (event.keyCode == 32) {
+        event.preventDefault();
+    }
+
+    if (event.keyCode == 27) {
+        event.preventDefault();
+    }
 });
 
 document.addEventListener('contextmenu', function(event) {
