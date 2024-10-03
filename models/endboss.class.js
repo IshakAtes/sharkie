@@ -211,9 +211,9 @@ class BigBoss extends MovableObject {
         setTimeout(() => {
             winningScreen.style.display = 'flex';
             winningScreen.style.backgroundColor = 'rgb(0, 0, 0)';
-            if (window.innerHeight < 930 && window.innerWidth > 1024) {
-                winningScreen.style.top = '20px';
-            }
+            // if (window.innerHeight < 930 && window.innerWidth > 1024) {
+            //     winningScreen.style.top = '20px';
+            // }
         }, 4000);
     }
 }

@@ -8,9 +8,9 @@ let autoStart = localStorage.getItem('tryAgainLS');
 function toggleInfoPanel() {
     let panel = document.getElementById('infoOverlay');
     panel.classList.toggle('toggleControlls');
-    if (window.innerHeight < 930) {
-        panel.style.top = '20px';
-    }
+    // if (window.innerHeight < 930) {
+    //     panel.style.top = '20px';
+    // }
 }
 
 /**
@@ -19,9 +19,9 @@ function toggleInfoPanel() {
 function toggleControllPanel() {
     let panel = document.getElementById('controllsOverlay');
     panel.classList.toggle('toggleControlls');
-    if (window.innerHeight < 930) {
-        panel.style.top = '20px';
-    }
+    // if (window.innerHeight < 930) {
+    //     panel.style.top = '20px';
+    // }
 }
 
 /**

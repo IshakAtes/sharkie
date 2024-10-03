@@ -384,9 +384,9 @@ class Character extends MovableObject {
             }, 6000);
             setTimeout(() => {
                 gameOverScreen.style.display = 'flex';
-                if (window.innerHeight < 930 && window.innerWidth > 1024) {
-                    gameOverScreen.style.top = '20px';
-                }
+                // if (window.innerHeight < 930 && window.innerWidth > 1024) {
+                //     gameOverScreen.style.top = '20px';
+                // }
             }, 2000);
     }
 

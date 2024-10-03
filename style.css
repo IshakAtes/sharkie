@@ -328,6 +328,7 @@ canvas {
         left: unset;
         right: 122px;
         margin-top: 0px;
+        bottom: 40px;
     }
 
     .winContainer {
